@@ -10,13 +10,7 @@ stackName=options['StackName']
 resources=dict()
 
 # Build base template
-cft = djpp.cloudformation.Template(
-    name=stackName,
-    version=Version,
-    eap=options['EAP'] if 'EAP' in options else None,
-    env=options['Environment'],
-    periodic_chef=False
-)
+cft = djpp.cloudformation.Template(version=Version, **options)
 
 
 def add_lb_dns(name, elb, zones):
