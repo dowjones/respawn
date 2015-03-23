@@ -20,7 +20,7 @@ def add_lb_dns(name, elb, zones):
         cnt +=1
         if zone.endswith('.') is False:
             zone +='.'
-        record_name=opts['record_name']
+        record_name=opts.get('record_name')
         if record_name is None or isinstance(record_name, str) or isinstance(record_name, unicode):
             cft.add_dns_cname(resource_name, elb=elb, zone_name=zone, **opts)
         else:
