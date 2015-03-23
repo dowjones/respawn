@@ -20,7 +20,7 @@ def add_lb_dns(name, elb, zones):
         cnt +=1
         if zone.endswith('.') is False:
             zone +='.'
-        record_name=opts.get('record_name')
+        record_name=opts['record_name']
         if record_name is None or isinstance(record_name, str) or isinstance(record_name, unicode):
             cft.add_dns_cname(resource_name, elb=elb, zone_name=zone, **opts)
         else:
@@ -42,7 +42,6 @@ if 'LoadBalancers' in options:
             if 'DNS' in lb_opts:
                 add_lb_dns(name, lb, lb_opts['DNS'])
 
-
 if 'Databases' in options:
     types=dict(
         Postgres=cft.addRDSPostgres
@@ -52,6 +51,17 @@ if 'Databases' in options:
         for name, rds_opts in options['Databases'][key].items():
             rds = make_rds(name, **rds_opts)
             resources[name]=rds
+
+
+if 'Instances' in options:
+    types=dict(
+        Linux=cft.addInstanceLinux
+    )
+    for key in options['Instances'].keys():
+        make_instance=types[key]
+        for name, instance_opts in options['Instances'][key].items():
+            inst = make_instance(name, **instance_opts)
+            resources[name]=inst
 
 
 for tierName, stack in options['AutoScaleGroups'].items():
