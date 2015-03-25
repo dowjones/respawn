@@ -31,7 +31,8 @@ def add_lb_dns(name, elb, zones):
 if 'LoadBalancers' in options:
     types=dict(
         Web=cft.addProductWebLoadBalancer,
-        App=cft.addApplicationLoadBalancer
+        App=cft.addApplicationLoadBalancer,
+        MessageBus=cft.addMessageBusLoadBalancer,
     )
     for key in options['LoadBalancers'].keys():
         make_loadbalancer=types[key]
