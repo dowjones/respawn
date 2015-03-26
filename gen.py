@@ -64,26 +64,27 @@ if 'Instances' in options:
             resources[name]=inst
 
 
-for tierName, stack in options['AutoScaleGroups'].items():
-    name=stackName+tierName
-    add_asg=cft.addLinuxAutoScaleGroup
+if 'AutoScaleGroups' in options:
+    for tierName, stack in options['AutoScaleGroups'].items():
+        name=stackName+tierName
+        add_asg=cft.addLinuxAutoScaleGroup
 
-    if 'load_balancer' in stack:
-        stack['load_balancer']=resources[stack['load_balancer']]
+        if 'load_balancer' in stack:
+            stack['load_balancer']=resources[stack['load_balancer']]
 
-    instance_arguments=stack.get('instance_arguments')
-    if instance_arguments is not None:
-        for k,v in instance_arguments.items():
-            if v.startswith('ref('):
-                v=v[len('ref('):-1].strip()
-                instance_arguments[k]=functions.ref(resources.get(v).name)
-            elif v.startswith('get_att('):
-                v=[s.strip() for s in v[len('get_att('):-1].split(',')]
-                instance_arguments[k]=functions.get_att(resources.get(v[0]).name, v[1])
+        instance_arguments=stack.get('instance_arguments')
+        if instance_arguments is not None:
+            for k,v in instance_arguments.items():
+                if v.startswith('ref('):
+                    v=v[len('ref('):-1].strip()
+                    instance_arguments[k]=functions.ref(resources.get(v).name)
+                elif v.startswith('get_att('):
+                    v=[s.strip() for s in v[len('get_att('):-1].split(',')]
+                    instance_arguments[k]=functions.get_att(resources.get(v[0]).name, v[1])
 
-    if 'Windows' in stack:
-        add_asg=cft.addWindowsAutoScaleGroup
-        del stack['Windows']
+        if 'Windows' in stack:
+            add_asg=cft.addWindowsAutoScaleGroup
+            del stack['Windows']
 
-    add_asg(name, **stack)
+        add_asg(name, **stack)
 
