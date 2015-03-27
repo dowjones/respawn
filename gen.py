@@ -28,6 +28,16 @@ def add_lb_dns(name, elb, zones):
             cft.add_dns_cnames(resource_name, elb=elb, zone_name=zone, **opts)
 
 
+def transform_reference(v):
+    if v.startswith('ref('):
+        v=v[len('ref('):-1].strip()
+        v=functions.ref(resources.get(v).name)
+    elif v.startswith('get_att('):
+        v=[s.strip() for s in v[len('get_att('):-1].split(',')]
+        v=functions.get_att(resources.get(v[0]).name, v[1])
+    return v
+
+
 if 'LoadBalancers' in options:
     types=dict(
         Web=cft.addProductWebLoadBalancer,
@@ -75,12 +85,7 @@ if 'AutoScaleGroups' in options:
         instance_arguments=stack.get('instance_arguments')
         if instance_arguments is not None:
             for k,v in instance_arguments.items():
-                if v.startswith('ref('):
-                    v=v[len('ref('):-1].strip()
-                    instance_arguments[k]=functions.ref(resources.get(v).name)
-                elif v.startswith('get_att('):
-                    v=[s.strip() for s in v[len('get_att('):-1].split(',')]
-                    instance_arguments[k]=functions.get_att(resources.get(v[0]).name, v[1])
+                instance_arguments[k]=transform_reference(v)
 
         if 'Windows' in stack:
             add_asg=cft.addWindowsAutoScaleGroup
