@@ -54,7 +54,7 @@ for opt in ${StackRole}/*.yaml; do
 
 	# Create the CFT
 	echo "Generating ${cftName}..."
-	cfn_py_generate gen.py -o ${opt} &> ${cftName}
+	cfn_py_generate aws-cloudformation/gen.py -o ${opt} &> ${cftName}
 
 	# Validate the CFT
 	if [[ ${validate} -gt 0 ]]; then
