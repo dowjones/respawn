@@ -28,13 +28,31 @@ def add_lb_dns(name, elb, zones):
             cft.add_dns_cnames(resource_name, elb=elb, zone_name=zone, **opts)
 
 
+def add_instances_dns_round_robin(zones):
+    cnt=1
+    for zone, opts in zones.items():
+        resource_name='Instances{0}'.format(cnt)
+        cnt +=1
+        if zone.endswith('.') is False:
+            zone +='.'
+        opts['values']=map(transform_reference, opts['values'])
+        cft.add_dns_round_robin(resource_name, zone, **opts)
+
+
+def fetch_reference(name):
+    r=resources.get(name, cft.resources.get(name))
+    if r is None:
+        raise RuntimeError('Resource name {0} not found'.format(name))
+    return r
+
+
 def transform_reference(v):
     if v.startswith('ref('):
         v=v[len('ref('):-1].strip()
-        v=functions.ref(resources.get(v).name)
+        v=functions.ref(fetch_reference(v).name)
     elif v.startswith('get_att('):
         v=[s.strip() for s in v[len('get_att('):-1].split(',')]
-        v=functions.get_att(resources.get(v[0]).name, v[1])
+        v=functions.get_att(fetch_reference(v[0]).name, v[1])
     return v
 
 
@@ -64,6 +82,11 @@ if 'Databases' in options:
 
 
 if 'Instances' in options:
+    dns_zones=None
+    if 'DNS' in options['Instances']:
+        dns_zones=options['Instances']['DNS']
+        del options['Instances']['DNS']
+
     types=dict(
         Linux=cft.addInstanceLinux
     )
@@ -72,6 +95,10 @@ if 'Instances' in options:
         for name, instance_opts in options['Instances'][key].items():
             inst = make_instance(name, **instance_opts)
             resources[name]=inst
+
+    if dns_zones is not None:
+        add_instances_dns_round_robin(dns_zones)
+
 
 
 if 'AutoScaleGroups' in options:
@@ -92,4 +119,5 @@ if 'AutoScaleGroups' in options:
             del stack['Windows']
 
         add_asg(name, **stack)
+
 
