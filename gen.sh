@@ -27,6 +27,7 @@ done
 shift $((OPTIND-1))
 
 StackRole=${1:-dev}
+YamlSpec=${2:-*.yaml}
 
 # Version control
 source version.sh
@@ -46,7 +47,7 @@ PATCH=$((PATCH+1))
 pip install -r py_reqs.txt || exit -3
 
 # Build all of the required templates
-for opt in ${StackRole}/*.yaml; do
+for opt in ${StackRole}/${YamlSpec}; do
 
 	opt_name=$(basename ${opt})
 	opt_name=${opt_name%.yaml}
