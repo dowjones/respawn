@@ -44,7 +44,7 @@ PATCH=$((PATCH+1))
 ) > version.yaml
 
 # Install deps
-pip install -r py_reqs.txt || exit -3
+pip install -r aws-cloudformation/py_reqs.txt || exit -3
 
 # Build all of the required templates
 for opt in ${StackRole}/${YamlSpec}; do
