@@ -61,6 +61,7 @@ if 'LoadBalancers' in options:
         Web=cft.addProductWebLoadBalancer,
         App=cft.addApplicationLoadBalancer,
         MessageBus=cft.addMessageBusLoadBalancer,
+        IDS=cft.addIDSLoadBalancer,
     )
     for key in options['LoadBalancers'].keys():
         make_loadbalancer=types[key]
@@ -69,6 +70,7 @@ if 'LoadBalancers' in options:
             resources[name]=lb
             if 'DNS' in lb_opts:
                 add_lb_dns(name, lb, lb_opts['DNS'])
+
 
 if 'Databases' in options:
     types=dict(
