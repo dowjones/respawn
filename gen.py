@@ -20,12 +20,12 @@ def add_lb_dns(name, elb, zones):
         cnt +=1
         if zone.endswith('.') is False:
             zone +='.'
-        record_name=opts.get('record_name')
-        if record_name is None or isinstance(record_name, str) or isinstance(record_name, unicode):
-            cft.add_dns_cname(resource_name, elb=elb, zone_name=zone, **opts)
-        else:
+        record_name=opts.get('record_name', opts.get('record_names'))
+        if isinstance(record_name, list):
             opts['record_names']=opts.pop('record_name')
             cft.add_dns_cnames(resource_name, elb=elb, zone_name=zone, **opts)
+        else:
+            cft.add_dns_cname(resource_name, elb=elb, zone_name=zone, **opts)
 
 
 def add_instances_dns_round_robin(zones):
