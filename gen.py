@@ -75,7 +75,7 @@ if 'LoadBalancers' in options:
 if 'Databases' in options:
     types=dict(
         Postgres=cft.addRDSPostgres,
-        MySQL=cfg.addRDSMySQL
+        MySQL=cft.addRDSMySQL
     )
     for key in options['Databases'].keys():
         make_rds=types[key]
