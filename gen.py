@@ -124,3 +124,11 @@ if 'AutoScaleGroups' in options:
         add_asg(name, **stack)
 
 
+
+if 'CloudWatch' in options:
+    types=dict(DAQ=cft.addCloudWatch)
+    for key in options['CloudWatch'].keys():
+        make_cloudwatch=types[key]
+        for name, cloudwatch_opts in options['CloudWatch'][key].items():
+            cloudwatch = make_cloudwatch(name, **cloudwatch_opts)
+            resources[name]=cloudwatch
