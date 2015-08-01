@@ -132,3 +132,10 @@ if 'CloudWatch' in options:
         for name, cloudwatch_opts in options['CloudWatch'][key].items():
             cloudwatch = make_cloudwatch(name, **cloudwatch_opts)
             resources[name]=cloudwatch
+
+
+if 'NetworkInterfaceAttachment' in options:
+    networkInterfaceAttachment = cft.networkInterfaceAttachment
+    for name, networkInterfaceOptions in options['NetworkInterfaceAttachment'].items():
+        networkInterface = networkInterfaceAttachment(name, **networkInterfaceOptions)
+        resources[name] = networkInterface
