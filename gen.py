@@ -139,3 +139,10 @@ if 'NetworkInterfaceAttachment' in options:
     for name, networkInterfaceOptions in options['NetworkInterfaceAttachment'].items():
         networkInterface = networkInterfaceAttachment(name, **networkInterfaceOptions)
         resources[name] = networkInterface
+
+
+if 'Parameters' in options:
+    for tierName, stack in options['Parameters'].items():
+        name=tierName
+        add_asg=cft.addCustomParameters
+        add_asg(name, **stack)
