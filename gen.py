@@ -148,7 +148,7 @@ if 'Parameters' in options:
         add_asg(name, **stack)
 
 if 'SnsTopic' in options:
-    for tierName, stack in options['SnsTopic'].items():
-        name=tierName
-        add_asg=cft.addCustomParameters
-        add_asg(name, **stack)
+    SnsTopic = cft.addSnsTopic
+    for name, values in options['SnsTopic'].items():
+        SnsTopicFunction = SnsTopic(name, **values)
+        resources[name] = SnsTopicFunction
