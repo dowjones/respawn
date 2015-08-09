@@ -58,10 +58,8 @@ def transform_reference(v):
 
 if 'LoadBalancers' in options:
     types=dict(
-        Web=cft.addProductWebLoadBalancer,
-        App=cft.addApplicationLoadBalancer,
-        MessageBus=cft.addMessageBusLoadBalancer,
-        IDS=cft.addIDSLoadBalancer,
+        Web=cft.addApplicationLoadBalancer,
+        Generic=cft.addLoadBalancer
     )
     for key in options['LoadBalancers'].keys():
         make_loadbalancer=types[key]
