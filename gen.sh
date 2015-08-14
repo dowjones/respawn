@@ -29,19 +29,19 @@ shift $((OPTIND-1))
 StackRole=${1:-dev}
 YamlSpec=${2:-*.yaml}
 
-# Version control
-source version.sh
-PATCH=$((PATCH+1))
-(
-	echo MAJOR=${MAJOR}
-	echo MINOR=${MINOR}
-	echo PATCH=${PATCH}
-) > version.sh
-(
-	echo MAJOR: ${MAJOR}
-	echo MINOR: ${MINOR}
-	echo PATCH: ${PATCH}
-) > version.yaml
+## Version control - Not used and doesnt version anything because of usage so removing from library. Up for discussion
+#source version.sh
+#PATCH=$((PATCH+1))
+#(
+#	echo MAJOR=${MAJOR}
+#	echo MINOR=${MINOR}
+#	echo PATCH=${PATCH}
+#) > version.sh
+#(
+#	echo MAJOR: ${MAJOR}
+#	echo MINOR: ${MINOR}
+#	echo PATCH: ${PATCH}
+#) > version.yaml
 
 # Install deps
 pip install -r py_reqs.txt || exit -3

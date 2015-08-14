@@ -5,12 +5,13 @@ from yaml import load as yaml_load
 from cfn_pyplates import core, functions
 import djpp
 
-Version='.'.join(map(str, yaml_load(file('version.yaml', 'r')).values()))
-stackName=options['StackName']
-resources=dict()
+stackName = options['stackName']
+resources = dict()
 
+#Build base injector template
+injector = djpp.inject.injector(**options)
 # Build base template
-cft = djpp.cloudformation.Template(version=Version, **options)
+cft = djpp.cloudformation.Template( **options)
 
 
 def add_lb_dns(name, elb, zones):
@@ -55,20 +56,26 @@ def transform_reference(v):
         v=functions.get_att(fetch_reference(v[0]).name, v[1])
     return v
 
-
+'''Picks up the key from YAML for a specific type of load balancer from HTTP, HTTPS, SSL, TCP . injector class then
+injects the value and send back the injected value in dictionary as **kwarg. Its then consumed by addLoadBalancer in
+cloudformation.py which uses elb.py to structure the values in json and spit it back up. All propreitary values go to inject.py'''
 if 'LoadBalancers' in options:
-    types=dict(
-        Web=cft.addApplicationLoadBalancer,
-        Generic=cft.addLoadBalancer
+    valueInjection = dict(
+        HttpValues=injector.HttpValues,
+        HttpsValues=injector.HttpsValues,
+        TcpValues=injector.TcpValues,
+        SslValues=injector.SslValues,
     )
     for key in options['LoadBalancers'].keys():
-        make_loadbalancer=types[key]
-        for name, lb_opts in options['LoadBalancers'][key].items():
-            lb = make_loadbalancer(name, **lb_opts)
-            resources[name]=lb
-            if 'DNS' in lb_opts:
-                add_lb_dns(name, lb, lb_opts['DNS'])
-
+        makeLoadbalancer=valueInjection[key]
+        for name, lb_options in options['LoadBalancers'][key].items():
+            lbInjected = makeLoadbalancer(name, **lb_options)
+        name = lbInjected['name']
+        del lbInjected['name']
+        lb = cft.addLoadBalancer(name, **lbInjected)
+        resources[name] = lb
+        if 'DNS' in lbInjected:
+            add_lb_dns(name, lb, lbInjected['DNS'])
 
 if 'Databases' in options:
     types=dict(
@@ -100,8 +107,6 @@ if 'Instances' in options:
     if dns_zones is not None:
         add_instances_dns_round_robin(dns_zones)
 
-
-
 if 'AutoScaleGroups' in options:
     for tierName, stack in options['AutoScaleGroups'].items():
         name=stackName+tierName
@@ -121,8 +126,6 @@ if 'AutoScaleGroups' in options:
 
         add_asg(name, **stack)
 
-
-
 if 'CloudWatch' in options:
     types=dict(DAQ=cft.addCloudWatch)
     for key in options['CloudWatch'].keys():
@@ -130,7 +133,6 @@ if 'CloudWatch' in options:
         for name, cloudwatch_opts in options['CloudWatch'][key].items():
             cloudwatch = make_cloudwatch(name, **cloudwatch_opts)
             resources[name]=cloudwatch
-
 
 if 'NetworkInterfaceAttachment' in options:
     networkInterfaceAttachment = cft.networkInterfaceAttachment
