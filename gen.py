@@ -9,7 +9,7 @@ stackName = options['stackName']
 resources = dict()
 
 # Build base injector template
-injector = djpp.inject.injector(**options)
+injector = djpp.inject.Injector(**options)
 # Build base template
 cft = djpp.cloudformation.Template(**options)
 
@@ -62,10 +62,9 @@ injects the value and send back the injected value in dictionary as **kwarg. Its
 cloudformation.py which uses elb.py to structure the values in json and spit it back up. All propreitary values go to inject.py'''
 if 'LoadBalancers' in options:
     valueInjection = dict(
-        HttpValues=injector.HttpValues,
-        HttpsValues=injector.HttpsValues,
-        TcpValues=injector.TcpValues,
-        SslValues=injector.SslValues,
+        HttpsExternal=injector.https_internal_lb(),
+        HttpsInternal=injector.https_external_lb(),
+        Generic=injector.generic_lb()
     )
     for key in options['LoadBalancers'].keys():
         makeLoadbalancer = valueInjection[key]
