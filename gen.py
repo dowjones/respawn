@@ -89,18 +89,22 @@ if 'Databases' in options:
             resources[name] = rds
 
 if 'Instances' in options:
+    instances = options['Instances']
+
     dns_zones = None
-    if 'DNS' in options['Instances']:
-        dns_zones = options['Instances']['DNS']
-        del options['Instances']['DNS']
+    if 'DNS' in instances:
+        dns_zones = instances['DNS']
+        del instances['DNS']
 
     types = dict(
-        Linux=cft.addInstanceLinux
+        Linux=cft.add_linux_instance
     )
-    for key in options['Instances'].keys():
+
+    for key in instances.keys():
         make_instance = types[key]
-        for name, instance_opts in options['Instances'][key].items():
-            inst = make_instance(name, **instance_opts)
+        for name, instance_opts in instances[key].items():
+            instance_opts_injected = injector.ec2_instance_values(**instance_opts)
+            inst = make_instance(name, **instance_opts_injected)
             resources[name] = inst
 
     if dns_zones is not None:
