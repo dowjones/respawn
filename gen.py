@@ -60,22 +60,22 @@ def transform_reference(v):
 '''Picks up the key from YAML for a specific type of load balancer from HTTP, HTTPS, SSL, TCP . injector class then
 injects the value and send back the injected value in dictionary as **kwarg. Its then consumed by addLoadBalancer in
 cloudformation.py which uses elb.py to structure the values in json and spit it back up. All propreitary values go to inject.py'''
-if 'LoadBalancers' in options:
+if 'load_balancers' in options:
     valueInjection = dict(
-        HttpsExternal=injector.https_internal_lb(),
-        HttpsInternal=injector.https_external_lb(),
-        Generic=injector.generic_lb()
+        https_external=injector.https_internal_lb,
+        https_internal=injector.https_external_lb,
+        generic=injector.generic_lb
     )
-    for key in options['LoadBalancers'].keys():
+    for key in options['load_balancers'].keys():
         makeLoadbalancer = valueInjection[key]
-        for name, lb_options in options['LoadBalancers'][key].items():
-            lbInjected = makeLoadbalancer(name, **lb_options)
+        for name, lb_options in options['load_balancers'][key].items():
+            lbInjected = makeLoadbalancer(**lb_options)
         name = lbInjected['name']
         del lbInjected['name']
-        lb = cft.addLoadBalancer(name, **lbInjected)
+        lb = cft.add_load_balancer(name, **lbInjected)
         resources[name] = lb
-        if 'DNS' in lbInjected:
-            add_lb_dns(name, lb, lbInjected['DNS'])
+        if 'dns' in lbInjected:
+            add_lb_dns(name, lb, lbInjected['dns'])
 
 if 'Databases' in options:
     types = dict(
