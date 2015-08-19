@@ -62,8 +62,8 @@ injects the value and send back the injected value in dictionary as **kwarg. Its
 cloudformation.py which uses elb.py to structure the values in json and spit it back up. All propreitary values go to inject.py'''
 if 'load_balancers' in options:
     valueInjection = dict(
-        https_external=injector.https_internal_lb,
-        https_internal=injector.https_external_lb,
+        https_external=injector.https_external_lb,
+        https_internal=injector.https_internal_lb,
         generic=injector.generic_lb
     )
     for key in options['load_balancers'].keys():
