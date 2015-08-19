@@ -5,7 +5,7 @@ sys.path.append(os.path.dirname(os.path.realpath(sys.argv[1])))
 from cfn_pyplates import core, functions
 import djpp
 
-stackName = options['stackName']
+stackName = options['stack_name']
 resources = dict()
 
 # Build base injector template
@@ -74,13 +74,13 @@ if 'load_balancers' in options:
         del lbInjected['name']
         lb = cft.add_load_balancer(name, **lbInjected)
         resources[name] = lb
-        if 'dns' in lbInjected:
-            add_lb_dns(name, lb, lbInjected['dns'])
+        #if 'dns' in lbInjected:
+        #    add_lb_dns(name, lb, lbInjected['dns'])
 
-if 'Databases' in options:
+if 'databases' in options:
     types = dict(
-        Postgres=cft.addRDSPostgres,
-        MySQL=cft.addRDSMySQL
+        postgre_sql=cft.addRDSPostgres,
+        my_sql=cft.addRDSMySQL
     )
     for key in options['Databases'].keys():
         make_rds = types[key]
@@ -88,16 +88,16 @@ if 'Databases' in options:
             rds = make_rds(name, **rds_opts)
             resources[name] = rds
 
-if 'Instances' in options:
-    instances = options['Instances']
+if 'instances' in options:
+    instances = options['instances']
 
     dns_zones = None
-    if 'DNS' in instances:
-        dns_zones = instances['DNS']
-        del instances['DNS']
+    if 'dns' in instances:
+        dns_zones = instances['dns']
+        del instances['dns']
 
     types = dict(
-        Linux=cft.add_linux_instance
+        linux=cft.add_linux_instance
     )
 
     for key in instances.keys():
@@ -110,8 +110,8 @@ if 'Instances' in options:
     if dns_zones is not None:
         add_instances_dns_round_robin(dns_zones)
 
-if 'AutoScaleGroups' in options:
-    for tierName, stack in options['AutoScaleGroups'].items():
+if 'auto_scale_groups' in options:
+    for tierName, stack in options['auto_scale_groups'].items():
         name = stackName + tierName
         add_asg = cft.addLinuxAutoScaleGroup
 
@@ -123,34 +123,34 @@ if 'AutoScaleGroups' in options:
             for k, v in instance_arguments.items():
                 instance_arguments[k] = transform_reference(v)
 
-        if 'Windows' in stack:
+        if 'windows' in stack:
             add_asg = cft.addWindowsAutoScaleGroup
-            del stack['Windows']
+            del stack['windows']
 
         add_asg(name, **stack)
 
-if 'CloudWatch' in options:
-    types = dict(DAQ=cft.addCloudWatch)
-    for key in options['CloudWatch'].keys():
+if 'cloud_watch' in options:
+    types = dict(daq=cft.addCloudWatch)
+    for key in options['cloud_watch'].keys():
         make_cloudwatch = types[key]
         for name, cloudwatch_opts in options['CloudWatch'][key].items():
             cloudwatch = make_cloudwatch(name, **cloudwatch_opts)
             resources[name] = cloudwatch
 
-if 'NetworkInterfaceAttachment' in options:
+if 'network_interface_attachment' in options:
     networkInterfaceAttachment = cft.networkInterfaceAttachment
-    for name, networkInterfaceOptions in options['NetworkInterfaceAttachment'].items():
+    for name, networkInterfaceOptions in options['network_interface_attachment'].items():
         networkInterface = networkInterfaceAttachment(name, **networkInterfaceOptions)
         resources[name] = networkInterface
 
-if 'Parameters' in options:
-    for tierName, stack in options['Parameters'].items():
+if 'parameters' in options:
+    for tierName, stack in options['parameters'].items():
         name = tierName
         add_asg = cft.addCustomParameters
         add_asg(name, **stack)
 
-if 'SnsTopic' in options:
+if 'sns_topic' in options:
     SnsTopic = cft.addSnsTopic
-    for name, values in options['SnsTopic'].items():
+    for name, values in options['sns_topic'].items():
         SnsTopicFunction = SnsTopic(name, **values)
         resources[name] = SnsTopicFunction
