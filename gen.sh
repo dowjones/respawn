@@ -29,20 +29,6 @@ shift $((OPTIND-1))
 StackRole=${1:-dev}
 YamlSpec=${2:-*.yaml}
 
-## Version control - Not used and doesnt version anything because of usage so removing from library. Up for discussion
-#source version.sh
-#PATCH=$((PATCH+1))
-#(
-#	echo MAJOR=${MAJOR}
-#	echo MINOR=${MINOR}
-#	echo PATCH=${PATCH}
-#) > version.sh
-#(
-#	echo MAJOR: ${MAJOR}
-#	echo MINOR: ${MINOR}
-#	echo PATCH: ${PATCH}
-#) > version.yaml
-
 # Install deps
 pip install -r py_reqs.txt || exit -3
 
@@ -55,7 +41,7 @@ for opt in ${StackRole}/${YamlSpec}; do
 
 	# Create the CFT
 	echo "Generating ${cftName}..."
-	cfn_py_generate gen.py -o ${opt} &> ${cftName}
+	cfn_py_generate gen.py -o ${opt} > ${cftName} 2> /dev/tty
 
 	# Validate the CFT
 	if [[ ${validate} -gt 0 ]]; then
