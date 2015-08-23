@@ -138,10 +138,15 @@ if 'cloud_watch' in options:
             resources[name] = cloudwatch
 
 if 'network_interface_attachment' in options:
-    networkInterfaceAttachment = cft.networkInterfaceAttachment
-    for name, networkInterfaceOptions in options['network_interface_attachment'].items():
-        networkInterface = networkInterfaceAttachment(name, **networkInterfaceOptions)
-        resources[name] = networkInterface
+    types = dict(generic=injector.generic_nia)
+    for key in options['network_interface_attachment'].keys():
+        makeNia = types[key]
+        for name, nia_options in options['network_interface_attachment'][key].items():
+            niainjected = makeNia(**nia_options)
+        name = niainjected['name']
+        del niainjected['name']
+        nia = cft.add_network_interface_attachment(name, **niainjected)
+        resources[name] = nia
 
 if 'parameters' in options:
     for tierName, stack in options['parameters'].items():
