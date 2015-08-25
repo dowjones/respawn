@@ -149,10 +149,9 @@ if 'network_interface_attachment' in options:
         resources[name] = nia
 
 if 'parameters' in options:
-    for tierName, stack in options['parameters'].items():
-        name = tierName
-        add_asg = cft.addCustomParameters
-        add_asg(name, **stack)
+    for name, parameter_options in options['parameters'].items():
+        parameter_injected = injector.parameters(**parameter_options)
+        parameters = cft.add_parameters(name, **parameter_injected)
 
 if 'sns_topic' in options:
     SnsTopic = cft.addSnsTopic
