@@ -74,8 +74,8 @@ if 'load_balancers' in options:
         del lbInjected['name']
         lb = cft.add_load_balancer(name, **lbInjected)
         resources[name] = lb
-        #if 'dns' in lbInjected:
-        #    add_lb_dns(name, lb, lbInjected['dns'])
+        if 'dns' in lbInjected:
+            add_lb_dns(name, lb, lbInjected['dns'])
 
 if 'databases' in options:
     types = dict(
@@ -108,6 +108,7 @@ if 'instances' in options:
             resources[name] = inst
 
     if dns_zones is not None:
+        print dns_zones
         add_instances_dns_round_robin(dns_zones)
 
 if 'auto_scale_groups' in options:
