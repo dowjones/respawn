@@ -128,6 +128,13 @@ if 'auto_scale_groups' in options:
 
         add_asg(name, **stack)
 
+if 'scheduled_actions' in options:
+
+    scheduled_actions = options['scheduled_actions']
+
+    for name, sa_opts in scheduled_actions.items():
+        resources[name] = cft.add_scheduled_action(name, **sa_opts)
+
 if 'cloud_watch' in options:
     types = dict(daq=cft.addCloudWatch)
     for key in options['cloud_watch'].keys():
