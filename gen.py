@@ -1,6 +1,5 @@
 import sys
 import os
-
 sys.path.append(os.path.dirname(os.path.realpath(sys.argv[1])))
 from cfn_pyplates import core, functions
 import djpp
@@ -55,7 +54,6 @@ def transform_reference(v):
         v = [s.strip() for s in v[len('get_att('):-1].split(',')]
         v = functions.get_att(fetch_reference(v[0]).name, v[1])
     return v
-
 
 '''Picks up the key from YAML for a specific type of load balancer from HTTP, HTTPS, SSL, TCP . injector class then
 injects the value and send back the injected value in dictionary as **kwarg. Its then consumed by addLoadBalancer in
