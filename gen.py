@@ -135,6 +135,13 @@ if 'scheduled_actions' in options:
     for name, sa_opts in scheduled_actions.items():
         resources[name] = cft.add_scheduled_action(name, **sa_opts)
 
+if 'rds' in options:
+    rds = options['rds']
+
+    for name, rds_opts in rds.items():
+        rds_opts_injects = injector.rds_values(name, **rds_opts)
+        resources[name] = cft.add_rds(name, **rds_opts_injects)
+
 if 'cloud_watch' in options:
     types = dict(daq=cft.addCloudWatch)
     for key in options['cloud_watch'].keys():
