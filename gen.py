@@ -148,6 +148,12 @@ if 'cloud_watch' in options:
         CloudWatch = cloud_watch(name, **values)
         resources[name] = CloudWatch
 
+if 'network_interface' in options:
+    NetworkInterface = cft.add_network_interface
+    for name, values in options['network_interface'].items():
+        NetworkInterfaceFunction = NetworkInterface(name, **values)
+        resources[name] = NetworkInterfaceFunction
+
 if 'network_interface_attachment' in options:
     types = dict(generic=injector.generic_nia)
     for key in options['network_interface_attachment'].keys():
