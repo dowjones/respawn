@@ -143,12 +143,10 @@ if 'rds' in options:
         resources[name] = cft.add_rds(name, **rds_opts_injects)
 
 if 'cloud_watch' in options:
-    types = dict(daq=cft.addCloudWatch)
-    for key in options['cloud_watch'].keys():
-        make_cloudwatch = types[key]
-        for name, cloudwatch_opts in options['CloudWatch'][key].items():
-            cloudwatch = make_cloudwatch(name, **cloudwatch_opts)
-            resources[name] = cloudwatch
+    cloud_watch = cft.add_cloud_watch
+    for name, values in options['cloud_watch'].items():
+        CloudWatch = cloud_watch(name, **values)
+        resources[name] = CloudWatch
 
 if 'network_interface_attachment' in options:
     types = dict(generic=injector.generic_nia)
@@ -167,7 +165,7 @@ if 'parameters' in options:
         parameters = cft.add_parameters(name, **parameter_injected)
 
 if 'sns_topic' in options:
-    SnsTopic = cft.addSnsTopic
+    SnsTopic = cft.add_sns_topic
     for name, values in options['sns_topic'].items():
         SnsTopicFunction = SnsTopic(name, **values)
         resources[name] = SnsTopicFunction
