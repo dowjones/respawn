@@ -3,3 +3,4 @@
 cfn-pyplates==0.4.3
 Jinja2==2.7.3
 #enum34
+#pytest==2.7.1
