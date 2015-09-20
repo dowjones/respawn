@@ -2,15 +2,15 @@ import sys
 import os
 sys.path.append(os.path.dirname(os.path.realpath(sys.argv[1])))
 from cfn_pyplates import core, functions
-import djpp
+import respawn
 
 stackName = options['stack_name']
 resources = dict()
 
 # Build base injector template
-injector = djpp.inject.Injector(**options)
+injector = respawn.inject.Injector(**options)
 # Build base template
-cft = djpp.cloudformation.Template(**options)
+cft = respawn.cloudformation.Template(**options)
 
 
 def add_lb_dns(name, elb, zones):
