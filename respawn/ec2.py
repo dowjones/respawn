@@ -2,21 +2,21 @@ from cfn_pyplates import core, functions
 
 
 class BlockDeviceMapping(core.JSONableDict):
+    """
+        Creates a Block Device Mapping
+
+        :param device_name: String
+
+        kwargs
+            - ebs: PrivateIpSpecification
+            - no_device: Boolean
+            - virtual_name: String
+        """
     def __init__(
             self,
             device_name,
             **kwargs
     ):
-        """
-        Creates a Block Device Mapping
-
-        :param device_name: String
-        :param kwargs:
-            ebs - PrivateIpSpecification
-            no_device - Boolean
-            virtual_name - String
-        """
-
         if 'ebs' not in kwargs and 'virtual_name' not in kwargs and 'no_device' not in kwargs:
             raise RuntimeError("Ebs (ebs) or Virtual Name (virtual_name) required.")
         if 'ebs' in kwargs and 'virtual_name' in kwargs:
@@ -35,21 +35,20 @@ class BlockDeviceMapping(core.JSONableDict):
 
 
 class BlockDevice(core.JSONableDict):
+    """
+        Creates a Block Device
+
+        kwargs
+            - delete_on_termination: Boolean
+            - iops: Integer
+            - snapshot_id: String
+            - size: Integer
+            - type: String
+    """
     def __init__(
             self,
             **kwargs
     ):
-        """
-        Creates a Block Device
-
-        :param kwargs:
-            delete_on_termination - Boolean
-            iops - Integer
-            snapshot_id - String
-            size - Integer
-            type - String
-        """
-
         if "snapshot_id" not in kwargs and "size" not in kwargs:
             raise RuntimeError("Block Device requires Snapshot Id (snapshot_id) or Size (size).")
         if "volume_type" in kwargs:
@@ -71,28 +70,28 @@ class BlockDevice(core.JSONableDict):
 
 
 class NetworkInterfaces(core.JSONableDict):
+    """
+        Creates a Network Interface
+
+        :param device_index: String
+
+        kwargs
+            - public_ip: Boolean
+            - delete_on_termination: Boolean
+            - description: String
+            - device_index:  String
+            - group_set:  [ String, ... ]
+            - interface_id:  String
+            - private_ip:  String
+            - private_ips:  [ PrivateIpSpecification, ... ]
+            - secondary_private_ip_count:  Integer
+            - subnet_id:  String
+        """
     def __init__(
             self,
             device_index,
             **kwargs
     ):
-        """
-        Creates a Network Interface
-
-        :param device_index: String
-        :param kwargs:
-            public_ip - Boolean
-            delete_on_termination - Boolean
-            description - String
-            device_index - String
-            group_set [ String, ... ]
-            interface_id - String
-            private_ip - String
-            private_ips - [ PrivateIpSpecification, ... ]
-            secondary_private_ip_count - Integer
-            subnet_id - String
-        """
-
         if 'subnet_id' not in kwargs and 'interface_id' not in kwargs:
             raise RuntimeError('NetworkInterface requires Subnet Id (subnet_id) if Interface Id (interface_id) '
                                'not specified')
@@ -121,18 +120,17 @@ class NetworkInterfaces(core.JSONableDict):
 
 
 class PrivateIpSpecification(core.JSONableDict):
-    def __init__(
-            self,
-            private_ip,
-            primary
-    ):
-        """
+    """
         Creates a Private IP Specification
 
         :param private_ip: String
         :param primary: Boolean
         """
-
+    def __init__(
+            self,
+            private_ip,
+            primary
+    ):
         super(PrivateIpSpecification, self).__init__()
 
         self['PrivateIpAddress'] = private_ip
@@ -140,18 +138,17 @@ class PrivateIpSpecification(core.JSONableDict):
 
 
 class MountPoint(core.JSONableDict):
-    def __init__(
-            self,
-            device,
-            volume_id
-    ):
-        """
+    """
         Create Mount Point
 
         :param device: String
         :param volume_id: String
         """
-
+    def __init__(
+            self,
+            device,
+            volume_id
+    ):
         super(MountPoint, self).__init__()
 
         self['Device'] = device
@@ -172,11 +169,12 @@ class SecurityGroupIngress(core.JSONableDict):
         :param from_port: String
         :param ip_protocol: String
         :param to_port: String
-        :param kwargs:
-            cidr_ip - String
-            source_security_group_id - String
-            source_security_group_name - String
-            source_security_group_owner_id - String
+
+        kwargs
+            - cidr_ip: String
+            - source_security_group_id: String
+            - source_security_group_name: String
+            - source_security_group_owner_id: String
         """
 
         if "cider_ip" in kwargs and ("source_security_group_name" in kwargs or "source_security_group_id" in kwargs):
@@ -217,9 +215,10 @@ class SecurityGroupEgress(core.JSONableDict):
         :param from_port: String
         :param ip_protocol: String
         :param to_port: String
-        :param kwargs:
-            cidr_ip - String
-            destination_security_group_id - String
+
+        kwargs
+            - cidr_ip: String
+            - destination_security_group_id:  String
         """
 
         if "cider_ip" in kwargs and "destination_security_group_id" in kwargs:
@@ -239,61 +238,62 @@ class SecurityGroupEgress(core.JSONableDict):
 
 
 class Tag(core.JSONableDict):
-    def __init__(
-            self,
-            key,
-            value
-    ):
-        """
+    """
         Create EC2 Tag
 
         :param key: String
         :param value: String
         """
 
+    def __init__(
+            self,
+            key,
+            value
+    ):
         super(Tag, self).__init__()
         self['Key'] = key
         self['Value'] = value
 
 
 class Instance(core.Resource):
+    """
+        Creates an EC2 Instance
+
+        :param name: String
+        :param ami_id: String
+
+        kwargs
+            - availability_zone: String
+            - block_devices: [ BlockDeviceMapping , ... ]
+            - disable_api_termination: Boolean
+            - ebs_optimized: Boolean
+            - iam_role: String
+            - instance_shutdown_behavior: String
+            - instance_type: String
+            - kernel_id: String
+            - key_pair: String
+            - monitoring: Boolean
+            - network_interfaces: [ NetworkInterface, ... ]
+            - placement_group: String
+            - private_ip: String
+            - ramdisk_id: String
+            - security_group_ids: [ String, ... ]
+            - security_groups: [ String, ... ]
+            - source_dest_check: Boolean
+            - subnet: String
+            - tags: [ Tag, ... ]
+            - tenancy: String
+            - user_data_script: String
+            - volumes: [ MountPoint, ...]
+            - attributes: { key: value, ... }
+        """
+
     def __init__(
             self,
             name,
             ami_id,
             **kwargs
     ):
-        """
-        Creates an EC2 Instance
-
-        :param name: String
-        :param ami_id: String
-        :param kwargs:
-            availability_zone - String
-            block_devices - [ BlockDeviceMapping , ... ]
-            disable_api_termination - Boolean
-            ebs_optimized - Boolean
-            iam_role - String
-            instance_shutdown_behavior - String
-            instance_type - String
-            kernel_id - String
-            key_pair - String
-            monitoring - Boolean
-            network_interfaces - [ NetworkInterface, ... ]
-            placement_group - String
-            private_ip - String
-            ramdisk_id - String
-            security_group_ids - [ String, ... ]
-            security_groups - [ String, ... ]
-            source_dest_check - Boolean
-            subnet - String
-            tags - [ Tag, ... ]
-            tenancy - String
-            user_data_script - String
-            volumes - [ MountPoint, ...]
-            attributes - { key: value, ... }
-        """
-
         properties = {
             'ImageId': ami_id,
         }
@@ -379,28 +379,29 @@ class Instance(core.Resource):
 
 
 class Volume(core.Resource):
+    """
+        Creates an EC2 Volume
+
+        :param name: String
+        :param availability_zone: String
+
+        kwargs
+            - encrypted: Boolean
+            - iops: Integer
+            - kms_key_id: String
+            - size: String
+            - snapshot_id: String
+            - tags:  [ Tag, ...]
+            - volume_type:  String
+            - attributes: { key: value, ... }
+        """
+
     def __init__(
             self,
             name,
             availability_zone,
             **kwargs
     ):
-        """
-        Creates an EC2 Volume
-
-        :param name: String
-        :param availability_zone: String
-        :param kwargs:
-            encrypted - Boolean
-            iops - Integer
-            kms_key_id - String
-            size - String
-            snapshot_id - String
-            tags - [ Tag, ...]
-            volume_type - String
-            attributes - { key: value, ... }
-        """
-
         if kwargs.get("volume_type") == "io1" and "iops" not in kwargs:
             raise RuntimeError("Iops not specified for VolumeType of io1.")
 
@@ -489,25 +490,25 @@ class NetworkInterfaceAttachment(core.Resource):
 
 
 class SecurityGroup(core.Resource):
+    """
+        Creates a Security Group
+
+        :param name: String
+        :param group_description: String
+
+        kwargs
+            - security_group_egress: [ Security Group Rule, ... ]
+            - security_group_ingress: [ Security Group Rule, ... ]
+            - tags: [ Tag, ... ]
+            - vpc_id: String
+        """
+
     def __init__(
             self,
             name,
             group_description,
             **kwargs
     ):
-        """
-        Creates a Security Group
-
-        :param name: String
-        :param group_description: String
-        :param kwargs:
-            security_group_egress - [ Security Group Rule, ... ]
-            security_group_ingress - [ Security Group Rule, ... ]
-            tags - [ Tag, ... ]
-            vpc_id - String
-        :return:
-        """
-
         attributes = kwargs.get("attributes", dict())
 
         properties = {

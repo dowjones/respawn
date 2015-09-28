@@ -27,6 +27,10 @@ class SnsTopicProperties(util.SetNonEmptyPropertyMixin, core.JSONableDict):
 
 
 class SnsTopic(core.Resource):
+    """
+    Docstring for class SnsTopic.
+    """
+
     def __init__(self,
                  name,
                  **kwargs

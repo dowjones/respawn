@@ -3,50 +3,41 @@ from ec2 import BlockDevice, BlockDeviceMapping
 
 
 class MetricsCollection(core.JSONableDict):
+    """
+        Creates a Block Device Mapping
+
+        :param granularity: String
+        :param kwargs: metrics - [ String, ... ]
+        """
+
     def __init__(self,
                  granularity,
                  **kwargs
                  ):
-        """
-        Creates a Block Device Mapping
-
-        :param granularity: String
-        :param kwargs:
-            metrics - [ String, ... ]
-        """
-
         super(MetricsCollection, self).__init__()
-
         self['Granularity'] = granularity
         if 'metrics' in kwargs:
             self['Metrics'] = kwargs.get('metrics')
 
 
 class NotificationConfigurations(core.JSONableDict):
-    def __init__(self,
-                 notifcation_type,
-                 topic_arn
-                 ):
-        """
+    """
         Creates a Block Device Mapping
 
         :param notifcation_type: [ String, ... ]
         :param topic_arn: String
-        """
-
+    """
+    def __init__(self,
+                 notifcation_type,
+                 topic_arn
+                 ):
         super(NotificationConfigurations, self).__init__()
-
         self['NotificationTypes'] = notifcation_type
         self['TopicARN'] = topic_arn
 
 
 class Tag(core.JSONableDict):
-    def __init__(self,
-                 key,
-                 value,
-                 propagate_at_launch
-                 ):
-        """
+    """
         Create ASG Tag
 
         :param key: String
@@ -54,6 +45,11 @@ class Tag(core.JSONableDict):
         :param propagate_at_launch: Boolean
         """
 
+    def __init__(self,
+                 key,
+                 value,
+                 propagate_at_launch
+                 ):
         super(Tag, self).__init__()
         self['Key'] = key
         self['Value'] = value
@@ -61,6 +57,31 @@ class Tag(core.JSONableDict):
 
 
 class LaunchConfiguration(core.Resource):
+    """
+        Creates a Launch Configuration
+
+        :param name: String
+        :param ami_id: String
+        :param instance_type: String
+
+        kwargs
+            - public_ip: Boolean
+            - block_devices: [ BlockDeviceMapping, ... ]
+            - classic_link_vpc_id: String
+            - classic_link_vpc_security_groups: [ String, ... ],
+            - ebs_optimized: Boolean
+            - iam_role: String
+            - instance_id: String
+            - monitoring: Boolean
+            - kernel_id: String
+            - key_pair: String
+            - placement_tenancy: String
+            - ramdisk_id: String
+            - security_groups: [ SecurityGroup, ... ]
+            - spot_price: String
+            - user_data_script: String
+            - attributes: { key: value, ... }
+    """
     def __init__(
             self,
             name,
@@ -68,31 +89,6 @@ class LaunchConfiguration(core.Resource):
             instance_type,
             **kwargs
     ):
-        """
-        Creates a Launch Configuration
-
-        :param name: String
-        :param ami_id: String
-        :param instance_type: String
-        :param kwargs:
-            public_ip - Boolean
-            block_devices - [ BlockDeviceMapping, ... ]
-            classic_link_vpc_id - String
-            classic_link_vpc_security_groups - [ String, ... ],
-            ebs_optimized - Boolean
-            iam_role - String
-            instance_id - String
-            monitoring - Boolean
-            kernel_id - String
-            key_pair - String
-            placement_tenancy - String
-            ramdisk_id - String
-            security_groups - [ SecurityGroup, ... ]
-            spot_price - String
-            user_data_script - String
-            attributes - { key: value, ... }
-        """
-
         if "classic_link_vpc_id" in kwargs and "classic_link_vpc_security_groups" not in kwargs:
             raise RuntimeError("Classic Link VPC Sercurity Groups (classic_link_vpc_security_groups) "
                                "required with Class Link VPC ID (classic_link_vpc_id).")
@@ -148,6 +144,30 @@ class LaunchConfiguration(core.Resource):
 
 
 class AutoScalingGroup(core.Resource):
+    """
+        Creates an AutoScaling Group
+
+        :param name: String
+        :param max_size: String
+        :param min_size: String
+
+        kwargs
+            - availability_zones: [ String, ... ]
+            - cooldown: String
+            - desired_capacity: String
+            - health_check_grace_period: Integer
+            - health_check_type: String
+            - instance_id: String
+            - launch_configuration: String
+            - load_balancer_names: [ String, ... ]
+            - metrics_collection: [ MetricsCollection, ... ]
+            - notification_configs: [ NotificationConfigurations, ... ]
+            - placement_group: String
+            - tags: [ Tag, ...]
+            - termination_policies: [ String, ..., ]
+            - vpc_zone_identifier: [ String, ... ]
+            - attributes: { key: value, ... }
+    """
     def __init__(
             self,
             name,
@@ -155,30 +175,6 @@ class AutoScalingGroup(core.Resource):
             min_size,
             **kwargs
     ):
-        """
-        Creates an AutoScaling Group
-
-        :param name: String
-        :param max_size: String
-        :param min_size: String
-        :param kwargs:
-            availability_zones - [ String, ... ]
-            cooldown - String
-            desired_capacity - String
-            health_check_grace_period - Integer
-            health_check_type - String
-            instance_id - String
-            launch_configuration - String
-            load_balancer_names - [ String, ... ]
-            metrics_collection - [ MetricsCollection, ... ]
-            notification_configs - [ NotificationConfigurations, ... ]
-            placement_group - String
-            tags - [ Tag, ...]
-            termination_policies - [ String, ..., ]
-            vpc_zone_identifier - [ String, ... ]
-            attributes - { key: value, ... }
-        """
-
         if "instance_id" not in kwargs and "launch_configuration" not in kwargs:
             raise RuntimeError(
                 "Instance ID (instance_id) or Launch Configuration Name (launch_configuration) required.")
@@ -256,6 +252,17 @@ class AutoScalingGroup(core.Resource):
 
 
 class ScalingPolicy(core.Resource):
+    """
+        Creates an AutoScaling Group
+
+        :param adjustment_type: String
+        :param asg_name: String
+        :param scaling_adjustment: String
+
+        kwargs
+         - cooldown: String
+         - in_adjustment_step: String
+    """
     def __init__(
             self,
             name,
@@ -264,17 +271,6 @@ class ScalingPolicy(core.Resource):
             scaling_adjustment,
             **kwargs
     ):
-        """
-        Creates an AutoScaling Group
-
-        :param adjustment_type: String
-        :param asg_name: String
-        :param scaling_adjustment: String
-        :param kwargs:
-            cooldown - String
-            min_adjustment_step - Integer
-        """
-
         attributes = kwargs.get("attributes", dict())
 
         properties = {
@@ -292,25 +288,25 @@ class ScalingPolicy(core.Resource):
 
 
 class ScheduledAction(core.Resource):
+    """
+        Creates an AutoScaling Group
+
+        :param asg_name: String
+
+        kwargs
+             - desired_capacity: Integer
+             - end_time: Time stamp (e.g. 2010-06-01T00:00:00Z)
+             - max_size: Integer
+             - min_size: Integer
+             - recurrence: String (e.g. cron)
+             - start_time: Time stamp (e.g. 2010-06-01T00:00:00Z)
+    """
     def __init__(
             self,
             name,
             asg_name,
             **kwargs
     ):
-        """
-        Creates an AutoScaling Group
-
-        :param asg_name: String
-        :param kwargs:
-            desired_capacity - Integer
-            end_time - Time stamp (e.g. 2010-06-01T00:00:00Z)
-            max_size - Integer
-            min_size - Integer
-            recurrence - String (Cron e.g. 0 7 * * *)
-            start_time - Time stamp (e.g. 2010-06-01T00:00:00Z)
-        """
-
         attributes = kwargs.get("attributes", dict())
 
         properties = {
