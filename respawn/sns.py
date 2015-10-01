@@ -3,6 +3,13 @@ from respawn import util
 
 
 class Subscription(util.SetNonEmptyPropertyMixin, core.JSONableDict):
+    """
+    Subscription is an embedded property of the AWS::SNS::Topic resource that describes the
+    subscription endpoints for a topic.
+
+    :param endpoint: String,
+    :param protocol: String
+    """
     def __init__(self, **kwargs):
         super(Subscription, self).__init__(None, 'Subscription')
         self._set_property('Endpoint', kwargs.get('endpoint'))
@@ -10,6 +17,14 @@ class Subscription(util.SetNonEmptyPropertyMixin, core.JSONableDict):
 
 
 class SnsTopicProperties(util.SetNonEmptyPropertyMixin, core.JSONableDict):
+    """
+    keyword arguments available.
+
+    kwargs
+        - display_name : String,
+        - subscription : [ SNS Subscription, ... ]
+        - topic_name : String
+    """
     def __init__(self, **kwargs):
         super(SnsTopicProperties, self).__init__(None, 'Properties')
 
@@ -28,7 +43,7 @@ class SnsTopicProperties(util.SetNonEmptyPropertyMixin, core.JSONableDict):
 
 class SnsTopic(core.Resource):
     """
-    Docstring for class SnsTopic.
+    Creates an Amazon SNS topic.
     """
 
     def __init__(self,

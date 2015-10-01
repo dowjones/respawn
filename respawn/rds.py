@@ -2,23 +2,60 @@ from cfn_pyplates import core, functions
 
 
 class Tag(core.JSONableDict):
+    """
+        Creates RDS Tag
+
+        :param key: String
+        :param value: String
+    """
     def __init__(self,
                  key,
                  value
     ):
-        """
-        Create RDS Tag
-
-        :param key: String
-        :param value: String
-        """
-
         super(Tag, self).__init__()
         self['Key'] = key
         self['Value'] = value
 
 
 class DBInstance(core.Resource):
+    """
+        Creates a Database Instance
+
+        :param name: String
+        :param allocated_storage: String
+        :param instance_class: String
+
+        kwargs
+            - allow_major_version_upgrade: Boolean
+            - auto_minor_version_upgrade: Boolean
+            - availability_zone: String
+            - backup_retention_period: String
+            - character_set_name: String
+            - instance_identifier: String
+            - db_name: String
+            - db_parameter_group_name: String
+            - db_security_groups: [ String, ... ]
+            - snapshot_identifier: String
+            - subnet_group_name: String
+            - engine: String
+            - engine_version: String
+            - iops: Number
+            - kms_key_id: String
+            - license_model: String
+            - master_username: String
+            - master_password: String
+            - multi_az: Boolean
+            - option_group_name: String
+            - port: String
+            - preferred_backup_window: String
+            - preferred_maintenance_window: String
+            - publicly_accessible: Boolean
+            - source_db_instance_identifier: String
+            - storage_encrypted: Boolean
+            - storage_type: String
+            - tags: [ Tag, ... ]
+            - vpc_security_groups: [ String, ... ]
+        """
     def __init__(
             self,
             name,
@@ -26,44 +63,6 @@ class DBInstance(core.Resource):
             instance_class,
             **kwargs
     ):
-        """
-        Creates a Database Instance
-
-        :param name: String
-        :param allocated_storage: String
-        :param instance_class: String
-        :param kwargs:
-            allow_major_version_upgrade - Boolean
-            auto_minor_version_upgrade - Boolean
-            availability_zone - String
-            backup_retention_period - String
-            character_set_name - String
-            instance_identifier - String
-            db_name - String
-            db_parameter_group_name - String
-            db_security_groups - [ String, ... ]
-            snapshot_identifier - String
-            subnet_group_name - String
-            engine - String
-            engine_version - String
-            iops - Number
-            kms_key_id - String
-            license_model - String
-            master_username - String
-            master_password - String
-            multi_az - Boolean
-            option_group_name - String
-            port - String
-            preferred_backup_window - String
-            preferred_maintenance_window - String
-            publicly_accessible - Boolean
-            source_db_instance_identifier - String
-            storage_encrypted - Boolean
-            storage_type - String
-            tags - [ Tag, ... ]
-            vpc_security_groups - [ String, ... ]
-        """
-
         if "snapshot_identifier" not in kwargs and "engine" not in kwargs:
             raise RuntimeError("Engine (engine) required if Snapshot Identifier (snapshot_identifier) not specified.")
 

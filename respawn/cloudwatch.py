@@ -3,10 +3,11 @@ from respawn import util
 
 
 class CloudWatchProperties(util.SetNonEmptyPropertyMixin, core.JSONableDict):
+    """
+    Available keyword arguments
+    """
     def __init__(self, **kwargs):
         super(CloudWatchProperties, self).__init__(None, 'Properties')
-
-        ''' Available keyword arguments '''
 
         # ActionsEnabled : whether or not actions should be executed during any changes to the alarm's state.
         self._set_property('ActionsEnabled', kwargs.get('actions_enabled'))
@@ -24,8 +25,9 @@ class CloudWatchProperties(util.SetNonEmptyPropertyMixin, core.JSONableDict):
         # GreaterThanThreshold | LessThanThreshold | LessThanOrEqualToThreshold
         self._set_property('ComparisonOperator', kwargs.get('comparison_operator'))
 
-        # Dimensions : The dimensions for the alarm's associated metric.
-        self._set_property('Dimensions', transform_attribute(kwargs.get('dimensions')))
+        if kwargs.get('Dimensions') is not None:
+            # Dimensions : The dimensions for the alarm's associated metric.
+            self._set_property('Dimensions', transform_attribute(kwargs.get('dimensions')))
 
         # EvaluationPeriods : The number of periods over which data is compared to the specified threshold.
         self._set_property('EvaluationPeriods', kwargs.get('evaluation_periods'))
@@ -58,6 +60,27 @@ class CloudWatchProperties(util.SetNonEmptyPropertyMixin, core.JSONableDict):
 
 
 class CloudWatchAlarm(core.Resource):
+    """
+    Creates cloudwatch alarm.
+
+    :param evaluation_period
+    :param namespace
+    :param period
+    :param statistics
+    :param threshold
+    :param comparison_operator
+
+    kwargs
+        - actions_enabled: Boolean
+        - alarm_actions: [ String, ... ]
+        - alarm_description: String
+        - alarm_name: String
+        - dimensions: [ Metric dimension, ... ]
+        - insufficient_data_actions: [ String, ... ],
+        - metric_name: String,
+        - ok_actions: [ String, ... ],
+        - unit: String
+    """
     def __init__(self,
                  name,
                  evaluation_periods,
