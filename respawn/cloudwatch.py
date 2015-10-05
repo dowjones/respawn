@@ -103,13 +103,3 @@ def transform_attribute(attribute_list):
              'Value': attribute_parameters.get('value')})
     return updated_attribute_list
 
-
-def recurse_kwargs_list(parameter_name, class_name, **kwargs):
-    if parameter_name in kwargs:
-        parameter_list = kwargs.get(parameter_name)
-        param_list = []
-        for parameter in parameter_list:
-            param_list.append(class_name(**parameter))
-        return param_list
-    else:
-        pass
