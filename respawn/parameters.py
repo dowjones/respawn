@@ -31,5 +31,5 @@ class CustomParameters(core.Parameter):
             parameters['MinValue'] = kwargs.get("min_value")
         if "constraint_description" in kwargs:
             parameters['ConstraintDescription'] = kwargs.get("constraint_description")
-
+            
         super(CustomParameters, self).__init__(name, parameters['Type'], parameters)
