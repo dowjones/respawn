@@ -359,77 +359,77 @@ def recurse_kwargs_list(parameter_name, class_name, **kwargs):
         pass
 
 
-def make_web(
-        name,
-        port,
-        health_check_path,
-        security_groups,
-        subnets,
-        health_check_port=None,
-        egres_port=None,
-        certificateId=None
-):
-    """
-    Custom load balancer category.
-
-    :param name: String
-    :param port: String
-    :param health_check_path: string
-    :param security_groups: string
-    :param subnets: string
-    :param health_check_port: string
-    :param egres_port: string
-    :param certificateId: string
-    """
-    if egres_port is None:
-        egres_port = port
-
-    if health_check_port is None:
-        health_check_port = egres_port
-
-    return LoadBalancer(
-        name,
-        Listeners=[HttpListener(port, egres_port, certificateId)],
-        HealthCheck=HealthCheckHTTP(port, health_check_path),
-        Scheme='internet-facing',
-        SecurityGroups=security_groups,
-        Subnets=subnets
-    )
-
-
-def make_internal(
-        name,
-        port,
-        health_check_path,
-        security_groups,
-        subnets,
-        health_check_port=None,
-        egres_port=None,
-        certificateId=None
-):
-    """
-    Custom load balancer category.
-
-    :param name: string
-    :param port: string
-    :param health_check_path: string
-    :param security_groups: string
-    :param subnets: string
-    :param health_check_port: string
-    :param egres_port: string
-    :param certificateId: string
-    """
-    if egres_port is None:
-        egres_port = port
-
-    if health_check_port is None:
-        health_check_port = egres_port
-
-    return LoadBalancer(
-        name,
-        Listeners=[HttpListener(port, egres_port, certificateId)],
-        HealthCheck=HealthCheckHTTP(port, health_check_path),
-        Scheme='internal',
-        SecurityGroups=security_groups,
-        Subnets=subnets
-    )
+# def make_web(
+#         name,
+#         port,
+#         health_check_path,
+#         security_groups,
+#         subnets,
+#         health_check_port=None,
+#         egres_port=None,
+#         certificateId=None
+# ):
+#     """
+#     Custom load balancer category.
+#
+#     :param name: String
+#     :param port: String
+#     :param health_check_path: string
+#     :param security_groups: string
+#     :param subnets: string
+#     :param health_check_port: string
+#     :param egres_port: string
+#     :param certificateId: string
+#     """
+#     if egres_port is None:
+#         egres_port = port
+#
+#     if health_check_port is None:
+#         health_check_port = egres_port
+#
+#     return LoadBalancer(
+#         name,
+#         Listeners=[HttpListener(port, egres_port, certificateId)],
+#         HealthCheck=HealthCheckHTTP(port, health_check_path),
+#         Scheme='internet-facing',
+#         SecurityGroups=security_groups,
+#         Subnets=subnets
+#     )
+#
+#
+# def make_internal(
+#         name,
+#         port,
+#         health_check_path,
+#         security_groups,
+#         subnets,
+#         health_check_port=None,
+#         egres_port=None,
+#         certificateId=None
+# ):
+#     """
+#     Custom load balancer category.
+#
+#     :param name: string
+#     :param port: string
+#     :param health_check_path: string
+#     :param security_groups: string
+#     :param subnets: string
+#     :param health_check_port: string
+#     :param egres_port: string
+#     :param certificateId: string
+#     """
+#     if egres_port is None:
+#         egres_port = port
+#
+#     if health_check_port is None:
+#         health_check_port = egres_port
+#
+#     return LoadBalancer(
+#         name,
+#         Listeners=[HttpListener(port, egres_port, certificateId)],
+#         HealthCheck=HealthCheckHTTP(port, health_check_path),
+#         Scheme='internal',
+#         SecurityGroups=security_groups,
+#         Subnets=subnets
+#     )
