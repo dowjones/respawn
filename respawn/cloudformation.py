@@ -675,6 +675,7 @@ class Template(core.CloudFormationTemplate):
                                                       )
 
         self.resources.add(cloudwatch_alarm)
+        return cloudwatch_alarm
 
     def add_network_interface(
             self,
@@ -684,6 +685,7 @@ class Template(core.CloudFormationTemplate):
         network_interface_value = self.original_mapping(**kwargs)
         network_interface = ec2.NetworkInterface(resource_name, **network_interface_value)
         self.resources.add(network_interface)
+        return network_interface
 
     def add_network_interface_attachment(
             self,
@@ -696,7 +698,6 @@ class Template(core.CloudFormationTemplate):
 
         nia = ec2.NetworkInterfaceAttachment(name, **networkinterfaceattachment_values)
         self.resources.add(nia)
-
         return nia
 
     # quick and dirty on adding custom parameters.
@@ -708,6 +709,7 @@ class Template(core.CloudFormationTemplate):
         parameters_value = self.original_mapping(**kwargs)
         parameter = parameters.CustomParameters(name, **parameters_value)
         self.parameters.add(parameter)
+        return parameter
 
     def add_sns_topic(
             self,
@@ -719,3 +721,4 @@ class Template(core.CloudFormationTemplate):
         sns_topic_value = self.original_mapping(**kwargs)
         sns_topic = sns.SnsTopic(resource_name, **sns_topic_value)
         self.resources.add(sns_topic)
+        return  sns_topic
