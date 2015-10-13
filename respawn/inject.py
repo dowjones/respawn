@@ -269,7 +269,7 @@ class Injector:
         tags = kwargs.get('tags', [])
         tags.append({'key': 'service_name', 'value': service_name, 'propagate_at_launch': True})
         tags.append({'key': 'env', 'value': self.__env, 'propagate_at_launch': True})
-        tags.append({'key': 'eap', 'value': functions.ref('TagEAP'), 'propagate_at_launch': True})
+        tags.append({'key': 'eap', 'value': functions.ref('tagEAP'), 'propagate_at_launch': True})
 
         rts_role = False
         for tag in tags:
