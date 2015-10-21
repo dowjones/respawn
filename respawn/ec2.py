@@ -1,4 +1,5 @@
 from cfn_pyplates import core, functions
+from respawn import util
 
 
 class BlockDeviceMapping(core.JSONableDict):
@@ -255,6 +256,27 @@ class Tag(core.JSONableDict):
         self['Value'] = value
 
 
+class Volumes(util.SetNonEmptyPropertyMixin, core.JSONableDict):
+    """
+    Volumes is an embedded property of the AWS::EC2::Instance resource that describes the
+    subscription endpoints for a topic.
+
+    :param endpoint: String,
+    :param protocol: String
+    """
+    def __init__(self, **kwargs):
+        super(Volumes, self).__init__(None, 'Volumes')
+        self._set_property('Device', kwargs.get('device'))
+        try:
+            for key in kwargs.get('volume_id').keys():
+                    if key == "ref":
+                        self._set_property('VolumeId', functions.ref(kwargs.get('volume_id')[key]))
+                    elif key == "name":
+                        self._set_property('VolumeId', kwargs.get('volume_id')[key])
+        except:
+            self._set_property('VolumeId', kwargs.get('volume_id'))
+
+
 class Instance(core.Resource):
     """
         Creates an EC2 Instance
@@ -319,15 +341,7 @@ class Instance(core.Resource):
             properties['NetworkInterfaces'] = network_interfaces_list
 
         if 'volumes' in kwargs:
-            vol = kwargs.get('volumes')
-            volumes = []
-            if 'ref' in vol:
-                for vol_id, device in vol['ref'].items():
-                    volumes.append(MountPoint(device, functions.ref(vol_id)))
-            if 'name' in vol:
-                for vol_id, device in vol['name'].items():
-                    volumes.append(MountPoint(device, vol_id))
-            properties['Volumes'] = volumes
+            properties['Volumes'] = recurse_kwargs_list('volumes', Volumes, **kwargs)
 
         if 'tags' in kwargs:
             t = kwargs.get('tags')
@@ -376,6 +390,17 @@ class Instance(core.Resource):
         attributes = kwargs.get("attributes")
 
         super(Instance, self).__init__(name, 'AWS::EC2::Instance', properties, attributes)
+
+
+def recurse_kwargs_list(parameter_name, class_name, **kwargs):
+    if parameter_name in kwargs:
+        parameter_list = kwargs.get(parameter_name)
+        param_list = []
+        for parameter in parameter_list:
+            param_list.append(class_name(**parameter))
+        return param_list
+    else:
+        pass
 
 
 class Volume(core.Resource):
