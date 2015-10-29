@@ -202,31 +202,10 @@ class AutoScalingGroup(core.Resource):
             for config in notification_configs:
                 configs.append(NotificationConfigurations(**config))
             properties['NotificationConfigurations'] = configs
-
         if "launch_configuration" in kwargs:
-            launch_configuration = kwargs.get("launch_configuration")
-            try:
-                for key in launch_configuration.keys():
-                    if key == "ref":
-                        properties['LaunchConfigurationName'] = functions.ref(launch_configuration[key])
-                    elif key == "name":
-                        properties['LaunchConfigurationName'] = launch_configuration[key]
-            except:
-                properties['LaunchConfigurationName'] = kwargs.get("launch_configuration")
-
+            properties['LaunchConfigurationName'] = kwargs.get("launch_configuration")
         if "load_balancer_names" in kwargs:
-            load_balancers = []
-            load_balancer_names = kwargs.get("load_balancer_names")
-            try:
-                for key, values in load_balancer_names.items():
-                    for value in values:
-                        if key == "ref":
-                            load_balancers.append(functions.ref(value))
-                        elif key == "name":
-                            load_balancers.append(value)
-                properties['LoadBalancerNames'] = load_balancers
-            except:
-                properties['LoadBalancerNames'] = kwargs.get("load_balancer_names")
+            properties['LoadBalancerNames'] = kwargs.get("load_balancer_names")
 
         if 'tags' in kwargs:
             t = kwargs.get('tags')

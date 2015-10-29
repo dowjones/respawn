@@ -1,4 +1,4 @@
-from cfn_pyplates import core, functions
+from cfn_pyplates import core
 
 
 class Tag(core.JSONableDict):

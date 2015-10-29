@@ -267,14 +267,7 @@ class Volumes(util.SetNonEmptyPropertyMixin, core.JSONableDict):
     def __init__(self, **kwargs):
         super(Volumes, self).__init__(None, 'Volumes')
         self._set_property('Device', kwargs.get('device'))
-        try:
-            for key in kwargs.get('volume_id').keys():
-                    if key == "ref":
-                        self._set_property('VolumeId', functions.ref(kwargs.get('volume_id')[key]))
-                    elif key == "name":
-                        self._set_property('VolumeId', kwargs.get('volume_id')[key])
-        except:
-            self._set_property('VolumeId', kwargs.get('volume_id'))
+        self._set_property('VolumeId', kwargs.get('volume_id'))
 
 
 class Instance(core.Resource):
