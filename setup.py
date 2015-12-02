@@ -35,7 +35,6 @@ setup_args = {
         'License :: OSI Approved :: ISC License (ISCL)',
         'Programming Language :: Python',
         'Programming Language :: Python :: 2',
-        'Programming Language :: Python :: 2.5',
         'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
@@ -50,7 +49,6 @@ setup_args = {
         'Operating System :: POSIX',
         'Operating System :: Unix'
     ],
-
     'packages': find_packages(),
     'package_data': {'respawn': ['VERSION']},
     'entry_points': {
