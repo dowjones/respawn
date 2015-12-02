@@ -513,9 +513,9 @@ class Template(core.CloudFormationTemplate):
             with open(user_data['file'], "r") as f:
                 user_data_script = f.read()
             user_data_script = jinja2.Template(user_data_script)
-            lc_arguments['user_data_script'] = user_data_script.render(**user_data['params'])
+            lc_arguments['user_data_script'] = user_data_script.render(**user_data.get('params', dict()))
 
-        lc = autoscaling.LaunchConfiguration(name, **kwargs)
+        lc = autoscaling.LaunchConfiguration(name, **lc_arguments)
 
         self.resources.add(lc)
         return lc
@@ -615,7 +615,7 @@ class Template(core.CloudFormationTemplate):
             with open(user_data['file'], "r") as f:
                 user_data_script = f.read()
             user_data_script = jinja2.Template(user_data_script)
-            instance_arguments['user_data_script'] = user_data_script.render(**user_data['params'])
+            instance_arguments['user_data_script'] = user_data_script.render(**user_data.get('params', dict()))
 
         # The actual instance
         instance = ec2.Instance(name, **instance_arguments)
