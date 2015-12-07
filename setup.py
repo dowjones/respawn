@@ -4,6 +4,30 @@
 
 import os
 from setuptools import setup, find_packages
+from setuptools.command.test import test
+import sys
+
+
+class Tox(test):
+    user_options = [('tox-args=', 'a', "Arguments to pass to tox")]
+
+    def initialize_options(self):
+        test.initialize_options(self)
+        self.tox_args = None
+
+    def finalize_options(self):
+        test.finalize_options(self)
+        self.test_args = []
+        self.test_suite = True
+
+    def run_tests(self):
+        import tox
+        import shlex
+        args = self.tox_args
+        if args:
+            args = shlex.split(self.tox_args)
+        errno = tox.cmdline(args=args)
+        sys.exit(errno)
 
 
 def get_version():
@@ -60,6 +84,8 @@ setup_args = {
         'cfn-pyplates',
         'Jinja2'
     ],
+    'tests_require': ['tox'],
+    'cmdclass': {'test': Tox},
     'zip_safe': False,
 }
 
