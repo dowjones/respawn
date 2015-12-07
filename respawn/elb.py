@@ -1,5 +1,6 @@
 from cfn_pyplates import core, functions
 from respawn import util
+from errors import RespawnResourceError
 
 
 class AccessLoggingPolicy(util.SetNonEmptyPropertyMixin, core.JSONableDict):
@@ -265,8 +266,11 @@ class LoadBalancerProperties(util.SetNonEmptyPropertyMixin, core.JSONableDict):
         # that ID for the load balancer.
         self._set_property('LoadBalancerName', kwargs.get('load_balancer_name'))
 
-        # Listeners : 
-        self._set_property('Listeners', kwargs.get('listeners'))
+        # Listeners :
+        if kwargs.get('listeners') is not None:
+            self._set_property('Listeners', kwargs.get('listeners'))
+        else:
+            raise RespawnResourceError("listeners parameter is required for creating an ELB", 'Listeners')
 
         # Policies : Default is none
         self._set_property('Policies', kwargs.get('policies'))
@@ -293,17 +297,18 @@ class LoadBalancer(core.Resource):
 
         env = kwargs.get('env')
         if env is None:
-            raise ValueError('env parameter is required for properly tagging an ELB')
+            raise RespawnResourceError("env parameter is required for properly tagging an ELB", 'Environment')
 
         service_name = kwargs.get('service_name')
         if service_name is None:
-            raise ValueError('service_name parameter is required for properly tagging an ELB')
+            raise RespawnResourceError("service_name parameter is required for properly tagging an ELB",
+                                       'ServiceNameTag')
 
         availibility_zone = kwargs.get("availability_zones")
         subnets = kwargs.get("subnets")
         if availibility_zone is not None and subnets is not None:
-            raise ValueError("You can specify the AvailabilityZones or Subnets property in the load balancer, "
-                             "but not both.")
+            raise RespawnResourceError("You can specify the AvailabilityZones or Subnets property in the load "
+                                       "balancer, but not both.", 'AvailabilityZone/Subnets', subnets)
         elif availibility_zone is not None and subnets is None:
             kwargs['availibility_zones'] = recurse_kwargs_list('availibility_zones', AvailabilityZones, **kwargs)
         else:
