@@ -73,7 +73,9 @@ setup_args = {
     },
     'install_requires': [
         'cfn-pyplates',
-        'Jinja2'
+        'Jinja2',
+        'boto3',
+        'botocore'
     ],
     'tests_require': ['tox'],
     'cmdclass': {'test': Tox},
