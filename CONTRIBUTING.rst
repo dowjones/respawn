@@ -15,7 +15,7 @@ welcome too. Feel free to ask questions `via issues <https://github.com/dowjones
 - Fork the respawn repository.
 - Create a branch from master.
 - Develop bug fixes, features, tests, etc.
-- Run the test suite on both Python 2.7. You can enable `Travis CI on your repo <https://travis-ci.org/profile/>`_ to catch test failures prior to the pull request, and `Coveralls <https://coveralls.io/repos/new>`_ to see if the changed code is covered by tests.
+- Run the test suite on Python 2.7. You can enable `Travis CI on your repo <https://travis-ci.org/profile/>`_ to catch test failures prior to the pull request and `Coveralls <https://coveralls.io/repos/new>`_ to see if the changed code is covered by tests.
 - Create a pull request to pull the changes from your branch to the respawn master.
 
 Guidelines
@@ -23,7 +23,7 @@ Guidelines
 
 - Separate code commits from reformatting commits.
 - Provide tests for any newly added code.
-- Follow PEP8.
+- Follow PEP8 standard.
 - When committing only documentation changes please include [ci skip] in the commit message to avoid running tests on Travis-CI.
 
 Reporting Issues
