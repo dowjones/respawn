@@ -24,15 +24,15 @@ class NotificationConfigurations(core.JSONableDict):
     """
         Creates a Block Device Mapping
 
-        :param notifcation_type: [ String, ... ]
+        :param notification_type: [ String, ... ]
         :param topic_arn: String
     """
     def __init__(self,
-                 notifcation_type,
+                 notification_type,
                  topic_arn
                  ):
         super(NotificationConfigurations, self).__init__()
-        self['NotificationTypes'] = notifcation_type
+        self['NotificationTypes'] = notification_type
         self['TopicARN'] = topic_arn
 
 
