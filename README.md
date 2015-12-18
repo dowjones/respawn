@@ -5,9 +5,9 @@
 </a>
 </div>
 
-respawn: **v0.0.1-beta**
+respawn: **v1.0.0**
 
-Released: 1-Nov-2015
+Released: 21-Dec-2015
 
 ![image]
 
