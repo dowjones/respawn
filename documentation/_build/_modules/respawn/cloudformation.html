@@ -1,0 +1,521 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>respawn.cloudformation &mdash; respawn</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="respawn" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../../index.html" class="icon icon-home"> respawn
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started.html"><strong>Getting Started</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started.html#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../getting_started.html#windows-unix-mac-os-x">Windows/Unix/Mac OS X</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started.html#usage-template-generation">Usage - Template Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage.html"><strong>Keywords - YAML/JSON</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../usage.html#resource-index"><strong>Resource Index</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#auto-scaling-group"><strong>Auto Scaling Group</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#cloudwatch"><strong>CloudWatch</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#instances"><strong>Instances</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#launch-configuration"><strong>Launch Configuration</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#lifecycle-hooks"><strong>Lifecycle Hooks</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#load-balancer"><strong>Load Balancer</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#network-interface"><strong>Network Interface</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#network-interface-attachment"><strong>Network Interface Attachment</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#rds"><strong>RDS</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#scheduled-action"><strong>Scheduled Action</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#sns-topic"><strong>Sns Topic</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#volume"><strong>Volume</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#other-required-keywords"><strong>Other Required Keywords</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../usage.html#parameter-index"><strong>Parameter Index</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#parameters"><strong>Parameters</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../usage.html#userdata-index"><strong>UserData Index</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#userdata"><strong>UserData</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../usage.html#references-index"><strong>References Index</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#reference"><strong>Reference</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#get-attribute"><strong>Get_Attribute</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../source_code.html"><strong>Source Code Documentation</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../source_code.html#resource-index"><strong>Resource Index</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../source_code.html#module-respawn.ec2"><strong>EC2</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source_code.html#module-respawn.elb"><strong>Load Balancer</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source_code.html#module-respawn.autoscaling"><strong>Auto Scaling</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source_code.html#module-respawn.cloudformation"><strong>CloudFormation</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source_code.html#module-respawn.cloudwatch"><strong>CloudWatch</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source_code.html#module-respawn.rds"><strong>RDS</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source_code.html#module-respawn.sns"><strong>Sns Topic</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../source_code.html#module-respawn.parameters"><strong>Parameter Index</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sample_yaml.html"><strong>Sample YAML</strong></a></li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">respawn</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      
+    <li>respawn.cloudformation</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <h1>Source code for respawn.cloudformation</h1><div class="highlight"><pre>
+<span class="kn">import</span> <span class="nn">jinja2</span>
+<span class="kn">from</span> <span class="nn">cfn_pyplates</span> <span class="kn">import</span> <span class="n">core</span><span class="p">,</span> <span class="n">functions</span>
+<span class="kn">from</span> <span class="nn">respawn</span> <span class="kn">import</span> <span class="n">ec2</span><span class="p">,</span> <span class="n">autoscaling</span><span class="p">,</span> <span class="n">rds</span><span class="p">,</span> <span class="n">sns</span><span class="p">,</span> <span class="n">cloudwatch</span><span class="p">,</span> <span class="n">elb</span><span class="p">,</span> <span class="n">parameters</span>
+<span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">asctime</span><span class="p">,</span> <span class="n">gmtime</span>
+<span class="kn">from</span> <span class="nn">errors</span> <span class="kn">import</span> <span class="n">RespawnResourceError</span>
+
+
+<div class="viewcode-block" id="WaitConditionHandle"><a class="viewcode-back" href="../../source_code.html#respawn.cloudformation.WaitConditionHandle">[docs]</a><span class="k">class</span> <span class="nc">WaitConditionHandle</span><span class="p">(</span><span class="n">core</span><span class="o">.</span><span class="n">Resource</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wait_handle_name</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">WaitConditionHandle</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">wait_handle_name</span><span class="p">,</span> <span class="s">&#39;AWS::CloudFormation::WaitConditionHandle&#39;</span><span class="p">)</span>
+
+</div>
+<div class="viewcode-block" id="WaitCondition"><a class="viewcode-back" href="../../source_code.html#respawn.cloudformation.WaitCondition">[docs]</a><span class="k">class</span> <span class="nc">WaitCondition</span><span class="p">(</span><span class="n">core</span><span class="o">.</span><span class="n">Resource</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">wait_condition_name</span><span class="p">,</span> <span class="n">wait_handle_name</span><span class="p">,</span> <span class="n">timeout</span><span class="p">,</span> <span class="n">depends_on</span><span class="p">,</span> <span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">wait_condition_properties</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s">&#39;Handle&#39;</span><span class="p">:</span> <span class="n">wait_handle_name</span><span class="p">,</span>
+            <span class="s">&#39;Timeout&#39;</span><span class="p">:</span> <span class="n">timeout</span><span class="p">,</span>
+            <span class="s">&#39;Count&#39;</span><span class="p">:</span> <span class="n">count</span>
+        <span class="p">}</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">WaitCondition</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">wait_condition_name</span><span class="p">,</span>
+                                            <span class="s">&#39;AWS::CloudFormation::WaitCondition&#39;</span><span class="p">,</span>
+                                            <span class="n">wait_condition_properties</span><span class="p">,</span>
+                                            <span class="p">[</span><span class="n">core</span><span class="o">.</span><span class="n">DependsOn</span><span class="p">([</span><span class="n">depends_on</span><span class="p">])]</span>
+                                            <span class="p">)</span>
+
+</div>
+<div class="viewcode-block" id="Template"><a class="viewcode-back" href="../../source_code.html#respawn.cloudformation.Template">[docs]</a><span class="k">class</span> <span class="nc">Template</span><span class="p">(</span><span class="n">core</span><span class="o">.</span><span class="n">CloudFormationTemplate</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates CloudFormation Template</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">name</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;stack_name&#39;</span><span class="p">,</span> <span class="s">&#39;unnamed_stack&#39;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__region</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;region&#39;</span><span class="p">,</span> <span class="s">&#39;us-east-1&#39;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__env</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;environment&#39;</span><span class="p">,</span> <span class="s">&#39;dev&#39;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">__description</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;description&#39;</span><span class="p">,</span>
+                                        <span class="s">&#39;{name} in {env} ({ts})&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span>
+                                                                        <span class="n">env</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">__env</span><span class="p">,</span>
+                                                                        <span class="n">ts</span><span class="o">=</span><span class="n">asctime</span><span class="p">(</span><span class="n">gmtime</span><span class="p">())</span>
+                                                                        <span class="p">)</span>
+                                        <span class="p">)</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">Template</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">__description</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+
+<div class="viewcode-block" id="Template.create_iam_role_param"><a class="viewcode-back" href="../../source_code.html#respawn.cloudformation.Template.create_iam_role_param">[docs]</a>    <span class="k">def</span> <span class="nf">create_iam_role_param</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">iam_role</span><span class="p">):</span>
+        <span class="n">iam_role_param</span> <span class="o">=</span> <span class="n">name</span> <span class="o">+</span> <span class="s">&#39;IamRole&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+            <span class="n">core</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">iam_role_param</span><span class="p">,</span> <span class="s">&#39;String&#39;</span><span class="p">,</span> <span class="p">{</span>
+                <span class="s">&#39;Default&#39;</span><span class="p">:</span> <span class="n">iam_role</span><span class="p">,</span>
+                <span class="s">&#39;Description&#39;</span><span class="p">:</span> <span class="s">&#39;IAM Role for &#39;</span> <span class="o">+</span> <span class="n">name</span>
+            <span class="p">}))</span>
+        <span class="n">iam_role</span> <span class="o">=</span> <span class="n">functions</span><span class="o">.</span><span class="n">ref</span><span class="p">(</span><span class="n">iam_role_param</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">iam_role</span>
+</div>
+<div class="viewcode-block" id="Template.create_availability_zone_param"><a class="viewcode-back" href="../../source_code.html#respawn.cloudformation.Template.create_availability_zone_param">[docs]</a>    <span class="k">def</span> <span class="nf">create_availability_zone_param</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">availability_zone</span><span class="p">):</span>
+        <span class="n">availability_zone_param</span> <span class="o">=</span> <span class="n">name</span> <span class="o">+</span> <span class="s">&quot;AvailabilityZone&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+            <span class="n">core</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">availability_zone_param</span><span class="p">,</span> <span class="s">&#39;String&#39;</span><span class="p">,</span> <span class="p">{</span>
+                <span class="s">&#39;Default&#39;</span><span class="p">:</span> <span class="n">availability_zone</span><span class="p">,</span>
+                <span class="s">&#39;Description&#39;</span><span class="p">:</span> <span class="s">&#39;Availability Zone for &#39;</span> <span class="o">+</span> <span class="n">name</span>
+            <span class="p">}))</span>
+        <span class="n">availability_zone</span> <span class="o">=</span> <span class="n">functions</span><span class="o">.</span><span class="n">ref</span><span class="p">(</span><span class="n">availability_zone_param</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">availability_zone</span>
+</div>
+<div class="viewcode-block" id="Template.create_key_pair_param"><a class="viewcode-back" href="../../source_code.html#respawn.cloudformation.Template.create_key_pair_param">[docs]</a>    <span class="k">def</span> <span class="nf">create_key_pair_param</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">key_pair</span><span class="p">):</span>
+        <span class="n">key_pair_param</span> <span class="o">=</span> <span class="n">name</span> <span class="o">+</span> <span class="s">&#39;KeyPair&#39;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">add</span><span class="p">(</span>
+            <span class="n">core</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">key_pair_param</span><span class="p">,</span> <span class="s">&#39;String&#39;</span><span class="p">,</span> <span class="p">{</span>
+                <span class="s">&#39;Default&#39;</span><span class="p">:</span> <span class="n">key_pair</span><span class="p">,</span>
+                <span class="s">&#39;Description&#39;</span><span class="p">:</span> <span class="s">&#39;Key Pair for &#39;</span> <span class="o">+</span> <span class="n">name</span>
+            <span class="p">}))</span>
+        <span class="n">key_pair</span> <span class="o">=</span> <span class="n">functions</span><span class="o">.</span><span class="n">ref</span><span class="p">(</span><span class="n">key_pair_param</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">key_pair</span>
+
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span>
+    <span class="c">#  Load Balancer</span>
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span></div>
+<div class="viewcode-block" id="Template.add_load_balancer"><a class="viewcode-back" href="../../source_code.html#respawn.cloudformation.Template.add_load_balancer">[docs]</a>    <span class="k">def</span> <span class="nf">add_load_balancer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">listener_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">loadbalancer_values</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+            <span class="n">loadbalancer_values</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+
+        <span class="c"># Check for presence of listener</span>
+        <span class="k">if</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;listeners&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">None</span> <span class="p">:</span>
+            <span class="k">raise</span> <span class="n">RespawnResourceError</span><span class="p">(</span><span class="s">&quot;listeners needs to be present in loadbalancer options&quot;</span><span class="p">,</span> <span class="s">&quot;Listeners&quot;</span><span class="p">)</span>
+
+        <span class="c"># Recursing through multiple listeners of same/different protocol.</span>
+        <span class="k">if</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;listeners&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">protocol</span><span class="p">,</span> <span class="n">protocol_values</span> <span class="ow">in</span> <span class="p">(</span><span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;listeners&#39;</span><span class="p">,</span> <span class="nb">dict</span><span class="p">()))</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">if</span> <span class="n">protocol</span> <span class="ow">in</span> <span class="p">(</span><span class="s">&#39;https&#39;</span><span class="p">,</span> <span class="s">&#39;http&#39;</span><span class="p">,</span> <span class="s">&#39;tcp&#39;</span><span class="p">,</span> <span class="s">&#39;ssl&#39;</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">protocol_values</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+                        <span class="n">listeners</span> <span class="o">=</span> <span class="p">(</span><span class="n">elb</span><span class="o">.</span><span class="n">ProtocolListener</span><span class="p">(</span><span class="n">protocol</span><span class="p">,</span> <span class="n">protocol_values</span><span class="p">[</span><span class="s">&#39;load_balancer_port&#39;</span><span class="p">],</span> <span class="n">protocol_values</span><span class="p">[</span>
+                            <span class="s">&#39;instance_port&#39;</span><span class="p">],</span> <span class="n">protocol_values</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;ssl_certificate_id&#39;</span><span class="p">),</span> <span class="o">**</span><span class="n">protocol_values</span><span class="p">))</span>
+                        <span class="n">listener_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">listeners</span><span class="p">)</span>
+                    <span class="k">else</span><span class="p">:</span>
+                        <span class="k">for</span> <span class="n">protocol_value</span> <span class="ow">in</span> <span class="n">protocol_values</span><span class="p">:</span>
+                            <span class="n">listeners</span> <span class="o">=</span> <span class="p">(</span><span class="n">elb</span><span class="o">.</span><span class="n">ProtocolListener</span><span class="p">(</span><span class="n">protocol</span><span class="p">,</span> <span class="n">protocol_value</span><span class="p">[</span><span class="s">&#39;load_balancer_port&#39;</span><span class="p">],</span> <span class="n">protocol_value</span><span class="p">[</span>
+                                <span class="s">&#39;instance_port&#39;</span><span class="p">],</span> <span class="n">protocol_value</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;ssl_certificate_id&#39;</span><span class="p">),</span> <span class="o">**</span><span class="n">protocol_value</span><span class="p">))</span>
+                            <span class="n">listener_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">listeners</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="k">raise</span> <span class="n">RespawnResourceError</span><span class="p">(</span><span class="s">&#39;protocol needs to be one of HTTPS, HTTP, TCP, SSL&#39;</span><span class="p">,</span> <span class="s">&quot;Protocol&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;health_check_path&#39;</span><span class="p">)</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">health_check_path</span> <span class="o">=</span> <span class="s">&#39;/aptest.html&#39;</span>
+            <span class="n">loadbalancer_values</span><span class="p">[</span><span class="s">&#39;health_check_path&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">health_check_path</span>
+
+        <span class="n">loadbalancer_values</span><span class="p">[</span><span class="s">&#39;listeners&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">listener_list</span>
+        <span class="n">loadbalancer_values</span><span class="p">[</span><span class="s">&#39;env&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__env</span>
+        <span class="n">lb</span> <span class="o">=</span> <span class="n">elb</span><span class="o">.</span><span class="n">LoadBalancer</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">loadbalancer_values</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">resources</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">lb</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">lb</span>
+
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span>
+    <span class="c">#  Launch Config</span>
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span></div>
+<div class="viewcode-block" id="Template.add_launch_config"><a class="viewcode-back" href="../../source_code.html#respawn.cloudformation.Template.add_launch_config">[docs]</a>    <span class="k">def</span> <span class="nf">add_launch_config</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">lc_arguments</span> <span class="o">=</span> <span class="n">kwargs</span>
+
+        <span class="n">security_groups</span> <span class="o">=</span> <span class="n">lc_arguments</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;security_groups&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">security_groups</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">lc_arguments</span><span class="p">[</span><span class="s">&#39;security_groups&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">security_groups</span>
+
+        <span class="c"># IAM Role</span>
+        <span class="n">iam_role</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_iam_role_param</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;iam_role&quot;</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">iam_role</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">lc_arguments</span><span class="p">[</span><span class="s">&#39;iam_role&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">iam_role</span>
+
+        <span class="c"># Key Pair</span>
+        <span class="n">key_pair</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;key_pair&quot;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">key_pair</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">key_pair</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_key_pair_param</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">key_pair</span><span class="p">)</span>
+            <span class="n">lc_arguments</span><span class="p">[</span><span class="s">&#39;key_pair&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">key_pair</span>
+
+        <span class="c"># User Data</span>
+        <span class="k">if</span> <span class="s">&quot;user_data&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">user_data</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;user_data&quot;</span><span class="p">)</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">user_data</span><span class="p">[</span><span class="s">&#39;file&#39;</span><span class="p">],</span> <span class="s">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="n">user_data_script</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+            <span class="n">user_data_script</span> <span class="o">=</span> <span class="n">jinja2</span><span class="o">.</span><span class="n">Template</span><span class="p">(</span><span class="n">user_data_script</span><span class="p">)</span>
+            <span class="n">lc_arguments</span><span class="p">[</span><span class="s">&#39;user_data_script&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">user_data_script</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="o">**</span><span class="n">user_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;params&#39;</span><span class="p">,</span> <span class="nb">dict</span><span class="p">()))</span>
+
+        <span class="n">lc</span> <span class="o">=</span> <span class="n">autoscaling</span><span class="o">.</span><span class="n">LaunchConfiguration</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">lc_arguments</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">resources</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">lc</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">lc</span>
+
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span>
+    <span class="c">#  Autoscaling Group</span>
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span></div>
+<div class="viewcode-block" id="Template.add_autoscaling_group"><a class="viewcode-back" href="../../source_code.html#respawn.cloudformation.Template.add_autoscaling_group">[docs]</a>    <span class="k">def</span> <span class="nf">add_autoscaling_group</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">asg_arguments</span> <span class="o">=</span> <span class="n">kwargs</span>
+        <span class="n">asg</span> <span class="o">=</span> <span class="n">autoscaling</span><span class="o">.</span><span class="n">AutoScalingGroup</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">asg_arguments</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">resources</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">asg</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">asg</span>
+
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span>
+    <span class="c">#  Scheduled Action</span>
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span></div>
+<div class="viewcode-block" id="Template.add_scheduled_action"><a class="viewcode-back" href="../../source_code.html#respawn.cloudformation.Template.add_scheduled_action">[docs]</a>    <span class="k">def</span> <span class="nf">add_scheduled_action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">sa_arguments</span> <span class="o">=</span> <span class="n">kwargs</span>
+        <span class="n">sa</span> <span class="o">=</span> <span class="n">autoscaling</span><span class="o">.</span><span class="n">ScheduledAction</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">sa_arguments</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">resources</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">sa</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">sa</span>
+
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span>
+    <span class="c">#  Lifecycle Hook</span>
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span></div>
+<div class="viewcode-block" id="Template.add_lifecycle_hook"><a class="viewcode-back" href="../../source_code.html#respawn.cloudformation.Template.add_lifecycle_hook">[docs]</a>    <span class="k">def</span> <span class="nf">add_lifecycle_hook</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">lh_arguments</span> <span class="o">=</span> <span class="n">kwargs</span>
+        <span class="n">lh</span> <span class="o">=</span> <span class="n">autoscaling</span><span class="o">.</span><span class="n">LifecycleHook</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">lh_arguments</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">resources</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">lh</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">lh</span>
+
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span>
+    <span class="c">#  Instance</span>
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span></div>
+<div class="viewcode-block" id="Template.add_instance"><a class="viewcode-back" href="../../source_code.html#respawn.cloudformation.Template.add_instance">[docs]</a>    <span class="k">def</span> <span class="nf">add_instance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">instance_arguments</span> <span class="o">=</span> <span class="n">kwargs</span>
+
+        <span class="c"># IAM Role</span>
+        <span class="n">iam_role</span> <span class="o">=</span> <span class="n">instance_arguments</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;iam_role&quot;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">iam_role</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">iam_role</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_iam_role_param</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">iam_role</span><span class="p">)</span>
+            <span class="n">instance_arguments</span><span class="p">[</span><span class="s">&#39;iam_role&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">iam_role</span>
+
+        <span class="c"># Key Pair</span>
+        <span class="n">key_pair</span> <span class="o">=</span> <span class="n">instance_arguments</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;key_pair&quot;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">key_pair</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">key_pair</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_key_pair_param</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">key_pair</span><span class="p">)</span>
+            <span class="n">instance_arguments</span><span class="p">[</span><span class="s">&#39;key_pair&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">key_pair</span>
+
+        <span class="c"># Availability Zone</span>
+        <span class="n">availability_zone</span> <span class="o">=</span> <span class="n">instance_arguments</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;availability_zone&quot;</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">availability_zone</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">availability_zone</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">create_availability_zone_param</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">availability_zone</span><span class="p">)</span>
+            <span class="n">instance_arguments</span><span class="p">[</span><span class="s">&#39;availability_zone&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">availability_zone</span>
+
+        <span class="c"># User Data</span>
+        <span class="k">if</span> <span class="s">&quot;user_data&quot;</span> <span class="ow">in</span> <span class="n">instance_arguments</span><span class="p">:</span>
+            <span class="n">user_data</span> <span class="o">=</span> <span class="n">instance_arguments</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;user_data&quot;</span><span class="p">)</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">user_data</span><span class="p">[</span><span class="s">&#39;file&#39;</span><span class="p">],</span> <span class="s">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="n">user_data_script</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+            <span class="n">user_data_script</span> <span class="o">=</span> <span class="n">jinja2</span><span class="o">.</span><span class="n">Template</span><span class="p">(</span><span class="n">user_data_script</span><span class="p">)</span>
+            <span class="n">instance_arguments</span><span class="p">[</span><span class="s">&#39;user_data_script&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">user_data_script</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="o">**</span><span class="n">user_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;params&#39;</span><span class="p">,</span> <span class="nb">dict</span><span class="p">()))</span>
+
+        <span class="n">instance</span> <span class="o">=</span> <span class="n">ec2</span><span class="o">.</span><span class="n">Instance</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">instance_arguments</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">resources</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">instance</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">instance</span>
+
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span>
+    <span class="c">#  Volume</span>
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span></div>
+<div class="viewcode-block" id="Template.add_volume"><a class="viewcode-back" href="../../source_code.html#respawn.cloudformation.Template.add_volume">[docs]</a>    <span class="k">def</span> <span class="nf">add_volume</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">availability_zone</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">volume_arguments</span> <span class="o">=</span> <span class="n">kwargs</span>
+        <span class="n">volume</span> <span class="o">=</span> <span class="n">ec2</span><span class="o">.</span><span class="n">Volume</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">availability_zone</span><span class="p">,</span> <span class="o">**</span><span class="n">volume_arguments</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">resources</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">volume</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">volume</span>
+
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span>
+    <span class="c">#  RDS</span>
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span></div>
+<div class="viewcode-block" id="Template.add_rds_instance"><a class="viewcode-back" href="../../source_code.html#respawn.cloudformation.Template.add_rds_instance">[docs]</a>    <span class="k">def</span> <span class="nf">add_rds_instance</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">rds_args</span> <span class="o">=</span> <span class="n">kwargs</span>
+        <span class="n">dbinstance</span> <span class="o">=</span> <span class="n">rds</span><span class="o">.</span><span class="n">DBInstance</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">rds_args</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">resources</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">dbinstance</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">dbinstance</span>
+
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span>
+    <span class="c">#  Cloud Watch Alarm</span>
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span></div>
+<div class="viewcode-block" id="Template.add_cloud_watch_alarm"><a class="viewcode-back" href="../../source_code.html#respawn.cloudformation.Template.add_cloud_watch_alarm">[docs]</a>    <span class="k">def</span> <span class="nf">add_cloud_watch_alarm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                              <span class="n">name</span><span class="p">,</span>
+                              <span class="n">evaluation_periods</span><span class="p">,</span>
+                              <span class="n">comparison_operator</span><span class="p">,</span>
+                              <span class="n">period</span><span class="p">,</span>
+                              <span class="n">metric_name</span><span class="p">,</span>
+                              <span class="n">statistic</span><span class="p">,</span>
+                              <span class="n">threshold</span><span class="p">,</span>
+                              <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">cloudwatch_arguments</span> <span class="o">=</span> <span class="n">kwargs</span>
+        <span class="n">cloudwatch_alarm</span> <span class="o">=</span> <span class="n">cloudwatch</span><span class="o">.</span><span class="n">CloudWatchAlarm</span><span class="p">(</span><span class="n">name</span><span class="p">,</span>
+                                                      <span class="n">evaluation_periods</span><span class="p">,</span>
+                                                      <span class="n">comparison_operator</span><span class="p">,</span>
+                                                      <span class="n">period</span><span class="p">,</span>
+                                                      <span class="n">metric_name</span><span class="p">,</span>
+                                                      <span class="n">statistic</span><span class="p">,</span>
+                                                      <span class="n">threshold</span><span class="p">,</span>
+                                                      <span class="o">**</span><span class="n">cloudwatch_arguments</span>
+                                                      <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">resources</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">cloudwatch_alarm</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">cloudwatch_alarm</span>
+
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span>
+    <span class="c">#  Network Interface</span>
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span></div>
+<div class="viewcode-block" id="Template.add_network_interface"><a class="viewcode-back" href="../../source_code.html#respawn.cloudformation.Template.add_network_interface">[docs]</a>    <span class="k">def</span> <span class="nf">add_network_interface</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">ni_arguments</span> <span class="o">=</span> <span class="n">kwargs</span>
+        <span class="n">network_interface</span> <span class="o">=</span> <span class="n">ec2</span><span class="o">.</span><span class="n">NetworkInterface</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">ni_arguments</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">resources</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">network_interface</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">network_interface</span>
+
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span>
+    <span class="c">#  Network Interface Attachment</span>
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span></div>
+<div class="viewcode-block" id="Template.add_network_interface_attachment"><a class="viewcode-back" href="../../source_code.html#respawn.cloudformation.Template.add_network_interface_attachment">[docs]</a>    <span class="k">def</span> <span class="nf">add_network_interface_attachment</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">nia_arguments</span> <span class="o">=</span> <span class="n">kwargs</span>
+        <span class="n">nia</span> <span class="o">=</span> <span class="n">ec2</span><span class="o">.</span><span class="n">NetworkInterfaceAttachment</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">nia_arguments</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">resources</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">nia</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">nia</span>
+
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span>
+    <span class="c">#  Parameters</span>
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span></div>
+<div class="viewcode-block" id="Template.add_parameter"><a class="viewcode-back" href="../../source_code.html#respawn.cloudformation.Template.add_parameter">[docs]</a>    <span class="k">def</span> <span class="nf">add_parameter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">parameter_arguments</span> <span class="o">=</span> <span class="n">kwargs</span>
+        <span class="n">parameter</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">CustomParameters</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">parameter_arguments</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">parameter</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">parameter</span>
+
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span>
+    <span class="c">#  SNS Topic</span>
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span></div>
+<div class="viewcode-block" id="Template.add_sns_topic"><a class="viewcode-back" href="../../source_code.html#respawn.cloudformation.Template.add_sns_topic">[docs]</a>    <span class="k">def</span> <span class="nf">add_sns_topic</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="n">sns_arguments</span> <span class="o">=</span> <span class="n">kwargs</span>
+        <span class="n">sns_topic</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">SnsTopic</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">sns_arguments</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">resources</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">sns_topic</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">sns_topic</span></div></div>
+</pre></div>
+
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Victor Mena, Kuber Kaul, Vishal Shah.
+      Last updated on Dec 11, 2015.
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

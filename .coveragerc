@@ -1,0 +1,2 @@
+[run]
+omit = respawn/gen.py, respawn/cli.py, respawn/test/*

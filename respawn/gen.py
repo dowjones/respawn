@@ -1,177 +1,205 @@
-import sys
-import os
-sys.path.append(os.path.dirname(os.path.realpath(sys.argv[1])))
-from cfn_pyplates import core, functions
+from __future__ import print_function
+from cfn_pyplates import functions
 import respawn
-
-stackName = options['stack_name']
-resources = dict()
-
-# Build base injector template
-injector = respawn.inject.Injector(**options)
-# Build base template
-cft = respawn.cloudformation.Template(**options)
+import sys
 
 
-def add_lb_dns(name, elb, zones):
-    cnt = 1
-    for zone, opts in zones.items():
-        resource_name = '{0}{1}'.format(name, cnt)
-        cnt += 1
-        if zone.endswith('.') is False:
-            zone += '.'
-        record_name = opts.get('record_name', opts.get('record_names'))
-        if isinstance(record_name, list):
-            opts['record_names'] = opts.pop('record_name')
-            cft.add_dns_cnames(resource_name, elb=elb, zone_name=zone, **opts)
-        else:
-            cft.add_dns_cname(resource_name, elb=elb, zone_name=zone, **opts)
-
-
-def add_instances_dns_round_robin(zones):
-    cnt = 1
-    for zone, opts in zones.items():
-        resource_name = 'Instances{0}'.format(cnt)
-        cnt += 1
-        if zone.endswith('.') is False:
-            zone += '.'
-        opts['values'] = map(transform_reference, opts['values'])
-        cft.add_dns_round_robin(resource_name, zone, **opts)
-
-
-def fetch_reference(name):
-    r = resources.get(name, cft.resources.get(name))
-    if r is None:
-        raise RuntimeError('Resource name {0} not found'.format(name))
-    return r
+def standardize_refs(d):
+    """
+    Recursively transform all ref's and get_att's in dictionary to CloudFormation references.
+    """
+    for k, v in d.iteritems():
+        if isinstance(v, dict):
+            standardize_refs(v)
+        elif isinstance(v, list):
+            for i in range(len(v)):
+                if isinstance(v[i], dict):
+                    standardize_refs(v[i])
+                elif isinstance(v[i], str):
+                    v[i] = transform_reference(v[i])
+        elif isinstance(v, str):
+            d[k] = transform_reference(v)
 
 
 def transform_reference(v):
+    """
+    Transform ref and ref_att in dictionary to CloudFormation ref or get_att
+    """
     if v.startswith('ref('):
         v = v[len('ref('):-1].strip()
-        v = functions.ref(fetch_reference(v).name)
+        v = functions.ref(v)
     elif v.startswith('get_att('):
         v = [s.strip() for s in v[len('get_att('):-1].split(',')]
-        v = functions.get_att(fetch_reference(v[0]).name, v[1])
+        v = functions.get_att(v[0], v[1])
     return v
 
-'''Picks up the key from YAML for a specific type of load balancer from HTTP, HTTPS, SSL, TCP . injector class then
-injects the value and send back the injected value in dictionary as **kwarg. Its then consumed by addLoadBalancer in
-cloudformation.py which uses elb.py to structure the values in json and spit it back up. All propreitary values go to inject.py'''
-if 'load_balancers' in options:
-    valueInjection = dict(
-        https_external=injector.https_external_lb,
-        https_internal=injector.https_internal_lb,
-        generic=injector.generic_lb
-    )
-    for key in options['load_balancers'].keys():
-        makeLoadbalancer = valueInjection[key]
-        for name, lb_options in options['load_balancers'][key].items():
-            lbInjected = makeLoadbalancer(**lb_options)
-        name = lbInjected['name']
-        del lbInjected['name']
-        lb = cft.add_load_balancer(name, **lbInjected)
-        resources[name] = lb
-        if 'dns' in lbInjected:
-            add_lb_dns(name, lb, lbInjected['dns'])
 
-if 'databases' in options:
-    types = dict(
-        postgre_sql=cft.addRDSPostgres,
-        my_sql=cft.addRDSMySQL
-    )
-    for key in options['Databases'].keys():
-        make_rds = types[key]
-        for name, rds_opts in options['Databases'][key].items():
-            rds = make_rds(name, **rds_opts)
-            resources[name] = rds
+# Initialize dictionary for resources
+resources = dict()
 
-if 'instances' in options:
-    instances = options['instances']
+# Build base template utilizing library
+cft = respawn.cloudformation.Template(**options)
 
-    dns_zones = None
-    if 'dns' in instances:
-        dns_zones = instances['dns']
-        del instances['dns']
+# Standardize all references
+standardize_refs(options)
 
-    types = dict(
-        linux=cft.add_linux_instance
-    )
 
-    for key in instances.keys():
-        make_instance = types[key]
-        for name, instance_opts in instances[key].items():
-            instance_opts_injected = injector.ec2_instance_values(**instance_opts)
-            inst = make_instance(name, **instance_opts_injected)
-            resources[name] = inst
+# ----------------------------------------------------------------------------------------------------------
+# Load Balancers
+# ----------------------------------------------------------------------------------------------------------
+try:
+    if 'load_balancers' in options:
+        for name, lb_opts in options['load_balancers'].items():
+            lb = cft.add_load_balancer(name, **lb_opts)
+            resources[name] = lb
+except Exception as e:
+    raise RuntimeError("Required arguments missing from Load Balancer: {0}: Exception: {1}".format(name, e))
 
-    if dns_zones is not None:
-        print dns_zones
-        add_instances_dns_round_robin(dns_zones)
 
-if 'auto_scale_groups' in options:
-    for tierName, stack in options['auto_scale_groups'].items():
-        name = stackName + tierName
-        add_asg = cft.addLinuxAutoScaleGroup
+# ----------------------------------------------------------------------------------------------------------
+# Instances
+# ----------------------------------------------------------------------------------------------------------
+try:
+    if 'instances' in options:
+        for name, instance_opts in options['instances'].items():
+            resources[name] = cft.add_instance(name, **instance_opts)
+except Exception as e:
+    raise RuntimeError("Required arguments missing from Instance. Exception: {0}: Exception: {1}".format(name, e))
 
-        if 'load_balancer' in stack:
-            stack['load_balancer'] = resources[stack['load_balancer']]
 
-        instance_arguments = stack.get('instance_arguments')
-        if instance_arguments is not None:
-            for k, v in instance_arguments.items():
-                instance_arguments[k] = transform_reference(v)
+# ----------------------------------------------------------------------------------------------------------
+# Volumes
+# ----------------------------------------------------------------------------------------------------------
+try:
+    if 'volumes' in options:
+        volumes = options['volumes']
+        for name, volume_opts in volumes.items():
+            resources[name] = cft.add_volume(name, **volume_opts)
+except Exception as e:
+    raise RuntimeError("Required arguments missing from Volume. Exception: {0}: Exception: {1}".format(name, e))
 
-        if 'windows' in stack:
-            add_asg = cft.addWindowsAutoScaleGroup
-            del stack['windows']
 
-        add_asg(name, **stack)
+# ----------------------------------------------------------------------------------------------------------
+# Auto-scaling Groups
+# ----------------------------------------------------------------------------------------------------------
+try:
+    if 'auto_scale_groups' in options:
+        auto_scale_groups = options['auto_scale_groups']
+        for name, asg_opts in auto_scale_groups.items():
+            resources[name] = cft.add_autoscaling_group(name, **asg_opts)
+except Exception as e:
+    raise RuntimeError("Required arguments missing from Autoscaling Group: {0}: Exception: {1}".format(name, e))
 
-if 'scheduled_actions' in options:
 
-    scheduled_actions = options['scheduled_actions']
+# ----------------------------------------------------------------------------------------------------------
+# Launch Configurations
+# ----------------------------------------------------------------------------------------------------------
+try:
+    if 'launch_configurations' in options:
+        launch_configurations = options['launch_configurations']
+        for name, lc_opts in launch_configurations.items():
+            resources[name] = cft.add_launch_config(name, **lc_opts)
+except Exception as e:
+    raise RuntimeError("Required arguments missing from Launch Configuration: {0}: Exception: {1}".format(name, e))
 
-    for name, sa_opts in scheduled_actions.items():
-        resources[name] = cft.add_scheduled_action(name, **sa_opts)
 
-if 'rds' in options:
-    rds = options['rds']
+# ----------------------------------------------------------------------------------------------------------
+# Scheduled Actions
+# ----------------------------------------------------------------------------------------------------------
+try:
+    if 'scheduled_actions' in options:
+        scheduled_actions = options['scheduled_actions']
+        for name, sa_opts in scheduled_actions.items():
+            resources[name] = cft.add_scheduled_action(name, **sa_opts)
+except Exception as e:
+    raise RuntimeError("Required arguments missing from Scheduled Action: {0}: Exception: {1}".format(name, e))
 
-    for name, rds_opts in rds.items():
-        rds_opts_injects = injector.rds_values(name, **rds_opts)
-        resources[name] = cft.add_rds(name, **rds_opts_injects)
 
-if 'cloud_watch' in options:
-    cloud_watch = cft.add_cloud_watch
-    for name, values in options['cloud_watch'].items():
-        CloudWatch = cloud_watch(name, **values)
-        resources[name] = CloudWatch
+# ----------------------------------------------------------------------------------------------------------
+# Lifecycle Hooks
+# ----------------------------------------------------------------------------------------------------------
+try:
+    if 'lifecycle_hooks' in options:
+        lifecycle_hooks = options['lifecycle_hooks']
+        for name, lh_opts in lifecycle_hooks.items():
+            resources[name] = cft.add_lifecycle_hook(name, **lh_opts)
+except Exception as e:
+    raise RuntimeError("Required arguments missing from Lifecycle Hook: {0}: Exception: {1}".format(name, e))
 
-if 'network_interface' in options:
-    NetworkInterface = cft.add_network_interface
-    for name, values in options['network_interface'].items():
-        NetworkInterfaceFunction = NetworkInterface(name, **values)
-        resources[name] = NetworkInterfaceFunction
 
-if 'network_interface_attachment' in options:
-    types = dict(generic=injector.generic_nia)
-    for key in options['network_interface_attachment'].keys():
-        makeNia = types[key]
-        for name, nia_options in options['network_interface_attachment'][key].items():
-            niainjected = makeNia(**nia_options)
-        name = niainjected['name']
-        del niainjected['name']
-        nia = cft.add_network_interface_attachment(name, **niainjected)
-        resources[name] = nia
+# ----------------------------------------------------------------------------------------------------------
+# RDS
+# ----------------------------------------------------------------------------------------------------------
+try:
+    if 'rds' in options:
+        rds = options['rds']
+        for name, rds_opts in rds.items():
+            resources[name] = cft.add_rds_instance(name, **rds_opts)
+except Exception as e:
+    raise RuntimeError("Required arguments missing from RDS: {0}: Exception: {1}".format(name, e))
 
-if 'parameters' in options:
-    for name, parameter_options in options['parameters'].items():
-        parameter_injected = injector.parameters(**parameter_options)
-        parameters = cft.add_parameters(name, **parameter_injected)
 
-if 'sns_topic' in options:
-    SnsTopic = cft.add_sns_topic
-    for name, values in options['sns_topic'].items():
-        SnsTopicFunction = SnsTopic(name, **values)
-        resources[name] = SnsTopicFunction
+# ----------------------------------------------------------------------------------------------------------
+# CloudWatch
+# ----------------------------------------------------------------------------------------------------------
+try:
+    if 'cloud_watch' in options:
+        for name, cloud_watch_opts in options['cloud_watch'].items():
+            resources[name] = cft.add_cloud_watch_alarm(name, **cloud_watch_opts)
+except Exception as e:
+    raise RuntimeError("Required arguments missing from Cloud Watch: {0}: Exception: {1}".format(name, e))
+
+
+# ----------------------------------------------------------------------------------------------------------
+# Network Interfaces
+# ----------------------------------------------------------------------------------------------------------
+try:
+    if 'network_interfaces' in options:
+        for name, network_interface_opts in options['network_interfaces'].items():
+            resources[name] = cft.add_network_interface(name, **network_interface_opts)
+except Exception as e:
+    raise RuntimeError("Required arguments missing from Network Interface: {0}: Exception: {1}".format(name, e))
+
+
+# ----------------------------------------------------------------------------------------------------------
+# Network Interface Attachments
+# ----------------------------------------------------------------------------------------------------------
+try:
+    if 'network_interface_attachments' in options:
+        for name, nia_opts in options['network_interface_attachments'].items():
+            resources[name] = cft.add_network_interface_attachment(name, **nia_opts)
+except Exception as e:
+    raise RuntimeError("Required arguments missing from Network Interface Attachment: {0}: Exception: {1}".format(name, e))
+
+# ----------------------------------------------------------------------------------------------------------
+# Security Groups
+# ----------------------------------------------------------------------------------------------------------
+try:
+    if 'security_group' in options:
+        for name, sg_opts in options['security_group'].items():
+            resources[name] = cft.add_security_group(name, **sg_opts)
+except Exception as e:
+    raise RuntimeError("Required arguments missing from Security Group: {0}: Exception: {1}".format(name, e))
+
+
+# ----------------------------------------------------------------------------------------------------------
+# Parameters
+# ----------------------------------------------------------------------------------------------------------
+try:
+    if 'parameters' in options:
+        for name, parameter_opts in options['parameters'].items():
+            cft.add_parameter(name, **parameter_opts)
+except Exception, e:
+    raise RuntimeError("Required arguments missing from Parameters")
+
+
+# ----------------------------------------------------------------------------------------------------------
+# SNS Topics
+# ----------------------------------------------------------------------------------------------------------
+try:
+    if 'sns_topics' in options:
+        for name, sns_opts in options['sns_topics'].items():
+            resources[name] = cft.add_sns_topic(name, **sns_opts)
+except Exception as e:
+    raise RuntimeError("Required arguments missing from SNS Topic: {0}: Exception: {1}".format(name, e))
+

@@ -1,0 +1,377 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>respawn.rds &mdash; respawn</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="respawn" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../../index.html" class="icon icon-home"> respawn
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started.html"><strong>Getting Started</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started.html#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../getting_started.html#windows-unix-mac-os-x">Windows/Unix/Mac OS X</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started.html#usage-template-generation">Usage - Template Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage.html"><strong>Keywords - YAML/JSON</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../usage.html#resource-index"><strong>Resource Index</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#auto-scaling-group"><strong>Auto Scaling Group</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#cloudwatch"><strong>CloudWatch</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#instances"><strong>Instances</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#launch-configuration"><strong>Launch Configuration</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#lifecycle-hooks"><strong>Lifecycle Hooks</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#load-balancer"><strong>Load Balancer</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#network-interface"><strong>Network Interface</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#network-interface-attachment"><strong>Network Interface Attachment</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#rds"><strong>RDS</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#scheduled-action"><strong>Scheduled Action</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#sns-topic"><strong>Sns Topic</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#volume"><strong>Volume</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#other-required-keywords"><strong>Other Required Keywords</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../usage.html#parameter-index"><strong>Parameter Index</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#parameters"><strong>Parameters</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../usage.html#userdata-index"><strong>UserData Index</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#userdata"><strong>UserData</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../usage.html#references-index"><strong>References Index</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#reference"><strong>Reference</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#get-attribute"><strong>Get_Attribute</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../source_code.html"><strong>Source Code Documentation</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../source_code.html#resource-index"><strong>Resource Index</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../source_code.html#module-respawn.ec2"><strong>EC2</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source_code.html#module-respawn.elb"><strong>Load Balancer</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source_code.html#module-respawn.autoscaling"><strong>Auto Scaling</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source_code.html#module-respawn.cloudformation"><strong>CloudFormation</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source_code.html#module-respawn.cloudwatch"><strong>CloudWatch</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source_code.html#module-respawn.rds"><strong>RDS</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source_code.html#module-respawn.sns"><strong>Sns Topic</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../source_code.html#module-respawn.parameters"><strong>Parameter Index</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sample_yaml.html"><strong>Sample YAML</strong></a></li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">respawn</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      
+    <li>respawn.rds</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <h1>Source code for respawn.rds</h1><div class="highlight"><pre>
+<span class="kn">from</span> <span class="nn">cfn_pyplates</span> <span class="kn">import</span> <span class="n">core</span>
+<span class="kn">from</span> <span class="nn">errors</span> <span class="kn">import</span> <span class="n">RespawnResourceError</span>
+
+
+<div class="viewcode-block" id="Tag"><a class="viewcode-back" href="../../source_code.html#respawn.rds.Tag">[docs]</a><span class="k">class</span> <span class="nc">Tag</span><span class="p">(</span><span class="n">core</span><span class="o">.</span><span class="n">JSONableDict</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates RDS Tag</span>
+
+<span class="sd">        :param key: String</span>
+<span class="sd">        :param value: String</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span>
+    <span class="c">#  Tag</span>
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">key</span><span class="p">,</span>
+                 <span class="n">value</span>
+                 <span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Tag</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s">&#39;Key&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">key</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s">&#39;Value&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+
+</div>
+<div class="viewcode-block" id="DBInstance"><a class="viewcode-back" href="../../source_code.html#respawn.rds.DBInstance">[docs]</a><span class="k">class</span> <span class="nc">DBInstance</span><span class="p">(</span><span class="n">core</span><span class="o">.</span><span class="n">Resource</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates a Database Instance</span>
+
+<span class="sd">        :param name: String</span>
+<span class="sd">        :param allocated_storage: String</span>
+<span class="sd">        :param instance_class: String</span>
+
+<span class="sd">        kwargs</span>
+<span class="sd">            - allow_major_version_upgrade: Boolean</span>
+<span class="sd">            - auto_minor_version_upgrade: Boolean</span>
+<span class="sd">            - availability_zone: String</span>
+<span class="sd">            - backup_retention_period: String</span>
+<span class="sd">            - character_set_name: String</span>
+<span class="sd">            - instance_identifier: String</span>
+<span class="sd">            - db_name: String</span>
+<span class="sd">            - db_parameter_group_name: String</span>
+<span class="sd">            - db_security_groups: [ String, ... ]</span>
+<span class="sd">            - snapshot_identifier: String</span>
+<span class="sd">            - subnet_group_name: String</span>
+<span class="sd">            - engine: String</span>
+<span class="sd">            - engine_version: String</span>
+<span class="sd">            - iops: Number</span>
+<span class="sd">            - kms_key_id: String</span>
+<span class="sd">            - license_model: String</span>
+<span class="sd">            - master_username: String</span>
+<span class="sd">            - master_password: String</span>
+<span class="sd">            - multi_az: Boolean</span>
+<span class="sd">            - option_group_name: String</span>
+<span class="sd">            - port: String</span>
+<span class="sd">            - preferred_backup_window: String</span>
+<span class="sd">            - preferred_maintenance_window: String</span>
+<span class="sd">            - publicly_accessible: Boolean</span>
+<span class="sd">            - source_db_instance_identifier: String</span>
+<span class="sd">            - storage_encrypted: Boolean</span>
+<span class="sd">            - storage_type: String</span>
+<span class="sd">            - tags: [ Tag, ... ]</span>
+<span class="sd">            - vpc_security_groups: [ String, ... ]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span>
+    <span class="c">#  DB Instance Properties</span>
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">name</span><span class="p">,</span>
+            <span class="n">allocated_storage</span><span class="p">,</span>
+            <span class="n">instance_class</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">):</span>
+        <span class="k">if</span> <span class="s">&quot;snapshot_identifier&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="ow">and</span> <span class="s">&quot;engine&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">RespawnResourceError</span><span class="p">(</span><span class="s">&quot;Engine (engine) required if Snapshot Identifier (snapshot_identifier) not &quot;</span>
+                                       <span class="s">&quot;specified.&quot;</span><span class="p">,</span> <span class="s">&quot;DBSnapshotIdentifier/Engine&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;storage_type&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s">&quot;io1&quot;</span> <span class="ow">and</span> <span class="s">&quot;iops&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">RespawnResourceError</span><span class="p">(</span><span class="s">&quot;Iops (iops) required for Storage Type (storage_type) io1.&quot;</span><span class="p">,</span> <span class="s">&quot;Iops&quot;</span><span class="p">)</span>
+
+        <span class="n">attributes</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;attributes&quot;</span><span class="p">,</span> <span class="nb">dict</span><span class="p">())</span>
+
+        <span class="n">properties</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s">&#39;AllocatedStorage&#39;</span><span class="p">:</span> <span class="n">allocated_storage</span><span class="p">,</span>
+            <span class="s">&#39;DBInstanceClass&#39;</span><span class="p">:</span> <span class="n">instance_class</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="s">&#39;tags&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;tags&#39;</span><span class="p">)</span>
+            <span class="n">tags</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">t</span><span class="p">:</span>
+                <span class="n">tags</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Tag</span><span class="p">(</span><span class="o">**</span><span class="n">tag</span><span class="p">))</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;Tags&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tags</span>
+
+        <span class="k">if</span> <span class="s">&quot;allow_major_version_upgrade&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;AllowMajorVersionUpgrade&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;allow_major_version_upgrade&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;auto_minor_version_upgrade&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;AutoMinorVersionUpgrade&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;auto_minor_version_upgrade&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;availability_zone&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;AvailabilityZone&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;availability_zone&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;backup_retention_period&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;BackupRetentionPeriod&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;backup_retention_period&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;character_set_name&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;CharacterSetName&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;character_set_name&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;instance_identifier&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;DBInstanceIdentifier&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;instance_identifier&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;db_name&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;DBName&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;db_name&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;db_parameter_group_name&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;DBParameterGroupName&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;db_parameter_group_name&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;db_security_groups&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;DBSecurityGroups&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;db_security_groups&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;snapshot_identifier&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;DBSnapshotIdentifier&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;snapshot_identifier&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;subnet_group_name&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;DBSubnetGroupName&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;subnet_group_name&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;engine&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;Engine&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;engine&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;engine_version&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;EngineVersion&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;engine_version&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;iops&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;Iops&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;iops&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;kms_key_id&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;KmsKeyId&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;kms_key_id&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;license_model&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;LicenseModel&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;license_model&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;master_username&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;MasterUsername&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;master_username&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;multi_az&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;MultiAZ&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;multi_az&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;option_group_name&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;OptionGroupName&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;option_group_name&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;port&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;Port&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;port&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;preferred_backup_window&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;PreferredBackupWindow&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;preferred_backup_window&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;preferred_maintenance_window&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;PreferredMaintenanceWindow&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;preferred_maintenance_window&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;publicly_accessible&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;PubliclyAccessible&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;publicly_accessible&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;source_db_instance_identifier&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;SourceDBInstanceIdentifier&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;source_db_instance_identifier&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;storage_encrypted&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;StorageEncrypted&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;storage_encrypted&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;storage_type&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;StorageType&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;storage_type&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;vpc_security_groups&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;VPCSecurityGroups&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;vpc_security_groups&quot;</span><span class="p">)</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">DBInstance</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s">&#39;AWS::RDS::DBInstance&#39;</span><span class="p">,</span> <span class="n">properties</span><span class="p">,</span> <span class="n">attributes</span><span class="p">)</span></div>
+</pre></div>
+
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Victor Mena, Kuber Kaul, Vishal Shah.
+      Last updated on Dec 11, 2015.
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

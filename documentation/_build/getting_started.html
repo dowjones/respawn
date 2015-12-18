@@ -1,0 +1,296 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Getting Started &mdash; respawn</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="respawn" href="index.html"/>
+        <link rel="next" title="Keywords - YAML/JSON" href="usage.html"/>
+        <link rel="prev" title="Respawn" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="index.html" class="icon icon-home"> respawn
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href=""><strong>Getting Started</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#windows-unix-mac-os-x">Windows/Unix/Mac OS X</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#usage-template-generation">Usage - Template Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html"><strong>Keywords - YAML/JSON</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#resource-index"><strong>Resource Index</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#auto-scaling-group"><strong>Auto Scaling Group</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#cloudwatch"><strong>CloudWatch</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#instances"><strong>Instances</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#launch-configuration"><strong>Launch Configuration</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#lifecycle-hooks"><strong>Lifecycle Hooks</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#load-balancer"><strong>Load Balancer</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#network-interface"><strong>Network Interface</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#network-interface-attachment"><strong>Network Interface Attachment</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#rds"><strong>RDS</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#scheduled-action"><strong>Scheduled Action</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#sns-topic"><strong>Sns Topic</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#volume"><strong>Volume</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#other-required-keywords"><strong>Other Required Keywords</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#parameter-index"><strong>Parameter Index</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#parameters"><strong>Parameters</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#userdata-index"><strong>UserData Index</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#userdata"><strong>UserData</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#references-index"><strong>References Index</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#reference"><strong>Reference</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#get-attribute"><strong>Get_Attribute</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="source_code.html"><strong>Source Code Documentation</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="source_code.html#resource-index"><strong>Resource Index</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="source_code.html#module-respawn.ec2"><strong>EC2</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="source_code.html#module-respawn.elb"><strong>Load Balancer</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="source_code.html#module-respawn.autoscaling"><strong>Auto Scaling</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="source_code.html#module-respawn.cloudformation"><strong>CloudFormation</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="source_code.html#module-respawn.cloudwatch"><strong>CloudWatch</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="source_code.html#module-respawn.rds"><strong>RDS</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="source_code.html#module-respawn.sns"><strong>Sns Topic</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="source_code.html#module-respawn.parameters"><strong>Parameter Index</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sample_yaml.html"><strong>Sample YAML</strong></a></li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">respawn</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li><strong>Getting Started</strong></li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/getting_started.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="getting-started">
+<h1><strong>Getting Started</strong><a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<p>This page describes how to download, install and use the basic functionality of respawn.</p>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>To install respawn, simply:</p>
+<div class="section" id="windows-unix-mac-os-x">
+<h3>Windows/Unix/Mac OS X<a class="headerlink" href="#windows-unix-mac-os-x" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Open command prompt and execute pip command :</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre>pip install respawn
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="usage-template-generation">
+<h2>Usage - Template Generation<a class="headerlink" href="#usage-template-generation" title="Permalink to this headline">¶</a></h2>
+<p>to use respawn, in your command prompt/terminal :</p>
+<div class="highlight-python"><div class="highlight"><pre>$ respawn pathToYAML.yaml
+</pre></div>
+</div>
+<p>to create &amp; validate the JSON against AWS using <a class="reference external" href="https://github.com/boto/boto">boto</a> and pipe output to a file:</p>
+<div class="highlight-python"><div class="highlight"><pre>$ respawn --validate pathToYAML.yaml &gt; pathToJSON.json
+</pre></div>
+</div>
+<p>to pipe the output to a file :</p>
+<div class="highlight-python"><div class="highlight"><pre>$ respawn pathToYAML.yaml &gt; pathToJSON.json
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>where:</dt>
+<dd><ul class="first last simple">
+<li>pathToYAML.yaml = the YAML file that needs to be processed into JSON.</li>
+<li>pathToJSON.json = the JSON file containing AWS cloudformation.</li>
+</ul>
+</dd>
+</dl>
+<p>For exhaustive documentation and help with specific keywords to be used with resources , got to respawn <a class="reference external" href="https://github.dowjones.net/pages/djin-productivity/respawn/usage.html">homepage</a></p>
+</div>
+<div class="section" id="dependencies">
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>boto==2.32.1</li>
+<li>nose==1.3.3</li>
+<li>cfn-pyplates==0.4.3</li>
+<li>Jinja2==2.7.3</li>
+<li>enum34</li>
+<li>pytest==2.7.1</li>
+</ul>
+</div>
+<div class="section" id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h2>
+<p>That concludes the getting started guide for respawn. Hopefully you&#8217;re excited about the possibilities of respawn and
+ready to begin using respawn with your applications.</p>
+<p>We&#8217;ve covered the basics of respawn in this guide. We recommend moving on to the usage next, which serves
+as a complete reference to all the features of respawn.</p>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="usage.html" class="btn btn-neutral float-right" title="Keywords - YAML/JSON" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Respawn" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Victor Mena, Kuber Kaul, Vishal Shah.
+      Last updated on Dec 11, 2015.
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

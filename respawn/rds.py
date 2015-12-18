@@ -1,4 +1,5 @@
 from cfn_pyplates import core
+from errors import RespawnResourceError
 
 
 class Tag(core.JSONableDict):
@@ -8,10 +9,13 @@ class Tag(core.JSONableDict):
         :param key: String
         :param value: String
     """
+    # ----------------------------------------------------------------------------------------------------------
+    #  Tag
+    # ----------------------------------------------------------------------------------------------------------
     def __init__(self,
                  key,
                  value
-    ):
+                 ):
         super(Tag, self).__init__()
         self['Key'] = key
         self['Value'] = value
@@ -56,6 +60,9 @@ class DBInstance(core.Resource):
             - tags: [ Tag, ... ]
             - vpc_security_groups: [ String, ... ]
         """
+    # ----------------------------------------------------------------------------------------------------------
+    #  DB Instance Properties
+    # ----------------------------------------------------------------------------------------------------------
     def __init__(
             self,
             name,
@@ -64,10 +71,11 @@ class DBInstance(core.Resource):
             **kwargs
     ):
         if "snapshot_identifier" not in kwargs and "engine" not in kwargs:
-            raise RuntimeError("Engine (engine) required if Snapshot Identifier (snapshot_identifier) not specified.")
+            raise RespawnResourceError("Engine (engine) required if Snapshot Identifier (snapshot_identifier) not "
+                                       "specified.", "DBSnapshotIdentifier/Engine")
 
         if kwargs.get("storage_type") == "io1" and "iops" not in kwargs:
-            raise RuntimeError("Iops (iops) required for Storage Type (storage_type) io1.")
+            raise RespawnResourceError("Iops (iops) required for Storage Type (storage_type) io1.", "Iops")
 
         attributes = kwargs.get("attributes", dict())
 

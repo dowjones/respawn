@@ -1,0 +1,1238 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Source Code Documentation &mdash; respawn</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="respawn" href="index.html"/>
+        <link rel="next" title="Sample YAML" href="sample_yaml.html"/>
+        <link rel="prev" title="Keywords - YAML/JSON" href="usage.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="index.html" class="icon icon-home"> respawn
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html"><strong>Getting Started</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="getting_started.html#windows-unix-mac-os-x">Windows/Unix/Mac OS X</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#usage-template-generation">Usage - Template Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting_started.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html"><strong>Keywords - YAML/JSON</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#resource-index"><strong>Resource Index</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#auto-scaling-group"><strong>Auto Scaling Group</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#cloudwatch"><strong>CloudWatch</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#instances"><strong>Instances</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#launch-configuration"><strong>Launch Configuration</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#lifecycle-hooks"><strong>Lifecycle Hooks</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#load-balancer"><strong>Load Balancer</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#network-interface"><strong>Network Interface</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#network-interface-attachment"><strong>Network Interface Attachment</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#rds"><strong>RDS</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#scheduled-action"><strong>Scheduled Action</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#sns-topic"><strong>Sns Topic</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#volume"><strong>Volume</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#other-required-keywords"><strong>Other Required Keywords</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#parameter-index"><strong>Parameter Index</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#parameters"><strong>Parameters</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#userdata-index"><strong>UserData Index</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#userdata"><strong>UserData</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="usage.html#references-index"><strong>References Index</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#reference"><strong>Reference</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#get-attribute"><strong>Get_Attribute</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href=""><strong>Source Code Documentation</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#resource-index"><strong>Resource Index</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#module-respawn.ec2"><strong>EC2</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-respawn.elb"><strong>Load Balancer</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-respawn.autoscaling"><strong>Auto Scaling</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-respawn.cloudformation"><strong>CloudFormation</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-respawn.cloudwatch"><strong>CloudWatch</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-respawn.rds"><strong>RDS</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-respawn.sns"><strong>Sns Topic</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#module-respawn.parameters"><strong>Parameter Index</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="sample_yaml.html"><strong>Sample YAML</strong></a></li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">respawn</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li><strong>Source Code Documentation</strong></li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/source_code.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <div class="section" id="source-code-documentation">
+<h1><strong>Source Code Documentation</strong><a class="headerlink" href="#source-code-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="resource-index">
+<h2><strong>Resource Index</strong><a class="headerlink" href="#resource-index" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="#ec2">EC2</a></li>
+<li><a class="reference internal" href="#load-balancer">Load Balancer</a></li>
+<li><a class="reference internal" href="#auto-scaling">Auto Scaling</a></li>
+<li><a class="reference internal" href="#cloudformation">CloudFormation</a></li>
+<li><a class="reference internal" href="#cloudwatch">CloudWatch</a></li>
+<li><a class="reference internal" href="#rds">RDS</a></li>
+<li><a class="reference internal" href="#sns-topic">Sns Topic</a></li>
+</ul>
+<div class="section" id="module-respawn.ec2">
+<span id="ec2"></span><h3><strong>EC2</strong><a class="headerlink" href="#module-respawn.ec2" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="respawn.ec2.BlockDevice">
+<em class="property">class </em><code class="descclassname">respawn.ec2.</code><code class="descname">BlockDevice</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/ec2.html#BlockDevice"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.ec2.BlockDevice" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">cfn_pyplates.core.JSONableDict</span></code></p>
+<p>Creates a Block Device</p>
+<dl class="docutils">
+<dt>kwargs</dt>
+<dd><ul class="first last simple">
+<li>delete_on_termination: Boolean</li>
+<li>iops: Integer</li>
+<li>snapshot_id: String</li>
+<li>size: Integer</li>
+<li>type: String</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="respawn.ec2.BlockDeviceMapping">
+<em class="property">class </em><code class="descclassname">respawn.ec2.</code><code class="descname">BlockDeviceMapping</code><span class="sig-paren">(</span><em>device_name</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/ec2.html#BlockDeviceMapping"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.ec2.BlockDeviceMapping" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">cfn_pyplates.core.JSONableDict</span></code></p>
+<p>Creates a Block Device Mapping</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>device_name</strong> &#8211; String</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>kwargs</dt>
+<dd><ul class="first last simple">
+<li>ebs: PrivateIpSpecification</li>
+<li>no_device: Boolean</li>
+<li>virtual_name: String</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="respawn.ec2.Instance">
+<em class="property">class </em><code class="descclassname">respawn.ec2.</code><code class="descname">Instance</code><span class="sig-paren">(</span><em>name</em>, <em>ami_id</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/ec2.html#Instance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.ec2.Instance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">cfn_pyplates.core.Resource</span></code></p>
+<p>Creates an EC2 Instance</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> &#8211; String</li>
+<li><strong>ami_id</strong> &#8211; String</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>kwargs</dt>
+<dd><ul class="first last simple">
+<li>availability_zone: String</li>
+<li>block_devices: [ BlockDeviceMapping , ... ]</li>
+<li>disable_api_termination: Boolean</li>
+<li>ebs_optimized: Boolean</li>
+<li>iam_role: String</li>
+<li>instance_shutdown_behavior: String</li>
+<li>instance_type: String</li>
+<li>kernel_id: String</li>
+<li>key_pair: String</li>
+<li>monitoring: Boolean</li>
+<li>network_interfaces: [ NetworkInterface, ... ]</li>
+<li>placement_group: String</li>
+<li>private_ip: String</li>
+<li>ramdisk_id: String</li>
+<li>security_group_ids: [ String, ... ]</li>
+<li>security_groups: [ String, ... ]</li>
+<li>source_dest_check: Boolean</li>
+<li>subnet: String</li>
+<li>tags: [ Tag, ... ]</li>
+<li>tenancy: String</li>
+<li>user_data_script: String</li>
+<li>volumes: [ MountPoint, ...]</li>
+<li>attributes: { key: value, ... }</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="respawn.ec2.MountPoint">
+<em class="property">class </em><code class="descclassname">respawn.ec2.</code><code class="descname">MountPoint</code><span class="sig-paren">(</span><em>device</em>, <em>volume_id</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/ec2.html#MountPoint"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.ec2.MountPoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">cfn_pyplates.core.JSONableDict</span></code></p>
+<p>Create Mount Point</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>device</strong> &#8211; String</li>
+<li><strong>volume_id</strong> &#8211; String</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="respawn.ec2.NetworkInterface">
+<em class="property">class </em><code class="descclassname">respawn.ec2.</code><code class="descname">NetworkInterface</code><span class="sig-paren">(</span><em>device_index</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/ec2.html#NetworkInterface"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.ec2.NetworkInterface" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">cfn_pyplates.core.JSONableDict</span></code></p>
+<p>Creates a Network Interface</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>device_index</strong> &#8211; String</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>kwargs</dt>
+<dd><ul class="first last simple">
+<li>public_ip: Boolean</li>
+<li>delete_on_termination: Boolean</li>
+<li>description: String</li>
+<li>device_index:  String</li>
+<li>group_set:  [ String, ... ]</li>
+<li>interface_id:  String</li>
+<li>private_ip:  String</li>
+<li>private_ips:  [ PrivateIpSpecification, ... ]</li>
+<li>secondary_private_ip_count:  Integer</li>
+<li>subnet_id:  String</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="respawn.ec2.PrivateIpSpecification">
+<em class="property">class </em><code class="descclassname">respawn.ec2.</code><code class="descname">PrivateIpSpecification</code><span class="sig-paren">(</span><em>private_ip</em>, <em>primary</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/ec2.html#PrivateIpSpecification"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.ec2.PrivateIpSpecification" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">cfn_pyplates.core.JSONableDict</span></code></p>
+<p>Creates a Private IP Specification</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>private_ip</strong> &#8211; String</li>
+<li><strong>primary</strong> &#8211; Boolean</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="respawn.ec2.SecurityGroup">
+<em class="property">class </em><code class="descclassname">respawn.ec2.</code><code class="descname">SecurityGroup</code><span class="sig-paren">(</span><em>name</em>, <em>group_description</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/ec2.html#SecurityGroup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.ec2.SecurityGroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">cfn_pyplates.core.Resource</span></code></p>
+<p>Creates a Security Group</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> &#8211; String</li>
+<li><strong>group_description</strong> &#8211; String</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>kwargs</dt>
+<dd><ul class="first last simple">
+<li>security_group_egress: [ Security Group Rule, ... ]</li>
+<li>security_group_ingress: [ Security Group Rule, ... ]</li>
+<li>tags: [ Tag, ... ]</li>
+<li>vpc_id: String</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="respawn.ec2.Tag">
+<em class="property">class </em><code class="descclassname">respawn.ec2.</code><code class="descname">Tag</code><span class="sig-paren">(</span><em>key</em>, <em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/ec2.html#Tag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.ec2.Tag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">cfn_pyplates.core.JSONableDict</span></code></p>
+<p>Create EC2 Tag</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>key</strong> &#8211; String</li>
+<li><strong>value</strong> &#8211; String</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="respawn.ec2.Volume">
+<em class="property">class </em><code class="descclassname">respawn.ec2.</code><code class="descname">Volume</code><span class="sig-paren">(</span><em>name</em>, <em>availability_zone</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/ec2.html#Volume"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.ec2.Volume" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">cfn_pyplates.core.Resource</span></code></p>
+<p>Creates an EC2 Volume</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> &#8211; String</li>
+<li><strong>availability_zone</strong> &#8211; String</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>kwargs</dt>
+<dd><ul class="first last simple">
+<li>encrypted: Boolean</li>
+<li>iops: Integer</li>
+<li>kms_key_id: String</li>
+<li>size: String</li>
+<li>snapshot_id: String</li>
+<li>tags:  [ Tag, ...]</li>
+<li>volume_type:  String</li>
+<li>attributes: { key: value, ... }</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="respawn.ec2.Volumes">
+<em class="property">class </em><code class="descclassname">respawn.ec2.</code><code class="descname">Volumes</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/ec2.html#Volumes"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.ec2.Volumes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">respawn.util.SetNonEmptyPropertyMixin</span></code>, <code class="xref py py-class docutils literal"><span class="pre">cfn_pyplates.core.JSONableDict</span></code></p>
+<p>Volumes is an embedded property of the AWS::EC2::Instance resource that describes the
+subscription endpoints for a topic.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>endpoint</strong> &#8211; String,</li>
+<li><strong>protocol</strong> &#8211; String</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-respawn.elb">
+<span id="load-balancer"></span><h3><strong>Load Balancer</strong><a class="headerlink" href="#module-respawn.elb" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="respawn.elb.AccessLoggingPolicy">
+<em class="property">class </em><code class="descclassname">respawn.elb.</code><code class="descname">AccessLoggingPolicy</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/elb.html#AccessLoggingPolicy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.elb.AccessLoggingPolicy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">respawn.util.SetNonEmptyPropertyMixin</span></code>, <code class="xref py py-class docutils literal"><span class="pre">cfn_pyplates.core.JSONableDict</span></code></p>
+<p>The AccessLoggingPolicy property captures detailed information for all requests made to your load balancer.</p>
+<dl class="docutils">
+<dt>kwargs</dt>
+<dd><ul class="first last simple">
+<li>emit_interval: Integer</li>
+<li>enabled: Boolean</li>
+<li>s3_bucket_name: String</li>
+<li>s3_bucket_prefix: String</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="respawn.elb.AppCookieStickinessPolicy">
+<em class="property">class </em><code class="descclassname">respawn.elb.</code><code class="descname">AppCookieStickinessPolicy</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/elb.html#AppCookieStickinessPolicy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.elb.AppCookieStickinessPolicy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">respawn.util.SetNonEmptyPropertyMixin</span></code>, <code class="xref py py-class docutils literal"><span class="pre">cfn_pyplates.core.JSONableDict</span></code></p>
+<p>Generates one or more stickiness policies with sticky session lifetimes that follow that of an application-generated
+cookie. These policies can be associated only with HTTP/HTTPS listeners.</p>
+<dl class="docutils">
+<dt>kwargs</dt>
+<dd><ul class="first last simple">
+<li>cookie_name: String</li>
+<li>policy_name: String</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="respawn.elb.ConnectionDrainingPolicy">
+<em class="property">class </em><code class="descclassname">respawn.elb.</code><code class="descname">ConnectionDrainingPolicy</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/elb.html#ConnectionDrainingPolicy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.elb.ConnectionDrainingPolicy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">respawn.util.SetNonEmptyPropertyMixin</span></code>, <code class="xref py py-class docutils literal"><span class="pre">cfn_pyplates.core.JSONableDict</span></code></p>
+<p>Decides whether deregistered or unhealthy instances can complete all in-flight requests.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>enabled</strong> &#8211; Boolean</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>kwargs</dt>
+<dd><ul class="first last simple">
+<li>timeout : Integer</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="respawn.elb.ConnectionSettings">
+<em class="property">class </em><code class="descclassname">respawn.elb.</code><code class="descname">ConnectionSettings</code><span class="sig-paren">(</span><em>idle_timeout=60</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/elb.html#ConnectionSettings"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.elb.ConnectionSettings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">respawn.util.SetNonEmptyPropertyMixin</span></code>, <code class="xref py py-class docutils literal"><span class="pre">cfn_pyplates.core.JSONableDict</span></code></p>
+<p>Specifies how long front-end and back-end connections of your load balancer can remain idle.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>idle_timeout</strong> &#8211; Integer</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="respawn.elb.HealthCheck">
+<em class="property">class </em><code class="descclassname">respawn.elb.</code><code class="descname">HealthCheck</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/elb.html#HealthCheck"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.elb.HealthCheck" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">cfn_pyplates.core.JSONableDict</span></code></p>
+<p>Creates application health check for the instances.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>healthy_threshold</strong> &#8211; String</li>
+<li><strong>interval</strong> &#8211; String</li>
+<li><strong>target</strong> &#8211; String</li>
+<li><strong>timeout</strong> &#8211; String</li>
+<li><strong>unhealthy_threshold</strong> &#8211; String</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="respawn.elb.LBCookieStickinessPolicy">
+<em class="property">class </em><code class="descclassname">respawn.elb.</code><code class="descname">LBCookieStickinessPolicy</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/elb.html#LBCookieStickinessPolicy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.elb.LBCookieStickinessPolicy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">respawn.util.SetNonEmptyPropertyMixin</span></code>, <code class="xref py py-class docutils literal"><span class="pre">cfn_pyplates.core.JSONableDict</span></code></p>
+<p>Generates a stickiness policy with sticky session lifetimes controlled by the lifetime of the browser
+(user-agent), or by a specified expiration period. This policy can be associated only with HTTP/HTTPS listeners.</p>
+<dl class="docutils">
+<dt>kwargs</dt>
+<dd><ul class="first last simple">
+<li>cookie_expiration_period: String</li>
+<li>policy_name: String</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="respawn.elb.Listener">
+<em class="property">class </em><code class="descclassname">respawn.elb.</code><code class="descname">Listener</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/elb.html#Listener"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.elb.Listener" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">respawn.util.SetNonEmptyPropertyMixin</span></code>, <code class="xref py py-class docutils literal"><span class="pre">cfn_pyplates.core.JSONableDict</span></code></p>
+<p>One or more listeners for this load balancer. Each listener must be registered for a specific port,
+and you cannot have more than one listener for a given port.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>instance_port</strong> &#8211; String</li>
+<li><strong>load_balancer_port</strong> &#8211; String</li>
+<li><strong>protocol</strong> &#8211; String</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>kwargs</dt>
+<dd><ul class="first last simple">
+<li>instance_protocol: String</li>
+<li>policy_names:  [ String, ... ]</li>
+<li>sSL_certificate_id: String</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="respawn.elb.LoadBalancerProperties">
+<em class="property">class </em><code class="descclassname">respawn.elb.</code><code class="descname">LoadBalancerProperties</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/elb.html#LoadBalancerProperties"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.elb.LoadBalancerProperties" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">respawn.util.SetNonEmptyPropertyMixin</span></code>, <code class="xref py py-class docutils literal"><span class="pre">cfn_pyplates.core.JSONableDict</span></code></p>
+<p>Available keyword arguments.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="respawn.elb.Policies">
+<em class="property">class </em><code class="descclassname">respawn.elb.</code><code class="descname">Policies</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/elb.html#Policies"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.elb.Policies" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">respawn.util.SetNonEmptyPropertyMixin</span></code>, <code class="xref py py-class docutils literal"><span class="pre">cfn_pyplates.core.JSONableDict</span></code></p>
+<p>A list of elastic load balancing policies to apply to this elastic load balancer.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>policy_name</strong> &#8211; String</li>
+<li><strong>policy_type</strong> &#8211; String</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>kwargs</dt>
+<dd><ul class="first last simple">
+<li>attributes : [ { &#8220;Name&#8221; : String, &#8220;Value&#8221; : String }, ... ]</li>
+<li>instance_ports : [ String, ... ]</li>
+<li>load_balancer_ports&#8221; : [ String, ... ]</li>
+<li>policy_name : String</li>
+<li>Policy_type : String</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="respawn.elb.Tags">
+<em class="property">class </em><code class="descclassname">respawn.elb.</code><code class="descname">Tags</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/elb.html#Tags"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.elb.Tags" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">respawn.util.SetNonEmptyPropertyMixin</span></code>, <code class="xref py py-class docutils literal"><span class="pre">cfn_pyplates.core.JSONableDict</span></code></p>
+<p>An arbitrary set of tags (key-value pairs) for this load balancer.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>key</strong> &#8211; String</li>
+<li><strong>value</strong> &#8211; String</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="respawn.elb.recurse_kwargs_list">
+<code class="descclassname">respawn.elb.</code><code class="descname">recurse_kwargs_list</code><span class="sig-paren">(</span><em>parameter_name</em>, <em>class_name</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/elb.html#recurse_kwargs_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.elb.recurse_kwargs_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Recurses through a list of kwargs.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="respawn.elb.transform_attribute">
+<code class="descclassname">respawn.elb.</code><code class="descname">transform_attribute</code><span class="sig-paren">(</span><em>attribute_list</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/elb.html#transform_attribute"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.elb.transform_attribute" title="Permalink to this definition">¶</a></dt>
+<dd><p>Transforms tag attributes.</p>
+<dl class="docutils">
+<dt>kwargs</dt>
+<dd><ul class="first last simple">
+<li>name: String</li>
+<li>value: String</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-respawn.autoscaling">
+<span id="auto-scaling"></span><h3><strong>Auto Scaling</strong><a class="headerlink" href="#module-respawn.autoscaling" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="respawn.autoscaling.AutoScalingGroup">
+<em class="property">class </em><code class="descclassname">respawn.autoscaling.</code><code class="descname">AutoScalingGroup</code><span class="sig-paren">(</span><em>name</em>, <em>max_size</em>, <em>min_size</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/autoscaling.html#AutoScalingGroup"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.autoscaling.AutoScalingGroup" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">cfn_pyplates.core.Resource</span></code></p>
+<p>Creates an AutoScaling Group</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> &#8211; String</li>
+<li><strong>max_size</strong> &#8211; String</li>
+<li><strong>min_size</strong> &#8211; String</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>kwargs</dt>
+<dd><ul class="first last simple">
+<li>availability_zones: [ String, ... ]</li>
+<li>cooldown: String</li>
+<li>desired_capacity: String</li>
+<li>health_check_grace_period: Integer</li>
+<li>health_check_type: String</li>
+<li>instance_id: String</li>
+<li>launch_configuration: String</li>
+<li>load_balancer_names: [ String, ... ]</li>
+<li>metrics_collection: [ MetricsCollection, ... ]</li>
+<li>notification_configs: [ NotificationConfigurations, ... ]</li>
+<li>placement_group: String</li>
+<li>tags: [ Tag, ...]</li>
+<li>termination_policies: [ String, ..., ]</li>
+<li>vpc_zone_identifier: [ String, ... ]</li>
+<li>attributes: { key: value, ... }</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="respawn.autoscaling.LaunchConfiguration">
+<em class="property">class </em><code class="descclassname">respawn.autoscaling.</code><code class="descname">LaunchConfiguration</code><span class="sig-paren">(</span><em>name</em>, <em>ami_id</em>, <em>instance_type</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/autoscaling.html#LaunchConfiguration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.autoscaling.LaunchConfiguration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">cfn_pyplates.core.Resource</span></code></p>
+<p>Creates a Launch Configuration</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> &#8211; String</li>
+<li><strong>ami_id</strong> &#8211; String</li>
+<li><strong>instance_type</strong> &#8211; String</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>kwargs</dt>
+<dd><ul class="first last simple">
+<li>public_ip: Boolean</li>
+<li>block_devices: [ BlockDeviceMapping, ... ]</li>
+<li>classic_link_vpc_id: String</li>
+<li>classic_link_vpc_security_groups: [ String, ... ],</li>
+<li>ebs_optimized: Boolean</li>
+<li>iam_role: String</li>
+<li>instance_id: String</li>
+<li>monitoring: Boolean</li>
+<li>kernel_id: String</li>
+<li>key_pair: String</li>
+<li>placement_tenancy: String</li>
+<li>ramdisk_id: String</li>
+<li>security_groups: [ SecurityGroup, ... ]</li>
+<li>spot_price: String</li>
+<li>user_data_script: String</li>
+<li>attributes: { key: value, ... }</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="respawn.autoscaling.LifecycleHook">
+<em class="property">class </em><code class="descclassname">respawn.autoscaling.</code><code class="descname">LifecycleHook</code><span class="sig-paren">(</span><em>name</em>, <em>asg_name</em>, <em>lifecycle_transition</em>, <em>notification_target_arn</em>, <em>role_arn</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/autoscaling.html#LifecycleHook"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.autoscaling.LifecycleHook" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">cfn_pyplates.core.Resource</span></code></p>
+<p>Creates a Lifecycle Hook</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>asg_name</strong> &#8211; String</li>
+<li><strong>lifecycle_transition</strong> &#8211; String</li>
+<li><strong>notification_target_arn</strong> &#8211; String</li>
+<li><strong>role_arn</strong> &#8211; String</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>kwargs</dt>
+<dd><ul class="first last simple">
+<li>default_result: String</li>
+<li>heartbeat_timeout: Integer</li>
+<li>notification_metadata: String</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="respawn.autoscaling.MetricsCollection">
+<em class="property">class </em><code class="descclassname">respawn.autoscaling.</code><code class="descname">MetricsCollection</code><span class="sig-paren">(</span><em>granularity</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/autoscaling.html#MetricsCollection"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.autoscaling.MetricsCollection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">cfn_pyplates.core.JSONableDict</span></code></p>
+<p>Creates a Metrics Collection</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>granularity</strong> &#8211; String</li>
+<li><strong>kwargs</strong> &#8211; metrics - [ String, ... ]</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="respawn.autoscaling.NotificationConfigurations">
+<em class="property">class </em><code class="descclassname">respawn.autoscaling.</code><code class="descname">NotificationConfigurations</code><span class="sig-paren">(</span><em>notification_type</em>, <em>topic_arn</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/autoscaling.html#NotificationConfigurations"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.autoscaling.NotificationConfigurations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">cfn_pyplates.core.JSONableDict</span></code></p>
+<p>Creates a Notification Configuration</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>notification_type</strong> &#8211; [ String, ... ]</li>
+<li><strong>topic_arn</strong> &#8211; String</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="class">
+<dt id="respawn.autoscaling.ScalingPolicy">
+<em class="property">class </em><code class="descclassname">respawn.autoscaling.</code><code class="descname">ScalingPolicy</code><span class="sig-paren">(</span><em>name</em>, <em>adjustment_type</em>, <em>asg_name</em>, <em>scaling_adjustment</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/autoscaling.html#ScalingPolicy"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.autoscaling.ScalingPolicy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">cfn_pyplates.core.Resource</span></code></p>
+<p>Creates a Scaling Policy</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>adjustment_type</strong> &#8211; String</li>
+<li><strong>asg_name</strong> &#8211; String</li>
+<li><strong>scaling_adjustment</strong> &#8211; String</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>kwargs</dt>
+<dd><ul class="first last simple">
+<li>cooldown: String</li>
+<li>in_adjustment_step: String</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="respawn.autoscaling.ScheduledAction">
+<em class="property">class </em><code class="descclassname">respawn.autoscaling.</code><code class="descname">ScheduledAction</code><span class="sig-paren">(</span><em>name</em>, <em>asg_name</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/autoscaling.html#ScheduledAction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.autoscaling.ScheduledAction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">cfn_pyplates.core.Resource</span></code></p>
+<p>Creates a Scheduled Action</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>asg_name</strong> &#8211; String</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>kwargs</dt>
+<dd><ul class="first last simple">
+<li>desired_capacity: Integer</li>
+<li>end_time: Time stamp (e.g. 2010-06-01T00:00:00Z)</li>
+<li>max_size: Integer</li>
+<li>min_size: Integer</li>
+<li>recurrence: String (e.g. cron)</li>
+<li>start_time: Time stamp (e.g. 2010-06-01T00:00:00Z)</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="respawn.autoscaling.Tag">
+<em class="property">class </em><code class="descclassname">respawn.autoscaling.</code><code class="descname">Tag</code><span class="sig-paren">(</span><em>key</em>, <em>value</em>, <em>propagate_at_launch</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/autoscaling.html#Tag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.autoscaling.Tag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">cfn_pyplates.core.JSONableDict</span></code></p>
+<p>Create ASG Tag</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>key</strong> &#8211; String</li>
+<li><strong>value</strong> &#8211; String</li>
+<li><strong>propagate_at_launch</strong> &#8211; Boolean</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-respawn.cloudformation">
+<span id="cloudformation"></span><h3><strong>CloudFormation</strong><a class="headerlink" href="#module-respawn.cloudformation" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="respawn.cloudformation.Template">
+<em class="property">class </em><code class="descclassname">respawn.cloudformation.</code><code class="descname">Template</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/cloudformation.html#Template"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.cloudformation.Template" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">cfn_pyplates.core.CloudFormationTemplate</span></code></p>
+<dl class="method">
+<dt id="respawn.cloudformation.Template.add_autoscaling_group">
+<code class="descname">add_autoscaling_group</code><span class="sig-paren">(</span><em>name</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/cloudformation.html#Template.add_autoscaling_group"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.cloudformation.Template.add_autoscaling_group" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="respawn.cloudformation.Template.add_cloud_watch_alarm">
+<code class="descname">add_cloud_watch_alarm</code><span class="sig-paren">(</span><em>name</em>, <em>evaluation_periods</em>, <em>comparison_operator</em>, <em>period</em>, <em>metric_name</em>, <em>statistic</em>, <em>threshold</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/cloudformation.html#Template.add_cloud_watch_alarm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.cloudformation.Template.add_cloud_watch_alarm" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="respawn.cloudformation.Template.add_instance">
+<code class="descname">add_instance</code><span class="sig-paren">(</span><em>name</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/cloudformation.html#Template.add_instance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.cloudformation.Template.add_instance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="respawn.cloudformation.Template.add_launch_config">
+<code class="descname">add_launch_config</code><span class="sig-paren">(</span><em>name</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/cloudformation.html#Template.add_launch_config"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.cloudformation.Template.add_launch_config" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="respawn.cloudformation.Template.add_lifecycle_hook">
+<code class="descname">add_lifecycle_hook</code><span class="sig-paren">(</span><em>name</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/cloudformation.html#Template.add_lifecycle_hook"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.cloudformation.Template.add_lifecycle_hook" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="respawn.cloudformation.Template.add_load_balancer">
+<code class="descname">add_load_balancer</code><span class="sig-paren">(</span><em>name</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/cloudformation.html#Template.add_load_balancer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.cloudformation.Template.add_load_balancer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="respawn.cloudformation.Template.add_network_interface">
+<code class="descname">add_network_interface</code><span class="sig-paren">(</span><em>name</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/cloudformation.html#Template.add_network_interface"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.cloudformation.Template.add_network_interface" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="respawn.cloudformation.Template.add_network_interface_attachment">
+<code class="descname">add_network_interface_attachment</code><span class="sig-paren">(</span><em>name</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/cloudformation.html#Template.add_network_interface_attachment"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.cloudformation.Template.add_network_interface_attachment" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="respawn.cloudformation.Template.add_parameter">
+<code class="descname">add_parameter</code><span class="sig-paren">(</span><em>name</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/cloudformation.html#Template.add_parameter"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.cloudformation.Template.add_parameter" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="respawn.cloudformation.Template.add_rds_instance">
+<code class="descname">add_rds_instance</code><span class="sig-paren">(</span><em>name</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/cloudformation.html#Template.add_rds_instance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.cloudformation.Template.add_rds_instance" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="respawn.cloudformation.Template.add_scheduled_action">
+<code class="descname">add_scheduled_action</code><span class="sig-paren">(</span><em>name</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/cloudformation.html#Template.add_scheduled_action"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.cloudformation.Template.add_scheduled_action" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="respawn.cloudformation.Template.add_sns_topic">
+<code class="descname">add_sns_topic</code><span class="sig-paren">(</span><em>name</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/cloudformation.html#Template.add_sns_topic"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.cloudformation.Template.add_sns_topic" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="respawn.cloudformation.Template.add_volume">
+<code class="descname">add_volume</code><span class="sig-paren">(</span><em>name</em>, <em>availability_zone</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/cloudformation.html#Template.add_volume"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.cloudformation.Template.add_volume" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="respawn.cloudformation.Template.create_availability_zone_param">
+<code class="descname">create_availability_zone_param</code><span class="sig-paren">(</span><em>name</em>, <em>availability_zone</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/cloudformation.html#Template.create_availability_zone_param"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.cloudformation.Template.create_availability_zone_param" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="respawn.cloudformation.Template.create_iam_role_param">
+<code class="descname">create_iam_role_param</code><span class="sig-paren">(</span><em>name</em>, <em>iam_role</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/cloudformation.html#Template.create_iam_role_param"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.cloudformation.Template.create_iam_role_param" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="respawn.cloudformation.Template.create_key_pair_param">
+<code class="descname">create_key_pair_param</code><span class="sig-paren">(</span><em>name</em>, <em>key_pair</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/cloudformation.html#Template.create_key_pair_param"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.cloudformation.Template.create_key_pair_param" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="respawn.cloudformation.WaitCondition">
+<em class="property">class </em><code class="descclassname">respawn.cloudformation.</code><code class="descname">WaitCondition</code><span class="sig-paren">(</span><em>wait_condition_name</em>, <em>wait_handle_name</em>, <em>timeout</em>, <em>depends_on</em>, <em>count=1</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/cloudformation.html#WaitCondition"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.cloudformation.WaitCondition" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">cfn_pyplates.core.Resource</span></code></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="respawn.cloudformation.WaitConditionHandle">
+<em class="property">class </em><code class="descclassname">respawn.cloudformation.</code><code class="descname">WaitConditionHandle</code><span class="sig-paren">(</span><em>wait_handle_name</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/cloudformation.html#WaitConditionHandle"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.cloudformation.WaitConditionHandle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">cfn_pyplates.core.Resource</span></code></p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-respawn.cloudwatch">
+<span id="cloudwatch"></span><h3><strong>CloudWatch</strong><a class="headerlink" href="#module-respawn.cloudwatch" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="respawn.cloudwatch.CloudWatchAlarm">
+<em class="property">class </em><code class="descclassname">respawn.cloudwatch.</code><code class="descname">CloudWatchAlarm</code><span class="sig-paren">(</span><em>name</em>, <em>evaluation_periods</em>, <em>comparison_operator</em>, <em>period</em>, <em>metric_name</em>, <em>statistic</em>, <em>threshold</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/cloudwatch.html#CloudWatchAlarm"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.cloudwatch.CloudWatchAlarm" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">cfn_pyplates.core.Resource</span></code></p>
+<p>Creates cloudwatch alarm.</p>
+<p>:param evaluation_period
+:param namespace
+:param period
+:param statistics
+:param threshold
+:param comparison_operator</p>
+<dl class="docutils">
+<dt>kwargs</dt>
+<dd><ul class="first last simple">
+<li>actions_enabled: Boolean</li>
+<li>alarm_actions: [ String, ... ]</li>
+<li>alarm_description: String</li>
+<li>alarm_name: String</li>
+<li>dimensions: [ Metric dimension, ... ]</li>
+<li>insufficient_data_actions: [ String, ... ],</li>
+<li>metric_name: String,</li>
+<li>ok_actions: [ String, ... ],</li>
+<li>unit: String</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="respawn.cloudwatch.CloudWatchProperties">
+<em class="property">class </em><code class="descclassname">respawn.cloudwatch.</code><code class="descname">CloudWatchProperties</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/cloudwatch.html#CloudWatchProperties"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.cloudwatch.CloudWatchProperties" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">respawn.util.SetNonEmptyPropertyMixin</span></code>, <code class="xref py py-class docutils literal"><span class="pre">cfn_pyplates.core.JSONableDict</span></code></p>
+<p>Available keyword arguments</p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-respawn.rds">
+<span id="rds"></span><h3><strong>RDS</strong><a class="headerlink" href="#module-respawn.rds" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="respawn.rds.DBInstance">
+<em class="property">class </em><code class="descclassname">respawn.rds.</code><code class="descname">DBInstance</code><span class="sig-paren">(</span><em>name</em>, <em>allocated_storage</em>, <em>instance_class</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/rds.html#DBInstance"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.rds.DBInstance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">cfn_pyplates.core.Resource</span></code></p>
+<p>Creates a Database Instance</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>name</strong> &#8211; String</li>
+<li><strong>allocated_storage</strong> &#8211; String</li>
+<li><strong>instance_class</strong> &#8211; String</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>kwargs</dt>
+<dd><ul class="first last simple">
+<li>allow_major_version_upgrade: Boolean</li>
+<li>auto_minor_version_upgrade: Boolean</li>
+<li>availability_zone: String</li>
+<li>backup_retention_period: String</li>
+<li>character_set_name: String</li>
+<li>instance_identifier: String</li>
+<li>db_name: String</li>
+<li>db_parameter_group_name: String</li>
+<li>db_security_groups: [ String, ... ]</li>
+<li>snapshot_identifier: String</li>
+<li>subnet_group_name: String</li>
+<li>engine: String</li>
+<li>engine_version: String</li>
+<li>iops: Number</li>
+<li>kms_key_id: String</li>
+<li>license_model: String</li>
+<li>master_username: String</li>
+<li>master_password: String</li>
+<li>multi_az: Boolean</li>
+<li>option_group_name: String</li>
+<li>port: String</li>
+<li>preferred_backup_window: String</li>
+<li>preferred_maintenance_window: String</li>
+<li>publicly_accessible: Boolean</li>
+<li>source_db_instance_identifier: String</li>
+<li>storage_encrypted: Boolean</li>
+<li>storage_type: String</li>
+<li>tags: [ Tag, ... ]</li>
+<li>vpc_security_groups: [ String, ... ]</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="respawn.rds.Tag">
+<em class="property">class </em><code class="descclassname">respawn.rds.</code><code class="descname">Tag</code><span class="sig-paren">(</span><em>key</em>, <em>value</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/rds.html#Tag"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.rds.Tag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">cfn_pyplates.core.JSONableDict</span></code></p>
+<p>Creates RDS Tag</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>key</strong> &#8211; String</li>
+<li><strong>value</strong> &#8211; String</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="module-respawn.sns">
+<span id="sns-topic"></span><h3><strong>Sns Topic</strong><a class="headerlink" href="#module-respawn.sns" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="respawn.sns.SnsTopic">
+<em class="property">class </em><code class="descclassname">respawn.sns.</code><code class="descname">SnsTopic</code><span class="sig-paren">(</span><em>name</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/sns.html#SnsTopic"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.sns.SnsTopic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">cfn_pyplates.core.Resource</span></code></p>
+<p>Creates an Amazon SNS topic.</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="respawn.sns.SnsTopicProperties">
+<em class="property">class </em><code class="descclassname">respawn.sns.</code><code class="descname">SnsTopicProperties</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/sns.html#SnsTopicProperties"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.sns.SnsTopicProperties" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">respawn.util.SetNonEmptyPropertyMixin</span></code>, <code class="xref py py-class docutils literal"><span class="pre">cfn_pyplates.core.JSONableDict</span></code></p>
+<p>keyword arguments available.</p>
+<dl class="docutils">
+<dt>kwargs</dt>
+<dd><ul class="first last simple">
+<li>display_name : String,</li>
+<li>subscription : [ SNS Subscription, ... ]</li>
+<li>topic_name : String</li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="class">
+<dt id="respawn.sns.Subscription">
+<em class="property">class </em><code class="descclassname">respawn.sns.</code><code class="descname">Subscription</code><span class="sig-paren">(</span><em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/sns.html#Subscription"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.sns.Subscription" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">respawn.util.SetNonEmptyPropertyMixin</span></code>, <code class="xref py py-class docutils literal"><span class="pre">cfn_pyplates.core.JSONableDict</span></code></p>
+<p>Subscription is an embedded property of the AWS::SNS::Topic resource that describes the
+subscription endpoints for a topic.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>endpoint</strong> &#8211; String,</li>
+<li><strong>protocol</strong> &#8211; String</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="function">
+<dt id="respawn.sns.recurse_kwargs_list">
+<code class="descclassname">respawn.sns.</code><code class="descname">recurse_kwargs_list</code><span class="sig-paren">(</span><em>parameter_name</em>, <em>class_name</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/sns.html#recurse_kwargs_list"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.sns.recurse_kwargs_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Recurses through a list of kwargs.</p>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="module-respawn.parameters">
+<span id="parameter-index"></span><h2><strong>Parameter Index</strong><a class="headerlink" href="#module-respawn.parameters" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="respawn.parameters.CustomParameters">
+<em class="property">class </em><code class="descclassname">respawn.parameters.</code><code class="descname">CustomParameters</code><span class="sig-paren">(</span><em>name</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/respawn/parameters.html#CustomParameters"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#respawn.parameters.CustomParameters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">cfn_pyplates.core.Parameter</span></code></p>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="sample_yaml.html" class="btn btn-neutral float-right" title="Sample YAML" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="usage.html" class="btn btn-neutral" title="Keywords - YAML/JSON" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Victor Mena, Kuber Kaul, Vishal Shah.
+      Last updated on Dec 11, 2015.
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

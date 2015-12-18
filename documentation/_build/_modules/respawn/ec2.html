@@ -1,0 +1,798 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>respawn.ec2 &mdash; respawn</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="respawn" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../../index.html" class="icon icon-home"> respawn
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started.html"><strong>Getting Started</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started.html#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../getting_started.html#windows-unix-mac-os-x">Windows/Unix/Mac OS X</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started.html#usage-template-generation">Usage - Template Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage.html"><strong>Keywords - YAML/JSON</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../usage.html#resource-index"><strong>Resource Index</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#auto-scaling-group"><strong>Auto Scaling Group</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#cloudwatch"><strong>CloudWatch</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#instances"><strong>Instances</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#launch-configuration"><strong>Launch Configuration</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#lifecycle-hooks"><strong>Lifecycle Hooks</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#load-balancer"><strong>Load Balancer</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#network-interface"><strong>Network Interface</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#network-interface-attachment"><strong>Network Interface Attachment</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#rds"><strong>RDS</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#scheduled-action"><strong>Scheduled Action</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#sns-topic"><strong>Sns Topic</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#volume"><strong>Volume</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#other-required-keywords"><strong>Other Required Keywords</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../usage.html#parameter-index"><strong>Parameter Index</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#parameters"><strong>Parameters</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../usage.html#userdata-index"><strong>UserData Index</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#userdata"><strong>UserData</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../usage.html#references-index"><strong>References Index</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#reference"><strong>Reference</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#get-attribute"><strong>Get_Attribute</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../source_code.html"><strong>Source Code Documentation</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../source_code.html#resource-index"><strong>Resource Index</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../source_code.html#module-respawn.ec2"><strong>EC2</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source_code.html#module-respawn.elb"><strong>Load Balancer</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source_code.html#module-respawn.autoscaling"><strong>Auto Scaling</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source_code.html#module-respawn.cloudformation"><strong>CloudFormation</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source_code.html#module-respawn.cloudwatch"><strong>CloudWatch</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source_code.html#module-respawn.rds"><strong>RDS</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source_code.html#module-respawn.sns"><strong>Sns Topic</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../source_code.html#module-respawn.parameters"><strong>Parameter Index</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sample_yaml.html"><strong>Sample YAML</strong></a></li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">respawn</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      
+    <li>respawn.ec2</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <h1>Source code for respawn.ec2</h1><div class="highlight"><pre>
+<span class="kn">from</span> <span class="nn">cfn_pyplates</span> <span class="kn">import</span> <span class="n">core</span><span class="p">,</span> <span class="n">functions</span>
+<span class="kn">from</span> <span class="nn">respawn</span> <span class="kn">import</span> <span class="n">util</span>
+<span class="kn">from</span> <span class="nn">errors</span> <span class="kn">import</span> <span class="n">RespawnResourceError</span>
+
+
+<div class="viewcode-block" id="BlockDeviceMapping"><a class="viewcode-back" href="../../source_code.html#respawn.ec2.BlockDeviceMapping">[docs]</a><span class="k">class</span> <span class="nc">BlockDeviceMapping</span><span class="p">(</span><span class="n">core</span><span class="o">.</span><span class="n">JSONableDict</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates a Block Device Mapping</span>
+
+<span class="sd">        :param device_name: String</span>
+
+<span class="sd">        kwargs</span>
+<span class="sd">            - ebs: PrivateIpSpecification</span>
+<span class="sd">            - no_device: Boolean</span>
+<span class="sd">            - virtual_name: String</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">device_name</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">):</span>
+        <span class="k">if</span> <span class="s">&#39;ebs&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="ow">and</span> <span class="s">&#39;virtual_name&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="ow">and</span> <span class="s">&#39;no_device&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">RespawnResourceError</span><span class="p">(</span><span class="s">&quot;Ebs (ebs) or Virtual Name (virtual_name) required.&quot;</span><span class="p">,</span>
+                                      <span class="s">&quot;BlockDeviceMapping&quot;</span><span class="p">,</span> <span class="n">device_name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&#39;ebs&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="ow">and</span> <span class="s">&#39;virtual_name&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">RespawnResourceError</span><span class="p">(</span><span class="s">&quot;Only one of Ebs (ebs) and Virtual Name (virtual_name) can be specified.&quot;</span><span class="p">,</span>
+                                       <span class="s">&quot;BlockDeviceMapping&quot;</span><span class="p">,</span> <span class="n">device_name</span><span class="p">)</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">BlockDeviceMapping</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="p">[</span><span class="s">&#39;DeviceName&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">device_name</span>
+        <span class="k">if</span> <span class="s">&#39;ebs&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">[</span><span class="s">&#39;Ebs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;ebs&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&#39;no_device&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;no_device&#39;</span><span class="p">):</span>
+                <span class="bp">self</span><span class="p">[</span><span class="s">&#39;NoDevice&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="s">&#39;virtual_name&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">[</span><span class="s">&#39;VirtualName&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;virtual_name&#39;</span><span class="p">)</span>
+
+</div>
+<div class="viewcode-block" id="BlockDevice"><a class="viewcode-back" href="../../source_code.html#respawn.ec2.BlockDevice">[docs]</a><span class="k">class</span> <span class="nc">BlockDevice</span><span class="p">(</span><span class="n">core</span><span class="o">.</span><span class="n">JSONableDict</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates a Block Device</span>
+
+<span class="sd">        kwargs</span>
+<span class="sd">            - delete_on_termination: Boolean</span>
+<span class="sd">            - iops: Integer</span>
+<span class="sd">            - snapshot_id: String</span>
+<span class="sd">            - size: Integer</span>
+<span class="sd">            - type: String</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">):</span>
+        <span class="k">if</span> <span class="s">&quot;snapshot_id&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="ow">and</span> <span class="s">&quot;size&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">RespawnResourceError</span><span class="p">(</span><span class="s">&quot;Snapshot Id (snapshot_id) or Size (size) required.&quot;</span><span class="p">,</span>
+                                       <span class="s">&quot;BlockDevice&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;volume_type&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;volume_type&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s">&quot;io1&quot;</span> <span class="ow">and</span> <span class="s">&quot;iops&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="n">RespawnResourceError</span><span class="p">(</span><span class="s">&quot;Iops (iops) required if Volume Type is io1.&quot;</span><span class="p">,</span>
+                                           <span class="s">&quot;BlockDevice&quot;</span><span class="p">)</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">BlockDevice</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="s">&#39;delete_on_termination&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">[</span><span class="s">&#39;DeleteOnTermination&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;delete_on_termination&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&#39;iops&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">[</span><span class="s">&#39;Iops&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;iops&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&#39;snapshot_id&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">[</span><span class="s">&#39;SnapshotId&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;snapshot_id&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&#39;size&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">[</span><span class="s">&#39;VolumeSize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;size&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&#39;type&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">[</span><span class="s">&#39;VolumeType&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;type&#39;</span><span class="p">)</span>
+
+</div>
+<div class="viewcode-block" id="NetworkInterface"><a class="viewcode-back" href="../../source_code.html#respawn.ec2.NetworkInterface">[docs]</a><span class="k">class</span> <span class="nc">NetworkInterface</span><span class="p">(</span><span class="n">core</span><span class="o">.</span><span class="n">JSONableDict</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates a Network Interface</span>
+
+<span class="sd">        :param device_index: String</span>
+
+<span class="sd">        kwargs</span>
+<span class="sd">            - public_ip: Boolean</span>
+<span class="sd">            - delete_on_termination: Boolean</span>
+<span class="sd">            - description: String</span>
+<span class="sd">            - device_index:  String</span>
+<span class="sd">            - group_set:  [ String, ... ]</span>
+<span class="sd">            - interface_id:  String</span>
+<span class="sd">            - private_ip:  String</span>
+<span class="sd">            - private_ips:  [ PrivateIpSpecification, ... ]</span>
+<span class="sd">            - secondary_private_ip_count:  Integer</span>
+<span class="sd">            - subnet_id:  String</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">device_index</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">):</span>
+        <span class="k">if</span> <span class="s">&#39;subnet_id&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="ow">and</span> <span class="s">&#39;interface_id&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">RespawnResourceError</span><span class="p">(</span><span class="s">&#39;Subnet Id (subnet_id) required if Interface Id (interface_id) not specified&#39;</span><span class="p">,</span>
+                                       <span class="s">&#39;NetworkInterface&#39;</span><span class="p">)</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">NetworkInterface</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="p">[</span><span class="s">&#39;DeviceIndex&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">device_index</span>
+        <span class="k">if</span> <span class="s">&#39;public_ip&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">[</span><span class="s">&#39;AssociatePublicIpAddress&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;public_ip&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&#39;delete_on_termination&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">[</span><span class="s">&#39;DeleteOnTermination&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;delete_on_termination&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&#39;description&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">[</span><span class="s">&#39;Description&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;description&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&#39;group_set&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">[</span><span class="s">&#39;GroupSet&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;group_set&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&#39;interface_id&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">[</span><span class="s">&#39;&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;interface_id&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&#39;private_ip&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">[</span><span class="s">&#39;PrivateIpAddress&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;private_ip&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&#39;private_ips&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">[</span><span class="s">&#39;PrivateIpAddresses&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;private_ips&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&#39;secondary_private_ip_count&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">[</span><span class="s">&#39;SecondaryPrivateIpAddressCount&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;secondary_private_ip_count&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&#39;subnet_id&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">[</span><span class="s">&#39;SubnetId&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;subnet_id&#39;</span><span class="p">)</span>
+
+</div>
+<div class="viewcode-block" id="PrivateIpSpecification"><a class="viewcode-back" href="../../source_code.html#respawn.ec2.PrivateIpSpecification">[docs]</a><span class="k">class</span> <span class="nc">PrivateIpSpecification</span><span class="p">(</span><span class="n">core</span><span class="o">.</span><span class="n">JSONableDict</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates a Private IP Specification</span>
+
+<span class="sd">        :param private_ip: String</span>
+<span class="sd">        :param primary: Boolean</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">private_ip</span><span class="p">,</span>
+            <span class="n">primary</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">PrivateIpSpecification</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="p">[</span><span class="s">&#39;PrivateIpAddress&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">private_ip</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s">&#39;Primary&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">primary</span>
+
+</div>
+<div class="viewcode-block" id="MountPoint"><a class="viewcode-back" href="../../source_code.html#respawn.ec2.MountPoint">[docs]</a><span class="k">class</span> <span class="nc">MountPoint</span><span class="p">(</span><span class="n">core</span><span class="o">.</span><span class="n">JSONableDict</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create Mount Point</span>
+
+<span class="sd">        :param device: String</span>
+<span class="sd">        :param volume_id: String</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">device</span><span class="p">,</span>
+            <span class="n">volume_id</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">MountPoint</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="p">[</span><span class="s">&#39;Device&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">device</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s">&#39;VolumeId&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">volume_id</span>
+
+</div>
+<span class="k">class</span> <span class="nc">SecurityGroupIngress</span><span class="p">(</span><span class="n">core</span><span class="o">.</span><span class="n">JSONableDict</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">from_port</span><span class="p">,</span>
+            <span class="n">ip_protocol</span><span class="p">,</span>
+            <span class="n">to_port</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create Security Group Ingress</span>
+
+<span class="sd">        :param from_port: String</span>
+<span class="sd">        :param ip_protocol: String</span>
+<span class="sd">        :param to_port: String</span>
+
+<span class="sd">        kwargs</span>
+<span class="sd">            - cidr_ip: String</span>
+<span class="sd">            - source_security_group_id: String</span>
+<span class="sd">            - source_security_group_name: String</span>
+<span class="sd">            - source_security_group_owner_id: String</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="s">&quot;cider_ip&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="ow">and</span> <span class="p">(</span><span class="s">&quot;source_security_group_name&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="ow">or</span> <span class="s">&quot;source_security_group_id&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">):</span>
+            <span class="k">raise</span> <span class="n">RespawnResourceError</span><span class="p">(</span><span class="s">&quot;Source Security Group Name (source_security_group_name) or Source Security &quot;</span>
+                                       <span class="s">&quot;Group Id (source_security_group_id) cannot be specified with &quot;</span>
+                                       <span class="s">&quot;Cider IP (cider_ip)&quot;</span><span class="p">,</span>
+                                       <span class="s">&quot;SecurityGroupIngress&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="s">&quot;source_security_group_name&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="ow">and</span> <span class="s">&quot;source_security_group_id&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">RespawnResourceError</span><span class="p">(</span><span class="s">&quot;Source Security Group Name (source_security_group_name) or Source Security &quot;</span>
+                                       <span class="s">&quot;Group Id (source_security_group_id) cannot both be specified.&quot;</span><span class="p">,</span>
+                                       <span class="s">&quot;SecurityGroupIngress&quot;</span><span class="p">)</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">SecurityGroupIngress</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="p">[</span><span class="s">&#39;FromPort&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">from_port</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s">&#39;IpProtocol&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ip_protocol</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s">&#39;ToPort&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">to_port</span>
+
+        <span class="k">if</span> <span class="s">&quot;cider_ip&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">[</span><span class="s">&#39;CidrIp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;cider_ip&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;source_security_group_name&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">[</span><span class="s">&#39;SourceSecurityGroupName&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;source_security_group_name&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;source_security_group_id&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">[</span><span class="s">&#39;SourceSecurityGroupId&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;source_security_group_id&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;source_security_group_owner_id&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">[</span><span class="s">&#39;SourceSecurityGroupOwnerId&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;source_security_group_owner_id&quot;</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">SecurityGroupEgress</span><span class="p">(</span><span class="n">core</span><span class="o">.</span><span class="n">JSONableDict</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">from_port</span><span class="p">,</span>
+            <span class="n">ip_protocol</span><span class="p">,</span>
+            <span class="n">to_port</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create Security Group Egress</span>
+
+<span class="sd">        :param from_port: String</span>
+<span class="sd">        :param ip_protocol: String</span>
+<span class="sd">        :param to_port: String</span>
+
+<span class="sd">        kwargs</span>
+<span class="sd">            - cidr_ip: String</span>
+<span class="sd">            - destination_security_group_id:  String</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="s">&quot;cider_ip&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="ow">and</span> <span class="s">&quot;destination_security_group_id&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">RespawnResourceError</span><span class="p">(</span><span class="s">&quot;Destination Security Group Id (destination_security_group_id) cannot be &quot;</span>
+                                       <span class="s">&quot;specified with Cider IP (cider_ip)&quot;</span><span class="p">,</span>
+                                       <span class="s">&quot;SecurityGroupEgress&quot;</span><span class="p">)</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">SecurityGroupEgress</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+
+        <span class="bp">self</span><span class="p">[</span><span class="s">&#39;FromPort&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">from_port</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s">&#39;IpProtocol&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ip_protocol</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s">&#39;ToPort&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">to_port</span>
+
+        <span class="k">if</span> <span class="s">&quot;cider_ip&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">[</span><span class="s">&#39;CidrIp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;cider_ip&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;destination_security_group_id&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">[</span><span class="s">&#39;DestinationSecurityGroupId&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;destination_security_group_id&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="Tag"><a class="viewcode-back" href="../../source_code.html#respawn.ec2.Tag">[docs]</a><span class="k">class</span> <span class="nc">Tag</span><span class="p">(</span><span class="n">core</span><span class="o">.</span><span class="n">JSONableDict</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create EC2 Tag</span>
+
+<span class="sd">        :param key: String</span>
+<span class="sd">        :param value: String</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">key</span><span class="p">,</span>
+            <span class="n">value</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Tag</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s">&#39;Key&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">key</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s">&#39;Value&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+
+</div>
+<div class="viewcode-block" id="Volumes"><a class="viewcode-back" href="../../source_code.html#respawn.ec2.Volumes">[docs]</a><span class="k">class</span> <span class="nc">Volumes</span><span class="p">(</span><span class="n">util</span><span class="o">.</span><span class="n">SetNonEmptyPropertyMixin</span><span class="p">,</span> <span class="n">core</span><span class="o">.</span><span class="n">JSONableDict</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Volumes is an embedded property of the AWS::EC2::Instance resource that describes the</span>
+<span class="sd">    subscription endpoints for a topic.</span>
+
+<span class="sd">    :param endpoint: String,</span>
+<span class="sd">    :param protocol: String</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Volumes</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="s">&#39;Volumes&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_property</span><span class="p">(</span><span class="s">&#39;Device&#39;</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;device&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_property</span><span class="p">(</span><span class="s">&#39;VolumeId&#39;</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;volume_id&#39;</span><span class="p">))</span>
+
+</div>
+<div class="viewcode-block" id="Instance"><a class="viewcode-back" href="../../source_code.html#respawn.ec2.Instance">[docs]</a><span class="k">class</span> <span class="nc">Instance</span><span class="p">(</span><span class="n">core</span><span class="o">.</span><span class="n">Resource</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates an EC2 Instance</span>
+
+<span class="sd">        :param name: String</span>
+<span class="sd">        :param ami_id: String</span>
+
+<span class="sd">        kwargs</span>
+<span class="sd">            - availability_zone: String</span>
+<span class="sd">            - block_devices: [ BlockDeviceMapping , ... ]</span>
+<span class="sd">            - disable_api_termination: Boolean</span>
+<span class="sd">            - ebs_optimized: Boolean</span>
+<span class="sd">            - iam_role: String</span>
+<span class="sd">            - instance_shutdown_behavior: String</span>
+<span class="sd">            - instance_type: String</span>
+<span class="sd">            - kernel_id: String</span>
+<span class="sd">            - key_pair: String</span>
+<span class="sd">            - monitoring: Boolean</span>
+<span class="sd">            - network_interfaces: [ NetworkInterface, ... ]</span>
+<span class="sd">            - placement_group: String</span>
+<span class="sd">            - private_ip: String</span>
+<span class="sd">            - ramdisk_id: String</span>
+<span class="sd">            - security_group_ids: [ String, ... ]</span>
+<span class="sd">            - security_groups: [ String, ... ]</span>
+<span class="sd">            - source_dest_check: Boolean</span>
+<span class="sd">            - subnet: String</span>
+<span class="sd">            - tags: [ Tag, ... ]</span>
+<span class="sd">            - tenancy: String</span>
+<span class="sd">            - user_data_script: String</span>
+<span class="sd">            - volumes: [ MountPoint, ...]</span>
+<span class="sd">            - attributes: { key: value, ... }</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">name</span><span class="p">,</span>
+            <span class="n">ami_id</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">):</span>
+        <span class="n">properties</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s">&#39;ImageId&#39;</span><span class="p">:</span> <span class="n">ami_id</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="s">&#39;block_devices&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">devices</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;block_devices&#39;</span><span class="p">)</span>
+            <span class="n">block_devices</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">device</span><span class="p">,</span> <span class="n">args</span> <span class="ow">in</span> <span class="n">devices</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">if</span> <span class="s">&#39;ebs&#39;</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+                    <span class="n">args</span><span class="p">[</span><span class="s">&#39;ebs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">BlockDevice</span><span class="p">(</span><span class="o">**</span><span class="n">args</span><span class="p">[</span><span class="s">&#39;ebs&#39;</span><span class="p">])</span>
+                <span class="n">block_devices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">BlockDeviceMapping</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">))</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;BlockDeviceMappings&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">block_devices</span>
+
+        <span class="k">if</span> <span class="s">&#39;network_interfaces&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">interfaces</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;network_interfaces&#39;</span><span class="p">)</span>
+            <span class="n">network_interfaces_list</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">interface</span><span class="p">,</span> <span class="n">args</span> <span class="ow">in</span> <span class="n">interfaces</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">if</span> <span class="s">&#39;private_ips&#39;</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+                    <span class="n">private_ips</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="s">&#39;private_ips&#39;</span><span class="p">]</span>
+                    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">private_ips</span><span class="p">)):</span>
+                        <span class="n">private_ips</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">PrivateIpSpecification</span><span class="p">(</span><span class="o">**</span><span class="n">private_ips</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+                <span class="n">network_interfaces_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">NetworkInterface</span><span class="p">(</span><span class="n">description</span><span class="o">=</span><span class="n">interface</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">))</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;NetworkInterfaces&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">network_interfaces_list</span>
+
+        <span class="k">if</span> <span class="s">&#39;volumes&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;Volumes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">recurse_kwargs_list</span><span class="p">(</span><span class="s">&#39;volumes&#39;</span><span class="p">,</span> <span class="n">Volumes</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="s">&#39;tags&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;tags&#39;</span><span class="p">)</span>
+            <span class="n">tags</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">t</span><span class="p">:</span>
+                <span class="n">tags</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Tag</span><span class="p">(</span><span class="o">**</span><span class="n">tag</span><span class="p">))</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;Tags&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tags</span>
+
+        <span class="k">if</span> <span class="s">&quot;availability_zone&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;AvailabilityZone&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;availability_zone&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;disable_api_termination&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;DisableApiTermination&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;disable_api_termination&quot;</span><span class="p">)</span>  <span class="c"># default=False</span>
+        <span class="k">if</span> <span class="s">&quot;ebs_optimized&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;EbsOptimized&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;ebs_optimized&quot;</span><span class="p">)</span>  <span class="c"># default=False</span>
+        <span class="k">if</span> <span class="s">&quot;iam_role&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;IamInstanceProfile&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;iam_role&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;instance_shutdown_behavior&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;InstanceInitiatedShutdownBehavior&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;instance_shutdown_behavior&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;instance_type&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;InstanceType&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;instance_type&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;kernel_id&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;KernelId&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;kernel_id&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;key_pair&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;KeyName&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;key_pair&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;monitoring&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;Monitoring&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;monitoring&quot;</span><span class="p">)</span>  <span class="c"># default=False</span>
+        <span class="k">if</span> <span class="s">&quot;placement_group&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;PlacementGroupName&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;placement_group&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;private_ip&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;PrivateIpAddress&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;private_ip&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;ramdisk_id&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;RamdiskId&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;ramdisk_id&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;security_group_ids&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;SecurityGroupIds&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;security_group_ids&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;security_groups&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;SecurityGroups&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;security_groups&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;source_dest_check&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;SourceDestCheck&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;source_dest_check&quot;</span><span class="p">)</span>  <span class="c"># default=True</span>
+        <span class="k">if</span> <span class="s">&quot;subnet&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;SubnetId&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;subnet&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;tenancy&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;Tenancy&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;tenancy&quot;</span><span class="p">)</span>  <span class="c"># default=&quot;default&quot;</span>
+        <span class="k">if</span> <span class="s">&quot;user_data_script&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;UserData&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">functions</span><span class="o">.</span><span class="n">base64</span><span class="p">(</span><span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;user_data_script&quot;</span><span class="p">))</span>
+
+        <span class="n">attributes</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;attributes&quot;</span><span class="p">)</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">Instance</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s">&#39;AWS::EC2::Instance&#39;</span><span class="p">,</span> <span class="n">properties</span><span class="p">,</span> <span class="n">attributes</span><span class="p">)</span>
+
+</div>
+<span class="k">def</span> <span class="nf">recurse_kwargs_list</span><span class="p">(</span><span class="n">parameter_name</span><span class="p">,</span> <span class="n">class_name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">parameter_name</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+        <span class="n">parameter_list</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">parameter_name</span><span class="p">)</span>
+        <span class="n">param_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">parameter</span> <span class="ow">in</span> <span class="n">parameter_list</span><span class="p">:</span>
+            <span class="n">param_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">class_name</span><span class="p">(</span><span class="o">**</span><span class="n">parameter</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">param_list</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">pass</span>
+
+
+<div class="viewcode-block" id="Volume"><a class="viewcode-back" href="../../source_code.html#respawn.ec2.Volume">[docs]</a><span class="k">class</span> <span class="nc">Volume</span><span class="p">(</span><span class="n">core</span><span class="o">.</span><span class="n">Resource</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates an EC2 Volume</span>
+
+<span class="sd">        :param name: String</span>
+<span class="sd">        :param availability_zone: String</span>
+
+<span class="sd">        kwargs</span>
+<span class="sd">            - encrypted: Boolean</span>
+<span class="sd">            - iops: Integer</span>
+<span class="sd">            - kms_key_id: String</span>
+<span class="sd">            - size: String</span>
+<span class="sd">            - snapshot_id: String</span>
+<span class="sd">            - tags:  [ Tag, ...]</span>
+<span class="sd">            - volume_type:  String</span>
+<span class="sd">            - attributes: { key: value, ... }</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">name</span><span class="p">,</span>
+            <span class="n">availability_zone</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">):</span>
+        <span class="k">if</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;volume_type&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s">&quot;io1&quot;</span> <span class="ow">and</span> <span class="s">&quot;iops&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">RespawnResourceError</span><span class="p">(</span><span class="s">&quot;Iops not specified for VolumeType of io1.&quot;</span><span class="p">,</span>
+                                       <span class="s">&quot;Volume&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="s">&quot;snapshot_id&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="ow">and</span> <span class="s">&quot;size&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">RespawnResourceError</span><span class="p">(</span><span class="s">&quot;Size of Volume not specified.&quot;</span><span class="p">,</span>
+                                       <span class="s">&quot;Volume&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+        <span class="n">attributes</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;attributes&quot;</span><span class="p">,</span> <span class="nb">dict</span><span class="p">())</span>
+
+        <span class="n">properties</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s">&#39;AvailabilityZone&#39;</span><span class="p">:</span> <span class="n">availability_zone</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="s">&#39;tags&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;tags&#39;</span><span class="p">)</span>
+            <span class="n">tags</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">t</span><span class="p">:</span>
+                <span class="n">tags</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Tag</span><span class="p">(</span><span class="o">**</span><span class="n">tag</span><span class="p">))</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;Tags&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tags</span>
+
+        <span class="k">if</span> <span class="s">&quot;encrypted&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;Encrypted&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;encrypted&quot;</span><span class="p">)</span>  <span class="c"># default=False</span>
+        <span class="k">if</span> <span class="s">&quot;iops&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;Iops&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;iops&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;kms_key_id&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;KmsKeyId&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;kms_key_id&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;size&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;Size&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;size&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;snapshot_id&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;SnapshotId&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;snapshot_id&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;volume_type&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;VolumeType&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;volume_type&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;DeletionPolicy&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">attributes</span><span class="p">:</span>
+            <span class="n">attributes</span><span class="p">[</span><span class="s">&#39;DeletionPolicy&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;deletion_policy&quot;</span><span class="p">,</span> <span class="s">&quot;Delete&quot;</span><span class="p">)</span>  <span class="c"># Delete, Retain, Snapshot</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">Volume</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s">&#39;AWS::EC2::Volume&#39;</span><span class="p">,</span> <span class="n">properties</span><span class="p">,</span> <span class="n">attributes</span><span class="p">)</span>
+
+</div>
+<span class="k">def</span> <span class="nf">transform_tags</span><span class="p">(</span><span class="n">attribute_list</span><span class="p">):</span>
+    <span class="n">updated_attribute_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">attribute_parameters</span> <span class="ow">in</span> <span class="n">attribute_list</span><span class="p">:</span>
+        <span class="n">updated_attribute_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="p">{</span><span class="s">&#39;Value&#39;</span><span class="p">:</span> <span class="n">attribute_parameters</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;value&#39;</span><span class="p">),</span>
+             <span class="s">&#39;Key&#39;</span><span class="p">:</span> <span class="n">attribute_parameters</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;key&#39;</span><span class="p">)})</span>
+    <span class="k">return</span> <span class="n">updated_attribute_list</span>
+
+
+<span class="k">class</span> <span class="nc">NetworkInterfaces</span><span class="p">(</span><span class="n">core</span><span class="o">.</span><span class="n">Resource</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">name</span><span class="p">,</span>
+                 <span class="o">**</span><span class="n">kwargs</span>
+                 <span class="p">):</span>
+        <span class="n">properties</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s">&#39;Description&#39;</span><span class="p">:</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;description&quot;</span><span class="p">),</span>
+            <span class="s">&#39;GroupSet&#39;</span><span class="p">:</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;group_set&quot;</span><span class="p">),</span>
+            <span class="s">&#39;PrivateIpAddress&#39;</span><span class="p">:</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;private_ip_address&quot;</span><span class="p">),</span>
+            <span class="s">&#39;PrivateIPAddresses&#39;</span><span class="p">:</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;private_ip_addresses&quot;</span><span class="p">),</span>
+            <span class="s">&#39;SecondaryPrivateIpAddressCount&#39;</span><span class="p">:</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;secondary_private_ip_address_count&quot;</span><span class="p">),</span>
+            <span class="s">&#39;SourceDestCheck&#39;</span><span class="p">:</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;source_dest_check&quot;</span><span class="p">),</span>
+            <span class="s">&#39;SubnetId&#39;</span><span class="p">:</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;subnet_id&quot;</span><span class="p">),</span>
+            <span class="s">&#39;Tags&#39;</span><span class="p">:</span> <span class="n">transform_tags</span><span class="p">(</span><span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;tags&quot;</span><span class="p">))</span>
+        <span class="p">}</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">NetworkInterfaces</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s">&#39;AWS::EC2::NetworkInterface&#39;</span><span class="p">,</span> <span class="n">properties</span><span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">NetworkInterfaceAttachment</span><span class="p">(</span><span class="n">core</span><span class="o">.</span><span class="n">Resource</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">name</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">):</span>
+
+        <span class="k">if</span> <span class="s">&quot;device_index&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="ow">and</span> <span class="s">&quot;instance_id&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="ow">and</span> <span class="s">&quot;network_interface_id&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">RespawnResourceError</span><span class="p">(</span><span class="s">&#39;DeviceIndex/InstanceId/NetworkInterfaceId parameters for &#39;</span>
+                                       <span class="s">&#39;NetworkInterfaceAttachment are required to hook up a network &#39;</span>
+                                       <span class="s">&#39;interface to an instance.&#39;</span><span class="p">,</span> <span class="s">&quot;NetworkInterfaceAttachment&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+        <span class="n">properties</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s">&#39;DeviceIndex&#39;</span><span class="p">:</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;device_index&quot;</span><span class="p">),</span>
+            <span class="s">&#39;InstanceId&#39;</span><span class="p">:</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;instance_id&quot;</span><span class="p">),</span>
+            <span class="s">&#39;NetworkInterfaceId&#39;</span><span class="p">:</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;network_interface_id&quot;</span><span class="p">)</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="s">&quot;delete_on_termination&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;DeleteOnTermination&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;delete_on_termination&quot;</span><span class="p">)</span>  <span class="c"># default=False</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">NetworkInterfaceAttachment</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s">&#39;AWS::EC2::NetworkInterfaceAttachment&#39;</span><span class="p">,</span> <span class="n">properties</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="SecurityGroup"><a class="viewcode-back" href="../../source_code.html#respawn.ec2.SecurityGroup">[docs]</a><span class="k">class</span> <span class="nc">SecurityGroup</span><span class="p">(</span><span class="n">core</span><span class="o">.</span><span class="n">Resource</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates a Security Group</span>
+
+<span class="sd">        :param name: String</span>
+<span class="sd">        :param group_description: String</span>
+
+<span class="sd">        kwargs</span>
+<span class="sd">            - security_group_egress: [ Security Group Rule, ... ]</span>
+<span class="sd">            - security_group_ingress: [ Security Group Rule, ... ]</span>
+<span class="sd">            - tags: [ Tag, ... ]</span>
+<span class="sd">            - vpc_id: String</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">name</span><span class="p">,</span>
+            <span class="n">group_description</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">):</span>
+        <span class="n">attributes</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;attributes&quot;</span><span class="p">,</span> <span class="nb">dict</span><span class="p">())</span>
+
+        <span class="n">properties</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s">&#39;GroupDescription&#39;</span><span class="p">:</span> <span class="n">group_description</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="s">&quot;security_group_egress&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">security_group_egress</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">sg</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;security_group_egress&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">security_group_egress</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">SecurityGroupEgress</span><span class="p">(</span><span class="o">**</span><span class="n">sg</span><span class="p">))</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;SecurityGroupEgress&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">security_group_egress</span>
+
+        <span class="k">if</span> <span class="s">&quot;security_group_ingress&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">security_group_ingress</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">sg</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;security_group_ingress&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">security_group_ingress</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">SecurityGroupIngress</span><span class="p">(</span><span class="o">**</span><span class="n">sg</span><span class="p">))</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;SecurityGroupIngress&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">security_group_ingress</span>
+
+        <span class="k">if</span> <span class="s">&#39;tags&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;tags&#39;</span><span class="p">)</span>
+            <span class="n">tags</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">t</span><span class="p">:</span>
+                <span class="n">tags</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Tag</span><span class="p">(</span><span class="o">**</span><span class="n">tag</span><span class="p">))</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;Tags&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tags</span>
+
+        <span class="k">if</span> <span class="s">&quot;vpc_id&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;VpcId&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;vpc_id&quot;</span><span class="p">)</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">SecurityGroup</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s">&#39;AWS::EC2::SecurityGroup&#39;</span><span class="p">,</span> <span class="n">properties</span><span class="p">,</span> <span class="n">attributes</span><span class="p">)</span></div>
+</pre></div>
+
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Victor Mena, Kuber Kaul, Vishal Shah.
+      Last updated on Dec 11, 2015.
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

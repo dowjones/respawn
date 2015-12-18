@@ -1,15 +1,18 @@
 from cfn_pyplates import core, functions
 from ec2 import BlockDevice, BlockDeviceMapping
+from errors import RespawnResourceError
 
 
 class MetricsCollection(core.JSONableDict):
     """
-        Creates a Block Device Mapping
+        Creates a Metrics Collection
 
         :param granularity: String
         :param kwargs: metrics - [ String, ... ]
         """
-
+    # ----------------------------------------------------------------------------------------------------------
+    #  Metrics Collection
+    # ----------------------------------------------------------------------------------------------------------
     def __init__(self,
                  granularity,
                  **kwargs
@@ -22,11 +25,14 @@ class MetricsCollection(core.JSONableDict):
 
 class NotificationConfigurations(core.JSONableDict):
     """
-        Creates a Block Device Mapping
+        Creates a Notification Configuration
 
         :param notification_type: [ String, ... ]
         :param topic_arn: String
     """
+    # ----------------------------------------------------------------------------------------------------------
+    #  NotificationConfiguration
+    # ----------------------------------------------------------------------------------------------------------
     def __init__(self,
                  notification_type,
                  topic_arn
@@ -44,7 +50,9 @@ class Tag(core.JSONableDict):
         :param value: String
         :param propagate_at_launch: Boolean
         """
-
+    # ----------------------------------------------------------------------------------------------------------
+    #  Tag
+    # ----------------------------------------------------------------------------------------------------------
     def __init__(self,
                  key,
                  value,
@@ -82,6 +90,9 @@ class LaunchConfiguration(core.Resource):
             - user_data_script: String
             - attributes: { key: value, ... }
     """
+    # ----------------------------------------------------------------------------------------------------------
+    #  Launch Configuration
+    # ----------------------------------------------------------------------------------------------------------
     def __init__(
             self,
             name,
@@ -90,8 +101,9 @@ class LaunchConfiguration(core.Resource):
             **kwargs
     ):
         if "classic_link_vpc_id" in kwargs and "classic_link_vpc_security_groups" not in kwargs:
-            raise RuntimeError("Classic Link VPC Sercurity Groups (classic_link_vpc_security_groups) "
-                               "required with Class Link VPC ID (classic_link_vpc_id).")
+            raise RespawnResourceError("Classic Link VPC Sercurity Groups (classic_link_vpc_security_groups) "
+                                       "required with Class Link VPC ID (classic_link_vpc_id).",
+                                       "classic Link VPC Id/Classic Link Vpc Security Groups")
 
         attributes = kwargs.get("attributes")
 
@@ -168,6 +180,9 @@ class AutoScalingGroup(core.Resource):
             - vpc_zone_identifier: [ String, ... ]
             - attributes: { key: value, ... }
     """
+    # ----------------------------------------------------------------------------------------------------------
+    #  Auto Scaling Group
+    # ----------------------------------------------------------------------------------------------------------
     def __init__(
             self,
             name,
@@ -176,12 +191,14 @@ class AutoScalingGroup(core.Resource):
             **kwargs
     ):
         if "instance_id" not in kwargs and "launch_configuration" not in kwargs:
-            raise RuntimeError(
-                "Instance ID (instance_id) or Launch Configuration Name (launch_configuration) required.")
+            raise RespawnResourceError(
+                "Instance ID (instance_id) or Launch Configuration Name (launch_configuration) required.",
+                "Instance Id/ Launch Configuration")
 
         if "availability_zones" not in kwargs and "vpc_zone_identifier" not in kwargs:
-            raise RuntimeError("Availability Zones (availability_zones) or VPC Zone Identifier (vpc_zone_identifier) "
-                               "required.")
+            raise RespawnResourceError(
+                "Availability Zones (availability_zones) or VPC Zone Identifier (vpc_zone_identifier) "
+                "required.", "AvailabilityZones/VPCZoneIdentifier")
 
         attributes = kwargs.get("attributes", dict())
 
@@ -189,6 +206,7 @@ class AutoScalingGroup(core.Resource):
             'MaxSize': max_size,
             'MinSize': min_size
         }
+
         if "metrics_collection" in kwargs:
             metrics_collection = kwargs.get('metrics_collection')
             metrics_collections = []
@@ -202,10 +220,6 @@ class AutoScalingGroup(core.Resource):
             for config in notification_configs:
                 configs.append(NotificationConfigurations(**config))
             properties['NotificationConfigurations'] = configs
-        if "launch_configuration" in kwargs:
-            properties['LaunchConfigurationName'] = kwargs.get("launch_configuration")
-        if "load_balancer_names" in kwargs:
-            properties['LoadBalancerNames'] = kwargs.get("load_balancer_names")
 
         if 'tags' in kwargs:
             t = kwargs.get('tags')
@@ -214,6 +228,10 @@ class AutoScalingGroup(core.Resource):
                 tags.append(Tag(**tag))
             properties['Tags'] = tags
 
+        if "launch_configuration" in kwargs:
+            properties['LaunchConfigurationName'] = kwargs.get("launch_configuration")
+        if "load_balancer_names" in kwargs:
+            properties['LoadBalancerNames'] = kwargs.get("load_balancer_names")
         if "availability_zones" in kwargs:
             properties['AvailabilityZones'] = kwargs.get("availability_zones")
         if "cooldown" in kwargs:
@@ -238,7 +256,7 @@ class AutoScalingGroup(core.Resource):
 
 class ScalingPolicy(core.Resource):
     """
-        Creates an AutoScaling Group
+        Creates a Scaling Policy
 
         :param adjustment_type: String
         :param asg_name: String
@@ -248,6 +266,9 @@ class ScalingPolicy(core.Resource):
          - cooldown: String
          - in_adjustment_step: String
     """
+    # ----------------------------------------------------------------------------------------------------------
+    #  Scaling Policy
+    # ----------------------------------------------------------------------------------------------------------
     def __init__(
             self,
             name,
@@ -274,7 +295,7 @@ class ScalingPolicy(core.Resource):
 
 class ScheduledAction(core.Resource):
     """
-        Creates an AutoScaling Group
+        Creates a Scheduled Action
 
         :param asg_name: String
 
@@ -286,6 +307,9 @@ class ScheduledAction(core.Resource):
              - recurrence: String (e.g. cron)
              - start_time: Time stamp (e.g. 2010-06-01T00:00:00Z)
     """
+    # ----------------------------------------------------------------------------------------------------------
+    #  Scheduled Action
+    # ----------------------------------------------------------------------------------------------------------
     def __init__(
             self,
             name,
@@ -312,3 +336,48 @@ class ScheduledAction(core.Resource):
             properties['StartTime'] = kwargs.get("start_time")
 
         super(ScheduledAction, self).__init__(name, 'AWS::AutoScaling::ScheduledAction', properties, attributes)
+
+
+class LifecycleHook(core.Resource):
+    """
+        Creates a Lifecycle Hook
+
+        :param asg_name: String
+        :param lifecycle_transition: String
+        :param notification_target_arn: String
+        :param role_arn: String
+
+        kwargs
+             - default_result: String
+             - heartbeat_timeout: Integer
+             - notification_metadata: String
+    """
+    # ----------------------------------------------------------------------------------------------------------
+    #  LifeCycle Hook
+    # ----------------------------------------------------------------------------------------------------------
+    def __init__(
+            self,
+            name,
+            asg_name,
+            lifecycle_transition,
+            notification_target_arn,
+            role_arn,
+            **kwargs
+    ):
+        attributes = kwargs.get("attributes", dict())
+
+        properties = {
+            'AutoScalingGroupName': asg_name,
+            'LifecycleTransition': lifecycle_transition,
+            'NotificationTargetARN': notification_target_arn,
+            'RoleARN': role_arn
+        }
+
+        if "default_result" in kwargs:
+            properties['DefaultResult'] = kwargs.get("default_result")
+        if "heartbeat_timeout" in kwargs:
+            properties['HeartbeatTimeout'] = kwargs.get("heartbeat_timeout")
+        if "notification_metadata" in kwargs:
+            properties['NotificationMetadata'] = kwargs.get("notification_metadata")
+
+        super(LifecycleHook, self).__init__(name, 'AWS::AutoScaling::LifecycleHook', properties, attributes)

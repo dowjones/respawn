@@ -10,6 +10,9 @@ class Subscription(util.SetNonEmptyPropertyMixin, core.JSONableDict):
     :param endpoint: String,
     :param protocol: String
     """
+    # ----------------------------------------------------------------------------------------------------------
+    #  Subscription
+    # ----------------------------------------------------------------------------------------------------------
     def __init__(self, **kwargs):
         super(Subscription, self).__init__(None, 'Subscription')
         self._set_property('Endpoint', kwargs.get('endpoint'))
@@ -25,6 +28,9 @@ class SnsTopicProperties(util.SetNonEmptyPropertyMixin, core.JSONableDict):
         - subscription : [ SNS Subscription, ... ]
         - topic_name : String
     """
+    # ----------------------------------------------------------------------------------------------------------
+    #  SNS Topic Core Properties
+    # ----------------------------------------------------------------------------------------------------------
     def __init__(self, **kwargs):
         super(SnsTopicProperties, self).__init__(None, 'Properties')
 
@@ -45,7 +51,9 @@ class SnsTopic(core.Resource):
     """
     Creates an Amazon SNS topic.
     """
-
+    # ----------------------------------------------------------------------------------------------------------
+    #  SNS Topic Creation
+    # ----------------------------------------------------------------------------------------------------------
     def __init__(self,
                  name,
                  **kwargs
@@ -55,16 +63,10 @@ class SnsTopic(core.Resource):
         self.Properties = SnsTopicProperties(**kwargs)
 
 
-def transform_attribute(attribute_list):
-    updated_attribute_list = []
-    for attribute_parameters in attribute_list:
-        updated_attribute_list.append(
-            {'Name': attribute_parameters.get('name'),
-             'Value': attribute_parameters.get('value')})
-    return updated_attribute_list
-
-
 def recurse_kwargs_list(parameter_name, class_name, **kwargs):
+    """
+    Recurses through a list of kwargs.
+    """
     if parameter_name in kwargs:
         parameter_list = kwargs.get(parameter_name)
         param_list = []

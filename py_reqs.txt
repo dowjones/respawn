@@ -1,7 +1,7 @@
-#boto==2.32.1
-#nose==1.3.3
 cfn-pyplates==0.4.3
 Jinja2==2.7.3
 #enum34
 #pytest==2.7.1
-#pytest-cov=2.2.0
+#pytest-cov==2.2.0
+#boto==2.32.1
+#nose==1.3.3

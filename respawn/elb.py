@@ -1,4 +1,4 @@
-from cfn_pyplates import core, functions
+from cfn_pyplates import core
 from respawn import util
 from errors import RespawnResourceError
 
@@ -13,6 +13,9 @@ class AccessLoggingPolicy(util.SetNonEmptyPropertyMixin, core.JSONableDict):
             - s3_bucket_name: String
             - s3_bucket_prefix: String
         """
+    # ----------------------------------------------------------------------------------------------------------
+    #  AccessLoggingPolicy
+    # ----------------------------------------------------------------------------------------------------------
     def __init__(self, **kwargs):
         super(AccessLoggingPolicy, self).__init__(None, 'AccessLoggingPolicy')
         self._set_property('EmitInterval', kwargs.get('emit_interval'))
@@ -31,6 +34,9 @@ class AppCookieStickinessPolicy(util.SetNonEmptyPropertyMixin, core.JSONableDict
         - policy_name: String
 
     """
+    # ----------------------------------------------------------------------------------------------------------
+    #  AppCookieStickinessPolicy
+    # ----------------------------------------------------------------------------------------------------------
     def __init__(self, **kwargs):
         super(AppCookieStickinessPolicy, self).__init__(None, 'AppCookieStickinessPolicy')
         self._set_property('CookieName', kwargs.get('cookie_name'))
@@ -50,6 +56,9 @@ class ConnectionDrainingPolicy(util.SetNonEmptyPropertyMixin, core.JSONableDict)
     kwargs
         - timeout : Integer
     """
+    # ----------------------------------------------------------------------------------------------------------
+    #  ConnectionDrainingPolicy
+    # ----------------------------------------------------------------------------------------------------------
     def __init__(self, **kwargs):
         super(ConnectionDrainingPolicy, self).__init__(None, 'ConnectionDrainingPolicy')
         self._set_property('Enabled', kwargs.get('enabled'))
@@ -62,6 +71,9 @@ class ConnectionSettings(util.SetNonEmptyPropertyMixin, core.JSONableDict):
 
     :param idle_timeout: Integer
     """
+    # ----------------------------------------------------------------------------------------------------------
+    #  ConnectionSettings
+    # ----------------------------------------------------------------------------------------------------------
     def __init__(self, idle_timeout=60, **kwargs):
         super(ConnectionSettings, self).__init__(dict(IdleTimeout=idle_timeout))
         self._set_property('IdleTimeout', kwargs.get('idle_timeout'))
@@ -77,33 +89,17 @@ class HealthCheck(core.JSONableDict):
     :param timeout: String
     :param unhealthy_threshold: String
     """
+    # ----------------------------------------------------------------------------------------------------------
+    #  HealthCheck
+    # ----------------------------------------------------------------------------------------------------------
+
     def __init__(self, **kwargs):
         super(HealthCheck, self).__init__(None, 'HealthCheck')
         self['HealthyThreshold'] = kwargs.get('healthy_threshold', 3)
         self['Interval'] = kwargs.get('interval', 30)
         self['Timeout'] = kwargs.get('timeout', 5)
         self['UnhealthyThreshold'] = kwargs.get('unhealthy_threshold', 3)
-        self['Target'] = str(kwargs.get('target'))
-
-
-class HealthCheckTCP(HealthCheck):
-    """
-    custom health check for tcp connection.
-    """
-    def __init__(self, port, is_secure=False, **kwargs):
-        items = ['SSL' if is_secure else 'TCP', ':', str(port)]
-        kwargs['Target'] = ''.join(items)
-        super(HealthCheckTCP, self).__init__(**kwargs)
-
-
-class HealthCheckHTTP(HealthCheck):
-    """
-    custom health check for http connection.
-    """
-    def __init__(self, port, path, is_secure=False, **kwargs):
-        items = ['https' if is_secure else 'http', ':', str(port), path]
-        kwargs['Target'] = ''.join(items)
-        super(HealthCheckHTTP, self).__init__(**kwargs)
+        self['Target'] = kwargs.get('target')
 
 
 class Listener(util.SetNonEmptyPropertyMixin, core.JSONableDict):
@@ -120,6 +116,9 @@ class Listener(util.SetNonEmptyPropertyMixin, core.JSONableDict):
         - policy_names:  [ String, ... ]
         - sSL_certificate_id: String
     """
+    # ----------------------------------------------------------------------------------------------------------
+    #  Listener
+    # ----------------------------------------------------------------------------------------------------------
     def __init__(self, **kwargs):
         super(Listener, self).__init__(None, 'Listener')
         self._set_property("InstancePort", kwargs.get('InstancePort'))
@@ -128,22 +127,6 @@ class Listener(util.SetNonEmptyPropertyMixin, core.JSONableDict):
         self._set_property("Protocol", kwargs.get('Protocol'))
         self._set_property("PolicyNames", kwargs.get('PolicyNames'))
         self._set_property("SSLCertificateId", kwargs.get('SSLCertificateId'))
-
-
-class HttpListener(Listener):
-    """
-    custom class to handle http listener.
-    """
-    def __init__(self, port, egres_port, certificateId=None):
-        protocol = 'HTTP' if certificateId is None else 'HTTPS'
-        kwargs = dict(
-            Protocol=protocol,
-            LoadBalancerPort=port,
-            InstancePort=egres_port,
-            InstanceProtocol=protocol,
-            SSLCertificateId=certificateId
-        )
-        super(HttpListener, self).__init__(**kwargs)
 
 
 class LBCookieStickinessPolicy(util.SetNonEmptyPropertyMixin, core.JSONableDict):
@@ -155,6 +138,9 @@ class LBCookieStickinessPolicy(util.SetNonEmptyPropertyMixin, core.JSONableDict)
         - cookie_expiration_period: String
         - policy_name: String
     """
+    # ----------------------------------------------------------------------------------------------------------
+    #  LBCookieStickinessPolicy
+    # ----------------------------------------------------------------------------------------------------------
     def __init__(self, **kwargs):
         super(LBCookieStickinessPolicy, self).__init__(None, 'LBCookieStickinessPolicy')
         self._set_property("PolicyName", kwargs.get('policy_name'))
@@ -175,6 +161,9 @@ class Policies(util.SetNonEmptyPropertyMixin, core.JSONableDict):
         - policy_name : String
         - Policy_type : String
     """
+    # ----------------------------------------------------------------------------------------------------------
+    #  Policies
+    # ----------------------------------------------------------------------------------------------------------
     def __init__(self, **kwargs):
         super(Policies, self).__init__(None, 'Policies')
         self._set_property('PolicyName', kwargs.get('policy_name'))
@@ -185,28 +174,30 @@ class Policies(util.SetNonEmptyPropertyMixin, core.JSONableDict):
 
 
 class ProtocolListener(Listener):
-    def __init__(self, protocol, port, egres_port, certificateId=None):
-        kwargs = dict(
-            Protocol=protocol,
-            LoadBalancerPort=port,
-            InstancePort=egres_port,
-            InstanceProtocol=protocol,
-            SSLCertificateId=certificateId
-        )
+    # ----------------------------------------------------------------------------------------------------------
+    #  ProtocolListener
+    # ----------------------------------------------------------------------------------------------------------
+    def __init__(self, protocol, port, egres_port, certificateId=None, **protocol_values):
+        protocol_dict = {"http": "HTTP", "https": "HTTPS", "tcp": "TCP", "ssl": "SSL"}
+        if protocol_values.get('instance_protocol') is not None:
+            protocol = protocol_dict[protocol]
+            kwargs = dict(Protocol=protocol,
+                          LoadBalancerPort=port,
+                          InstancePort=egres_port,
+                          InstanceProtocol=protocol_values.get('instance_protocol'),
+                          SSLCertificateId=certificateId,
+                          PolicyNames=protocol_values.get('policy_names')
+                          )
+        else:
+            protocol = protocol_dict[protocol]
+            kwargs = dict(Protocol=protocol,
+                          LoadBalancerPort=port,
+                          InstancePort=egres_port,
+                          InstanceProtocol=protocol_values.get('instance_protocol'),
+                          SSLCertificateId=certificateId,
+                          PolicyNames=protocol_values.get('policy_names')
+                          )
         super(ProtocolListener, self).__init__(**kwargs)
-
-
-class TcpListener(Listener):
-    def __init__(self, port, egres_port, certificateId=None):
-        protocol = 'TCP' if certificateId is None else 'SSL'
-        kwargs = dict(
-            Protocol=protocol,
-            LoadBalancerPort=port,
-            InstancePort=egres_port,
-            InstanceProtocol=protocol,
-            SSLCertificateId=certificateId
-        )
-        super(TcpListener, self).__init__(**kwargs)
 
 
 class Tags(util.SetNonEmptyPropertyMixin, core.JSONableDict):
@@ -216,6 +207,9 @@ class Tags(util.SetNonEmptyPropertyMixin, core.JSONableDict):
     :param key: String
     :param value: String
     """
+    # ----------------------------------------------------------------------------------------------------------
+    #  Tags
+    # ----------------------------------------------------------------------------------------------------------
     def __init__(self, **kwargs):
         super(Tags, self).__init__(None, 'Tags')
         self._set_property('Key', kwargs.get('key'))
@@ -226,11 +220,14 @@ class LoadBalancerProperties(util.SetNonEmptyPropertyMixin, core.JSONableDict):
     """
     Available keyword arguments.
     """
+    # ----------------------------------------------------------------------------------------------------------
+    #  LoadBalancerProperties
+    # ----------------------------------------------------------------------------------------------------------
     def __init__(self, **kwargs):
         super(LoadBalancerProperties, self).__init__(None, 'Properties')
 
+        # AccessLoggingPolicy : Default is none
         if kwargs.get('access_logging_policy') is not None:
-            # AccessLoggingPolicy : Default is none
             self._set_property('AccessLoggingPolicy', AccessLoggingPolicy(**kwargs.get('access_logging_policy')))
 
         # AppCookieStickinessPolicy : Default is none
@@ -240,26 +237,26 @@ class LoadBalancerProperties(util.SetNonEmptyPropertyMixin, core.JSONableDict):
         # the AvailabilityZones or Subnets property but not both.
         self._set_property('AvailabilityZones', kwargs.get('availability_zones'))
 
+        # ConnectionDrainingPolicy : Default is none
         if kwargs.get('connection_draining_policy') is not None:
-            # ConnectionDrainingPolicy : Default is none
             self._set_property('ConnectionDrainingPolicy', ConnectionDrainingPolicy(**kwargs.get(
                 'connection_draining_policy')))
 
+        # ConnectionSettings : Default is 60 seconds
         if kwargs.get('connection_settings') is not None:
-            # ConnectionSettings : Default is 60 seconds
             self._set_property('ConnectionSettings', ConnectionSettings(**kwargs.get('connection_settings')))
 
         # CrossZone : Default is True for Cross AZ Load balancing
         self._set_property('CrossZone', kwargs.get('cross_zone', False))
 
+        # HealthCheck
         if kwargs.get('health_check') is not None:
-            # HealthCheck :
             self._set_property('HealthCheck', HealthCheck(**kwargs.get('health_check')))
 
-        # Instances : 
+        # Instances
         self._set_property('Instances', kwargs.get('instances'))
 
-        # LBCookieStickinessPolicy :
+        # LBCookieStickinessPolicy
         self._set_property('LBCookieStickinessPolicy', kwargs.get('lb_cookie_stickiness_policy'))
 
         # LoadBalancerName : If you don't specify a name, AWS CloudFormation generates a unique physical ID and uses
@@ -287,11 +284,11 @@ class LoadBalancerProperties(util.SetNonEmptyPropertyMixin, core.JSONableDict):
         # Tags : 
         self._set_property('Tags', kwargs.get('tags'))
 
-    def is_internal(self):
-        return self['Scheme'] == 'internal'
-
 
 class LoadBalancer(core.Resource):
+    # ----------------------------------------------------------------------------------------------------------
+    #  LoadBalancer
+    # ----------------------------------------------------------------------------------------------------------
     def __init__(self, name, **kwargs):
         super(LoadBalancer, self).__init__(name, 'AWS::ElasticLoadBalancing::LoadBalancer')
 
@@ -299,12 +296,8 @@ class LoadBalancer(core.Resource):
         if env is None:
             raise RespawnResourceError("env parameter is required for properly tagging an ELB", 'Environment')
 
-        service_name = kwargs.get('service_name')
-        if service_name is None:
-            raise RespawnResourceError("service_name parameter is required for properly tagging an ELB",
-                                       'ServiceNameTag')
-
         availibility_zone = kwargs.get("availability_zones")
+
         subnets = kwargs.get("subnets")
         if availibility_zone is not None and subnets is not None:
             raise RespawnResourceError("You can specify the AvailabilityZones or Subnets property in the load "
@@ -316,9 +309,6 @@ class LoadBalancer(core.Resource):
             pass
 
         kwargs['tags'] = recurse_kwargs_list('tags', Tags, **kwargs)
-        kwargs['tags'].append({'Value': env, 'Key': 'env'})
-        kwargs['tags'].append({'Value': service_name, 'Key': 'servicename'})
-
         kwargs['app_cookie_stickiness_policy'] = recurse_kwargs_list('app_cookie_stickiness_policy',
                                                                      AppCookieStickinessPolicy, **kwargs)
         kwargs['lb_cookie_stickiness_policy'] = recurse_kwargs_list('lb_cookie_stickiness_policy',
@@ -326,22 +316,18 @@ class LoadBalancer(core.Resource):
         kwargs['policies'] = recurse_kwargs_list('policies', Policies, **kwargs)
         self.Properties = LoadBalancerProperties(**kwargs)
 
-    def canonical_hosted_zone_name(self):
-        attr_name = 'DNSName' if self.Properties.is_internal() else 'CanonicalHostedZoneName'
-        return functions.get_att(self.name, attr_name)
-
-    def canonical_hosted_zone_id(self):
-        return functions.get_att(self.name, "CanonicalHostedZoneNameID")
-
 
 def transform_attribute(attribute_list):
     """
-    transforms tag attributes.
+    Transforms tag attributes.
 
     kwargs
         - name: String
         - value: String
     """
+    # ----------------------------------------------------------------------------------------------------------
+    #  Transform attribute from lower case to upper case.
+    # ----------------------------------------------------------------------------------------------------------
     updated_attribute_list = []
     for attribute_parameters in attribute_list:
         updated_attribute_list.append(
@@ -352,7 +338,7 @@ def transform_attribute(attribute_list):
 
 def recurse_kwargs_list(parameter_name, class_name, **kwargs):
     """
-    recurses through a list of kwargs.
+    Recurses through a list of kwargs.
     """
     if parameter_name in kwargs:
         parameter_list = kwargs.get(parameter_name)
@@ -362,79 +348,3 @@ def recurse_kwargs_list(parameter_name, class_name, **kwargs):
         return param_list
     else:
         pass
-
-
-# def make_web(
-#         name,
-#         port,
-#         health_check_path,
-#         security_groups,
-#         subnets,
-#         health_check_port=None,
-#         egres_port=None,
-#         certificateId=None
-# ):
-#     """
-#     Custom load balancer category.
-#
-#     :param name: String
-#     :param port: String
-#     :param health_check_path: string
-#     :param security_groups: string
-#     :param subnets: string
-#     :param health_check_port: string
-#     :param egres_port: string
-#     :param certificateId: string
-#     """
-#     if egres_port is None:
-#         egres_port = port
-#
-#     if health_check_port is None:
-#         health_check_port = egres_port
-#
-#     return LoadBalancer(
-#         name,
-#         Listeners=[HttpListener(port, egres_port, certificateId)],
-#         HealthCheck=HealthCheckHTTP(port, health_check_path),
-#         Scheme='internet-facing',
-#         SecurityGroups=security_groups,
-#         Subnets=subnets
-#     )
-#
-#
-# def make_internal(
-#         name,
-#         port,
-#         health_check_path,
-#         security_groups,
-#         subnets,
-#         health_check_port=None,
-#         egres_port=None,
-#         certificateId=None
-# ):
-#     """
-#     Custom load balancer category.
-#
-#     :param name: string
-#     :param port: string
-#     :param health_check_path: string
-#     :param security_groups: string
-#     :param subnets: string
-#     :param health_check_port: string
-#     :param egres_port: string
-#     :param certificateId: string
-#     """
-#     if egres_port is None:
-#         egres_port = port
-#
-#     if health_check_port is None:
-#         health_check_port = egres_port
-#
-#     return LoadBalancer(
-#         name,
-#         Listeners=[HttpListener(port, egres_port, certificateId)],
-#         HealthCheck=HealthCheckHTTP(port, health_check_path),
-#         Scheme='internal',
-#         SecurityGroups=security_groups,
-#         Subnets=subnets
-#     )

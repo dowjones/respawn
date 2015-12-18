@@ -1,5 +1,6 @@
 from cfn_pyplates import core, functions
 from respawn import util
+from errors import RespawnResourceError
 
 
 class BlockDeviceMapping(core.JSONableDict):
@@ -9,19 +10,22 @@ class BlockDeviceMapping(core.JSONableDict):
         :param device_name: String
 
         kwargs
-            - ebs: PrivateIpSpecification
+            - ebs: EC2 EBS Block Device
             - no_device: Boolean
             - virtual_name: String
         """
+
     def __init__(
             self,
             device_name,
             **kwargs
     ):
         if 'ebs' not in kwargs and 'virtual_name' not in kwargs and 'no_device' not in kwargs:
-            raise RuntimeError("Ebs (ebs) or Virtual Name (virtual_name) required.")
+            raise RespawnResourceError("Ebs (ebs) or Virtual Name (virtual_name) required.",
+                                       "BlockDeviceMapping", device_name)
         if 'ebs' in kwargs and 'virtual_name' in kwargs:
-            raise RuntimeError("Only one of Ebs (ebs) and Virtual Name (virtual_name) can be specified.")
+            raise RespawnResourceError("Only one of Ebs (ebs) and Virtual Name (virtual_name) can be specified.",
+                                       "BlockDeviceMapping", device_name)
 
         super(BlockDeviceMapping, self).__init__()
 
@@ -44,17 +48,20 @@ class BlockDevice(core.JSONableDict):
             - iops: Integer
             - snapshot_id: String
             - size: Integer
-            - type: String
+            - volume_type: String
     """
+
     def __init__(
             self,
             **kwargs
     ):
         if "snapshot_id" not in kwargs and "size" not in kwargs:
-            raise RuntimeError("Block Device requires Snapshot Id (snapshot_id) or Size (size).")
+            raise RespawnResourceError("Snapshot Id (snapshot_id) or Size (size) required.",
+                                       "BlockDevice")
         if "volume_type" in kwargs:
             if kwargs.get("volume_type") == "io1" and "iops" not in kwargs:
-                raise RuntimeError("Iops (iops) required if Volume Type is io1.")
+                raise RespawnResourceError("Iops (iops) required if Volume Type (volume_type) is io1.",
+                                           "BlockDevice")
 
         super(BlockDevice, self).__init__()
 
@@ -66,11 +73,11 @@ class BlockDevice(core.JSONableDict):
             self['SnapshotId'] = kwargs.get('snapshot_id')
         if 'size' in kwargs:
             self['VolumeSize'] = kwargs.get('size')
-        if 'type' in kwargs:
-            self['VolumeType'] = kwargs.get('type')
+        if 'volume_type' in kwargs:
+            self['VolumeType'] = kwargs.get('volume_type')
 
 
-class NetworkInterfaces(core.JSONableDict):
+class EmbeddedNetworkInterface(core.JSONableDict):
     """
         Creates a Network Interface
 
@@ -80,7 +87,6 @@ class NetworkInterfaces(core.JSONableDict):
             - public_ip: Boolean
             - delete_on_termination: Boolean
             - description: String
-            - device_index:  String
             - group_set:  [ String, ... ]
             - interface_id:  String
             - private_ip:  String
@@ -88,16 +94,17 @@ class NetworkInterfaces(core.JSONableDict):
             - secondary_private_ip_count:  Integer
             - subnet_id:  String
         """
+
     def __init__(
             self,
             device_index,
             **kwargs
     ):
         if 'subnet_id' not in kwargs and 'interface_id' not in kwargs:
-            raise RuntimeError('NetworkInterface requires Subnet Id (subnet_id) if Interface Id (interface_id) '
-                               'not specified')
+            raise RespawnResourceError('Subnet Id (subnet_id) required if Interface Id (interface_id) not specified',
+                                       'NetworkInterface')
 
-        super(NetworkInterfaces, self).__init__()
+        super(EmbeddedNetworkInterface, self).__init__()
 
         self['DeviceIndex'] = device_index
         if 'public_ip' in kwargs:
@@ -109,7 +116,7 @@ class NetworkInterfaces(core.JSONableDict):
         if 'group_set' in kwargs:
             self['GroupSet'] = kwargs.get('group_set')
         if 'interface_id' in kwargs:
-            self[''] = kwargs.get('interface_id')
+            self['NetworkInterfaceId'] = kwargs.get('interface_id')
         if 'private_ip' in kwargs:
             self['PrivateIpAddress'] = kwargs.get('private_ip')
         if 'private_ips' in kwargs:
@@ -127,6 +134,7 @@ class PrivateIpSpecification(core.JSONableDict):
         :param private_ip: String
         :param primary: Boolean
         """
+
     def __init__(
             self,
             private_ip,
@@ -145,6 +153,7 @@ class MountPoint(core.JSONableDict):
         :param device: String
         :param volume_id: String
         """
+
     def __init__(
             self,
             device,
@@ -178,13 +187,16 @@ class SecurityGroupIngress(core.JSONableDict):
             - source_security_group_owner_id: String
         """
 
-        if "cider_ip" in kwargs and ("source_security_group_name" in kwargs or "source_security_group_id" in kwargs):
-            raise RuntimeError("Source Security Group Name (source_security_group_name) or Source Security Group Id "
-                               "(source_security_group_id) cannot be specified with Cider IP (cider_ip)")
+        if "cidr_ip" in kwargs and ("source_security_group_name" in kwargs or "source_security_group_id" in kwargs):
+            raise RespawnResourceError("Source Security Group Name (source_security_group_name) or Source Security "
+                                       "Group Id (source_security_group_id) cannot be specified with "
+                                       "Cidr IP (cidr_ip)",
+                                       "SecurityGroupIngress")
 
         if "source_security_group_name" in kwargs and "source_security_group_id" in kwargs:
-            raise RuntimeError("Source Security Group Name (source_security_group_name) or Source Security Group Id "
-                               "(source_security_group_id) cannot both be specified.")
+            raise RespawnResourceError("Source Security Group Name (source_security_group_name) or Source Security "
+                                       "Group Id (source_security_group_id) cannot both be specified.",
+                                       "SecurityGroupIngress")
 
         super(SecurityGroupIngress, self).__init__()
 
@@ -192,8 +204,8 @@ class SecurityGroupIngress(core.JSONableDict):
         self['IpProtocol'] = ip_protocol
         self['ToPort'] = to_port
 
-        if "cider_ip" in kwargs:
-            self['CidrIp'] = kwargs.get("cider_ip")
+        if "cidr_ip" in kwargs:
+            self['CidrIp'] = kwargs.get("cidr_ip")
         if "source_security_group_name" in kwargs:
             self['SourceSecurityGroupName'] = kwargs.get("source_security_group_name")
         if "source_security_group_id" in kwargs:
@@ -222,9 +234,10 @@ class SecurityGroupEgress(core.JSONableDict):
             - destination_security_group_id:  String
         """
 
-        if "cider_ip" in kwargs and "destination_security_group_id" in kwargs:
-            raise RuntimeError("Destination Security Group Id (destination_security_group_id) cannot be specified "
-                               "with Cider IP (cider_ip)")
+        if "cidr_ip" in kwargs and "destination_security_group_id" in kwargs:
+            raise RespawnResourceError("Destination Security Group Id (destination_security_group_id) cannot be "
+                                       "specified with Cidr IP (cidr_ip)",
+                                       "SecurityGroupEgress")
 
         super(SecurityGroupEgress, self).__init__()
 
@@ -232,8 +245,8 @@ class SecurityGroupEgress(core.JSONableDict):
         self['IpProtocol'] = ip_protocol
         self['ToPort'] = to_port
 
-        if "cider_ip" in kwargs:
-            self['CidrIp'] = kwargs.get("cider_ip")
+        if "cidr_ip" in kwargs:
+            self['CidrIp'] = kwargs.get("cidr_ip")
         if "destination_security_group_id" in kwargs:
             self['DestinationSecurityGroupId'] = kwargs.get("destination_security_group_id")
 
@@ -256,20 +269,6 @@ class Tag(core.JSONableDict):
         self['Value'] = value
 
 
-class Volumes(util.SetNonEmptyPropertyMixin, core.JSONableDict):
-    """
-    Volumes is an embedded property of the AWS::EC2::Instance resource that describes the
-    subscription endpoints for a topic.
-
-    :param endpoint: String,
-    :param protocol: String
-    """
-    def __init__(self, **kwargs):
-        super(Volumes, self).__init__(None, 'Volumes')
-        self._set_property('Device', kwargs.get('device'))
-        self._set_property('VolumeId', kwargs.get('volume_id'))
-
-
 class Instance(core.Resource):
     """
         Creates an EC2 Instance
@@ -288,7 +287,7 @@ class Instance(core.Resource):
             - kernel_id: String
             - key_pair: String
             - monitoring: Boolean
-            - network_interfaces: [ NetworkInterface, ... ]
+            - network_interfaces: [ EmbeddedNetworkInterface, ... ]
             - placement_group: String
             - private_ip: String
             - ramdisk_id: String
@@ -318,8 +317,8 @@ class Instance(core.Resource):
             block_devices = []
             for device, args in devices.items():
                 if 'ebs' in args:
-                    args['ebs'] = BlockDevice(**args['ebs'])
-                block_devices.append(BlockDeviceMapping(device, **args))
+                    args['ebs'] = dict(BlockDevice(**args['ebs']))
+                block_devices.append(dict(BlockDeviceMapping(device, **args)))
             properties['BlockDeviceMappings'] = block_devices
 
         if 'network_interfaces' in kwargs:
@@ -329,18 +328,21 @@ class Instance(core.Resource):
                 if 'private_ips' in args:
                     private_ips = args['private_ips']
                     for i in range(len(private_ips)):
-                        private_ips[i] = PrivateIpSpecification(**private_ips[i])
-                network_interfaces_list.append(NetworkInterfaces(description=interface, **args))
+                        private_ips[i] = dict(PrivateIpSpecification(**private_ips[i]))
+                network_interfaces_list.append(dict(EmbeddedNetworkInterface(description=interface, **args)))
             properties['NetworkInterfaces'] = network_interfaces_list
 
         if 'volumes' in kwargs:
-            properties['Volumes'] = recurse_kwargs_list('volumes', Volumes, **kwargs)
+            volumes = kwargs.get('volumes')
+            for i in range(len(volumes)):
+                volumes[i] = dict(MountPoint(**volumes[i]))
+            properties['Volumes'] = volumes
 
         if 'tags' in kwargs:
             t = kwargs.get('tags')
             tags = []
             for tag in t:
-                tags.append(Tag(**tag))
+                tags.append(dict(Tag(**tag)))
             properties['Tags'] = tags
 
         if "availability_zone" in kwargs:
@@ -385,17 +387,6 @@ class Instance(core.Resource):
         super(Instance, self).__init__(name, 'AWS::EC2::Instance', properties, attributes)
 
 
-def recurse_kwargs_list(parameter_name, class_name, **kwargs):
-    if parameter_name in kwargs:
-        parameter_list = kwargs.get(parameter_name)
-        param_list = []
-        for parameter in parameter_list:
-            param_list.append(class_name(**parameter))
-        return param_list
-    else:
-        pass
-
-
 class Volume(core.Resource):
     """
         Creates an EC2 Volume
@@ -412,7 +403,7 @@ class Volume(core.Resource):
             - tags:  [ Tag, ...]
             - volume_type:  String
             - attributes: { key: value, ... }
-        """
+    """
 
     def __init__(
             self,
@@ -421,10 +412,12 @@ class Volume(core.Resource):
             **kwargs
     ):
         if kwargs.get("volume_type") == "io1" and "iops" not in kwargs:
-            raise RuntimeError("Iops not specified for VolumeType of io1.")
+            raise RespawnResourceError("Iops not specified for VolumeType of io1.",
+                                       "Volume", name)
 
         if "snapshot_id" not in kwargs and "size" not in kwargs:
-            raise RuntimeError("Size of Volume not specified.")
+            raise RespawnResourceError("Size of Volume not specified.",
+                                       "Volume", name)
 
         attributes = kwargs.get("attributes", dict())
 
@@ -457,54 +450,95 @@ class Volume(core.Resource):
         super(Volume, self).__init__(name, 'AWS::EC2::Volume', properties, attributes)
 
 
-def transform_tags(attribute_list):
-    updated_attribute_list = []
-    for attribute_parameters in attribute_list:
-        updated_attribute_list.append(
-            {'Value': attribute_parameters.get('value'),
-             'Key': attribute_parameters.get('key')})
-    return updated_attribute_list
-
-
 class NetworkInterface(core.Resource):
-    def __init__(self,
-                 name,
-                 **kwargs
-                 ):
-        properties = {
-            'Description': kwargs.get("description"),
-            'GroupSet': kwargs.get("group_set"),
-            'PrivateIpAddress': kwargs.get("private_ip_address"),
-            'PrivateIPAddresses': kwargs.get("private_ip_addresses"),
-            'SecondaryPrivateIpAddressCount': kwargs.get("secondary_private_ip_address_count"),
-            'SourceDestCheck': kwargs.get("source_dest_check"),
-            'SubnetId': kwargs.get("subnet_id"),
-            'Tags': transform_tags(kwargs.get("tags"))
-        }
-        super(NetworkInterface, self).__init__(name, 'AWS::EC2::NetworkInterface', properties)
+    """
+        Creates an EC2 Network Interface
 
+        :param name: String
+        :param subnet_id: String
 
-class NetworkInterfaceAttachment(core.Resource):
+        kwargs
+            - description: String
+            - group_set:  [ String, ... ]
+            - private_ip:  String
+            - private_ips:  [ PrivateIpSpecification, ... ]
+            - secondary_private_ip_count:  Integer
+            - source_dest_check:  Boolean
+            - tags:  [ Tag, ...]
+    """
+
     def __init__(
             self,
             name,
+            subnet_id,
             **kwargs
     ):
 
-        if "device_index" not in kwargs and "instance_id" not in kwargs and "network_interface_id" not in kwargs:
-            raise ValueError('DeviceIndex/InstanceId/NetworkInterfaceId parameters for NetworkInterfaceAttachment '
-                             'are required to hook up a network interface to an instance.')
+        attributes = kwargs.get("attributes", dict())
 
         properties = {
-            'DeviceIndex': kwargs.get("device_index"),
-            'InstanceId': kwargs.get("instance_id"),
-            'NetworkInterfaceId': kwargs.get("network_interface_id")
+            'SubnetId': subnet_id
+        }
+
+        if 'description' in kwargs:
+            properties['Description'] = kwargs.get('description')
+        if 'group_set' in kwargs:
+            properties['GroupSet'] = kwargs.get('group_set')
+        if 'private_ip' in kwargs:
+            properties['PrivateIpAddress'] = kwargs.get('private_ip')
+        if 'private_ips' in kwargs:
+            private_ips = kwargs.get('private_ips')
+            for i in range(len(private_ips)):
+                private_ips[i] = dict(PrivateIpSpecification(**private_ips[i]))
+            properties['PrivateIpAddresses'] = private_ips
+        if 'secondary_private_ip_count' in kwargs:
+            properties['SecondaryPrivateIpAddressCount'] = kwargs.get('secondary_private_ip_count')
+        if 'source_dest_check' in kwargs:
+            properties['SourceDestCheck'] = kwargs.get('source_dest_check')
+        if 'tags' in kwargs:
+            t = kwargs.get('tags')
+            tags = []
+            for tag in t:
+                tags.append(Tag(**tag))
+            properties['Tags'] = tags
+
+        super(NetworkInterface, self).__init__(name, 'AWS::EC2::NetworkInterface', properties, attributes)
+
+
+class NetworkInterfaceAttachment(core.Resource):
+    """
+        Creates an EC2 Network Interface Attachment
+
+        :param name: String
+        :param device_index: String
+        :param instance_id: String
+        :param network_interface_id: String
+
+        kwargs
+            - delete_on_termination: Boolean
+    """
+    def __init__(
+            self,
+            name,
+            device_index,
+            instance_id,
+            network_interface_id,
+            **kwargs
+    ):
+
+        attributes = kwargs.get("attributes", dict())
+
+        properties = {
+            'DeviceIndex': device_index,
+            'InstanceId': instance_id,
+            'NetworkInterfaceId': network_interface_id
         }
 
         if "delete_on_termination" in kwargs:
             properties['DeleteOnTermination'] = kwargs.get("delete_on_termination")  # default=False
 
-        super(NetworkInterfaceAttachment, self).__init__(name, 'AWS::EC2::NetworkInterfaceAttachment', properties)
+        super(NetworkInterfaceAttachment, self).__init__(name, 'AWS::EC2::NetworkInterfaceAttachment',
+                                                         properties, attributes)
 
 
 class SecurityGroup(core.Resource):
@@ -535,13 +569,13 @@ class SecurityGroup(core.Resource):
 
         if "security_group_egress" in kwargs:
             security_group_egress = []
-            for sg in kwargs.get("security_group_egress").items():
+            for sg in kwargs.get("security_group_egress"):
                 security_group_egress.append(SecurityGroupEgress(**sg))
             properties['SecurityGroupEgress'] = security_group_egress
 
         if "security_group_ingress" in kwargs:
             security_group_ingress = []
-            for sg in kwargs.get("security_group_ingress").items():
+            for sg in kwargs.get("security_group_ingress"):
                 security_group_ingress.append(SecurityGroupIngress(**sg))
             properties['SecurityGroupIngress'] = security_group_ingress
 

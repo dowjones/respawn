@@ -1,0 +1,305 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>respawn.sns &mdash; respawn</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="respawn" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../../index.html" class="icon icon-home"> respawn
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started.html"><strong>Getting Started</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started.html#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../getting_started.html#windows-unix-mac-os-x">Windows/Unix/Mac OS X</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started.html#usage-template-generation">Usage - Template Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage.html"><strong>Keywords - YAML/JSON</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../usage.html#resource-index"><strong>Resource Index</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#auto-scaling-group"><strong>Auto Scaling Group</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#cloudwatch"><strong>CloudWatch</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#instances"><strong>Instances</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#launch-configuration"><strong>Launch Configuration</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#lifecycle-hooks"><strong>Lifecycle Hooks</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#load-balancer"><strong>Load Balancer</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#network-interface"><strong>Network Interface</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#network-interface-attachment"><strong>Network Interface Attachment</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#rds"><strong>RDS</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#scheduled-action"><strong>Scheduled Action</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#sns-topic"><strong>Sns Topic</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#volume"><strong>Volume</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#other-required-keywords"><strong>Other Required Keywords</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../usage.html#parameter-index"><strong>Parameter Index</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#parameters"><strong>Parameters</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../usage.html#userdata-index"><strong>UserData Index</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#userdata"><strong>UserData</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../usage.html#references-index"><strong>References Index</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#reference"><strong>Reference</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#get-attribute"><strong>Get_Attribute</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../source_code.html"><strong>Source Code Documentation</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../source_code.html#resource-index"><strong>Resource Index</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../source_code.html#module-respawn.ec2"><strong>EC2</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source_code.html#module-respawn.elb"><strong>Load Balancer</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source_code.html#module-respawn.autoscaling"><strong>Auto Scaling</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source_code.html#module-respawn.cloudformation"><strong>CloudFormation</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source_code.html#module-respawn.cloudwatch"><strong>CloudWatch</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source_code.html#module-respawn.rds"><strong>RDS</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source_code.html#module-respawn.sns"><strong>Sns Topic</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../source_code.html#module-respawn.parameters"><strong>Parameter Index</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sample_yaml.html"><strong>Sample YAML</strong></a></li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">respawn</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      
+    <li>respawn.sns</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <h1>Source code for respawn.sns</h1><div class="highlight"><pre>
+<span class="kn">from</span> <span class="nn">cfn_pyplates</span> <span class="kn">import</span> <span class="n">core</span>
+<span class="kn">from</span> <span class="nn">respawn</span> <span class="kn">import</span> <span class="n">util</span>
+
+
+<div class="viewcode-block" id="Subscription"><a class="viewcode-back" href="../../source_code.html#respawn.sns.Subscription">[docs]</a><span class="k">class</span> <span class="nc">Subscription</span><span class="p">(</span><span class="n">util</span><span class="o">.</span><span class="n">SetNonEmptyPropertyMixin</span><span class="p">,</span> <span class="n">core</span><span class="o">.</span><span class="n">JSONableDict</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Subscription is an embedded property of the AWS::SNS::Topic resource that describes the</span>
+<span class="sd">    subscription endpoints for a topic.</span>
+
+<span class="sd">    :param endpoint: String,</span>
+<span class="sd">    :param protocol: String</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span>
+    <span class="c">#  Subscription</span>
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Subscription</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="s">&#39;Subscription&#39;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_property</span><span class="p">(</span><span class="s">&#39;Endpoint&#39;</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;endpoint&#39;</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_property</span><span class="p">(</span><span class="s">&#39;Protocol&#39;</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;protocol&#39;</span><span class="p">))</span>
+
+</div>
+<div class="viewcode-block" id="SnsTopicProperties"><a class="viewcode-back" href="../../source_code.html#respawn.sns.SnsTopicProperties">[docs]</a><span class="k">class</span> <span class="nc">SnsTopicProperties</span><span class="p">(</span><span class="n">util</span><span class="o">.</span><span class="n">SetNonEmptyPropertyMixin</span><span class="p">,</span> <span class="n">core</span><span class="o">.</span><span class="n">JSONableDict</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    keyword arguments available.</span>
+
+<span class="sd">    kwargs</span>
+<span class="sd">        - display_name : String,</span>
+<span class="sd">        - subscription : [ SNS Subscription, ... ]</span>
+<span class="sd">        - topic_name : String</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span>
+    <span class="c">#  SNS Topic Core Properties</span>
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SnsTopicProperties</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="s">&#39;Properties&#39;</span><span class="p">)</span>
+
+        <span class="sd">&#39;&#39;&#39; Available keyword arguments &#39;&#39;&#39;</span>
+
+        <span class="c"># DisplayName : A developer-defined string that can be used to identify this SNS topic.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_property</span><span class="p">(</span><span class="s">&#39;DisplayName&#39;</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;display_name&#39;</span><span class="p">))</span>
+
+        <span class="c"># Subscription : The SNS subscriptions (endpoints) for this topic.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_property</span><span class="p">(</span><span class="s">&#39;Subscription&#39;</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;subscription&#39;</span><span class="p">))</span>
+
+        <span class="c"># TopicName : A name for the topic. If you don&#39;t specify a name,</span>
+        <span class="c"># AWS CloudFormation generates a unique physical ID and uses that ID for the topic name.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_property</span><span class="p">(</span><span class="s">&#39;TopicName&#39;</span><span class="p">,</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;topic_name&#39;</span><span class="p">))</span>
+
+</div>
+<div class="viewcode-block" id="SnsTopic"><a class="viewcode-back" href="../../source_code.html#respawn.sns.SnsTopic">[docs]</a><span class="k">class</span> <span class="nc">SnsTopic</span><span class="p">(</span><span class="n">core</span><span class="o">.</span><span class="n">Resource</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Creates an Amazon SNS topic.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span>
+    <span class="c">#  SNS Topic Creation</span>
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">name</span><span class="p">,</span>
+                 <span class="o">**</span><span class="n">kwargs</span>
+                 <span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">SnsTopic</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s">&#39;AWS::SNS::Topic&#39;</span><span class="p">)</span>
+        <span class="n">kwargs</span><span class="p">[</span><span class="s">&#39;subscription&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">recurse_kwargs_list</span><span class="p">(</span><span class="s">&#39;subscription&#39;</span><span class="p">,</span> <span class="n">Subscription</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">Properties</span> <span class="o">=</span> <span class="n">SnsTopicProperties</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+</div>
+<div class="viewcode-block" id="recurse_kwargs_list"><a class="viewcode-back" href="../../source_code.html#respawn.sns.recurse_kwargs_list">[docs]</a><span class="k">def</span> <span class="nf">recurse_kwargs_list</span><span class="p">(</span><span class="n">parameter_name</span><span class="p">,</span> <span class="n">class_name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Recurses through a list of kwargs.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">parameter_name</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+        <span class="n">parameter_list</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">parameter_name</span><span class="p">)</span>
+        <span class="n">param_list</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">parameter</span> <span class="ow">in</span> <span class="n">parameter_list</span><span class="p">:</span>
+            <span class="n">param_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">class_name</span><span class="p">(</span><span class="o">**</span><span class="n">parameter</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">param_list</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">pass</span></div>
+</pre></div>
+
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Victor Mena, Kuber Kaul, Vishal Shah.
+      Last updated on Dec 11, 2015.
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

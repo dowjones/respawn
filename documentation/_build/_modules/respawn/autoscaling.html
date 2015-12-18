@@ -1,0 +1,611 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>respawn.autoscaling &mdash; respawn</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="respawn" href="../../index.html"/>
+        <link rel="up" title="Module code" href="../index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        
+          <a href="../../index.html" class="icon icon-home"> respawn
+        
+
+        
+        </a>
+
+        
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started.html"><strong>Getting Started</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started.html#installation">Installation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../getting_started.html#windows-unix-mac-os-x">Windows/Unix/Mac OS X</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started.html#usage-template-generation">Usage - Template Generation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started.html#dependencies">Dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../getting_started.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../usage.html"><strong>Keywords - YAML/JSON</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../usage.html#resource-index"><strong>Resource Index</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#auto-scaling-group"><strong>Auto Scaling Group</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#cloudwatch"><strong>CloudWatch</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#instances"><strong>Instances</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#launch-configuration"><strong>Launch Configuration</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#lifecycle-hooks"><strong>Lifecycle Hooks</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#load-balancer"><strong>Load Balancer</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#network-interface"><strong>Network Interface</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#network-interface-attachment"><strong>Network Interface Attachment</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#rds"><strong>RDS</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#scheduled-action"><strong>Scheduled Action</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#sns-topic"><strong>Sns Topic</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#volume"><strong>Volume</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#other-required-keywords"><strong>Other Required Keywords</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../usage.html#parameter-index"><strong>Parameter Index</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#parameters"><strong>Parameters</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../usage.html#userdata-index"><strong>UserData Index</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#userdata"><strong>UserData</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../usage.html#references-index"><strong>References Index</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#reference"><strong>Reference</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../usage.html#get-attribute"><strong>Get_Attribute</strong></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../source_code.html"><strong>Source Code Documentation</strong></a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../source_code.html#resource-index"><strong>Resource Index</strong></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../source_code.html#module-respawn.ec2"><strong>EC2</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source_code.html#module-respawn.elb"><strong>Load Balancer</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source_code.html#module-respawn.autoscaling"><strong>Auto Scaling</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source_code.html#module-respawn.cloudformation"><strong>CloudFormation</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source_code.html#module-respawn.cloudwatch"><strong>CloudWatch</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source_code.html#module-respawn.rds"><strong>RDS</strong></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../source_code.html#module-respawn.sns"><strong>Sns Topic</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../source_code.html#module-respawn.parameters"><strong>Parameter Index</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sample_yaml.html"><strong>Sample YAML</strong></a></li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">respawn</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../index.html">Module code</a> &raquo;</li>
+      
+    <li>respawn.autoscaling</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document">
+            
+  <h1>Source code for respawn.autoscaling</h1><div class="highlight"><pre>
+<span class="kn">from</span> <span class="nn">cfn_pyplates</span> <span class="kn">import</span> <span class="n">core</span><span class="p">,</span> <span class="n">functions</span>
+<span class="kn">from</span> <span class="nn">ec2</span> <span class="kn">import</span> <span class="n">BlockDevice</span><span class="p">,</span> <span class="n">BlockDeviceMapping</span>
+<span class="kn">from</span> <span class="nn">errors</span> <span class="kn">import</span> <span class="n">RespawnResourceError</span>
+
+
+<div class="viewcode-block" id="MetricsCollection"><a class="viewcode-back" href="../../source_code.html#respawn.autoscaling.MetricsCollection">[docs]</a><span class="k">class</span> <span class="nc">MetricsCollection</span><span class="p">(</span><span class="n">core</span><span class="o">.</span><span class="n">JSONableDict</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates a Metrics Collection</span>
+
+<span class="sd">        :param granularity: String</span>
+<span class="sd">        :param kwargs: metrics - [ String, ... ]</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span>
+    <span class="c">#  Metrics Collection</span>
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">granularity</span><span class="p">,</span>
+                 <span class="o">**</span><span class="n">kwargs</span>
+                 <span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">MetricsCollection</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s">&#39;Granularity&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">granularity</span>
+        <span class="k">if</span> <span class="s">&#39;metrics&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="bp">self</span><span class="p">[</span><span class="s">&#39;Metrics&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;metrics&#39;</span><span class="p">)</span>
+
+</div>
+<div class="viewcode-block" id="NotificationConfigurations"><a class="viewcode-back" href="../../source_code.html#respawn.autoscaling.NotificationConfigurations">[docs]</a><span class="k">class</span> <span class="nc">NotificationConfigurations</span><span class="p">(</span><span class="n">core</span><span class="o">.</span><span class="n">JSONableDict</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates a Notification Configuration</span>
+
+<span class="sd">        :param notification_type: [ String, ... ]</span>
+<span class="sd">        :param topic_arn: String</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span>
+    <span class="c">#  NotificationConfiguration</span>
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">notification_type</span><span class="p">,</span>
+                 <span class="n">topic_arn</span>
+                 <span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">NotificationConfigurations</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s">&#39;NotificationTypes&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">notification_type</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s">&#39;TopicARN&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">topic_arn</span>
+
+</div>
+<div class="viewcode-block" id="Tag"><a class="viewcode-back" href="../../source_code.html#respawn.autoscaling.Tag">[docs]</a><span class="k">class</span> <span class="nc">Tag</span><span class="p">(</span><span class="n">core</span><span class="o">.</span><span class="n">JSONableDict</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Create ASG Tag</span>
+
+<span class="sd">        :param key: String</span>
+<span class="sd">        :param value: String</span>
+<span class="sd">        :param propagate_at_launch: Boolean</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span>
+    <span class="c">#  Tag</span>
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+                 <span class="n">key</span><span class="p">,</span>
+                 <span class="n">value</span><span class="p">,</span>
+                 <span class="n">propagate_at_launch</span>
+                 <span class="p">):</span>
+        <span class="nb">super</span><span class="p">(</span><span class="n">Tag</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s">&#39;Key&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">key</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s">&#39;Value&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+        <span class="bp">self</span><span class="p">[</span><span class="s">&#39;PropagateAtLaunch&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">propagate_at_launch</span>
+
+</div>
+<div class="viewcode-block" id="LaunchConfiguration"><a class="viewcode-back" href="../../source_code.html#respawn.autoscaling.LaunchConfiguration">[docs]</a><span class="k">class</span> <span class="nc">LaunchConfiguration</span><span class="p">(</span><span class="n">core</span><span class="o">.</span><span class="n">Resource</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates a Launch Configuration</span>
+
+<span class="sd">        :param name: String</span>
+<span class="sd">        :param ami_id: String</span>
+<span class="sd">        :param instance_type: String</span>
+
+<span class="sd">        kwargs</span>
+<span class="sd">            - public_ip: Boolean</span>
+<span class="sd">            - block_devices: [ BlockDeviceMapping, ... ]</span>
+<span class="sd">            - classic_link_vpc_id: String</span>
+<span class="sd">            - classic_link_vpc_security_groups: [ String, ... ],</span>
+<span class="sd">            - ebs_optimized: Boolean</span>
+<span class="sd">            - iam_role: String</span>
+<span class="sd">            - instance_id: String</span>
+<span class="sd">            - monitoring: Boolean</span>
+<span class="sd">            - kernel_id: String</span>
+<span class="sd">            - key_pair: String</span>
+<span class="sd">            - placement_tenancy: String</span>
+<span class="sd">            - ramdisk_id: String</span>
+<span class="sd">            - security_groups: [ SecurityGroup, ... ]</span>
+<span class="sd">            - spot_price: String</span>
+<span class="sd">            - user_data_script: String</span>
+<span class="sd">            - attributes: { key: value, ... }</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span>
+    <span class="c">#  Launch Configuration</span>
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">name</span><span class="p">,</span>
+            <span class="n">ami_id</span><span class="p">,</span>
+            <span class="n">instance_type</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">):</span>
+        <span class="k">if</span> <span class="s">&quot;classic_link_vpc_id&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="ow">and</span> <span class="s">&quot;classic_link_vpc_security_groups&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">RespawnResourceError</span><span class="p">(</span><span class="s">&quot;Classic Link VPC Sercurity Groups (classic_link_vpc_security_groups) &quot;</span>
+                                       <span class="s">&quot;required with Class Link VPC ID (classic_link_vpc_id).&quot;</span><span class="p">,</span>
+                                       <span class="s">&quot;classic Link VPC Id/Classic Link Vpc Security Groups&quot;</span><span class="p">)</span>
+
+        <span class="n">attributes</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;attributes&quot;</span><span class="p">)</span>
+
+        <span class="n">properties</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s">&#39;ImageId&#39;</span><span class="p">:</span> <span class="n">ami_id</span><span class="p">,</span>
+            <span class="s">&#39;InstanceType&#39;</span><span class="p">:</span> <span class="n">instance_type</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="s">&#39;block_devices&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">devices</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;block_devices&#39;</span><span class="p">)</span>
+            <span class="n">block_devices</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">device</span><span class="p">,</span> <span class="n">args</span> <span class="ow">in</span> <span class="n">devices</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">if</span> <span class="s">&#39;ebs&#39;</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
+                    <span class="n">args</span><span class="p">[</span><span class="s">&#39;ebs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">BlockDevice</span><span class="p">(</span><span class="o">**</span><span class="n">args</span><span class="p">[</span><span class="s">&#39;ebs&#39;</span><span class="p">])</span>
+                <span class="n">block_devices</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">BlockDeviceMapping</span><span class="p">(</span><span class="n">device</span><span class="p">,</span> <span class="o">**</span><span class="n">args</span><span class="p">))</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;BlockDeviceMappings&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">block_devices</span>
+
+        <span class="k">if</span> <span class="s">&quot;public_ip&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;AssociatePublicIpAddress&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;public_ip&quot;</span><span class="p">)</span>  <span class="c"># default=False</span>
+        <span class="k">if</span> <span class="s">&quot;classic_link_vpc_id&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;ClassicLinkVPCId&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;classic_link_vpc_id&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;classic_link_vpc_security_groups&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;ClassicLinkVPCSecurityGroups&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;classic_link_vpc_security_groups&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;ebs_optimized&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;EbsOptimized&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;ebs_optimized&quot;</span><span class="p">)</span>  <span class="c"># default=False</span>
+        <span class="k">if</span> <span class="s">&quot;iam_role&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;IamInstanceProfile&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;iam_role&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;instance_id&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;InstanceId&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;instance_id&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;monitoring&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;InstanceMonitoring&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;monitoring&quot;</span><span class="p">)</span>  <span class="c"># default=True</span>
+        <span class="k">if</span> <span class="s">&quot;kernel_id&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;KernelId&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;kernel_id&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;key_pair&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;KeyName&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;key_pair&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;placement_tenancy&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;PlacementTenancy&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;placement_tenancy&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;private_ip&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;PlacementGroupName&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;private_ip&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;ramdisk_id&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;RamdiskId&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;ramdisk_id&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;security_groups&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;SecurityGroups&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;security_groups&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;spot_price&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;SpotPrice&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;spot_price&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;user_data_script&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;UserData&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">functions</span><span class="o">.</span><span class="n">base64</span><span class="p">(</span><span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;user_data_script&quot;</span><span class="p">))</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">LaunchConfiguration</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s">&#39;AWS::AutoScaling::LaunchConfiguration&#39;</span><span class="p">,</span> <span class="n">properties</span><span class="p">,</span> <span class="n">attributes</span><span class="p">)</span>
+
+</div>
+<div class="viewcode-block" id="AutoScalingGroup"><a class="viewcode-back" href="../../source_code.html#respawn.autoscaling.AutoScalingGroup">[docs]</a><span class="k">class</span> <span class="nc">AutoScalingGroup</span><span class="p">(</span><span class="n">core</span><span class="o">.</span><span class="n">Resource</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates an AutoScaling Group</span>
+
+<span class="sd">        :param name: String</span>
+<span class="sd">        :param max_size: String</span>
+<span class="sd">        :param min_size: String</span>
+
+<span class="sd">        kwargs</span>
+<span class="sd">            - availability_zones: [ String, ... ]</span>
+<span class="sd">            - cooldown: String</span>
+<span class="sd">            - desired_capacity: String</span>
+<span class="sd">            - health_check_grace_period: Integer</span>
+<span class="sd">            - health_check_type: String</span>
+<span class="sd">            - instance_id: String</span>
+<span class="sd">            - launch_configuration: String</span>
+<span class="sd">            - load_balancer_names: [ String, ... ]</span>
+<span class="sd">            - metrics_collection: [ MetricsCollection, ... ]</span>
+<span class="sd">            - notification_configs: [ NotificationConfigurations, ... ]</span>
+<span class="sd">            - placement_group: String</span>
+<span class="sd">            - tags: [ Tag, ...]</span>
+<span class="sd">            - termination_policies: [ String, ..., ]</span>
+<span class="sd">            - vpc_zone_identifier: [ String, ... ]</span>
+<span class="sd">            - attributes: { key: value, ... }</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span>
+    <span class="c">#  Auto Scaling Group</span>
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">name</span><span class="p">,</span>
+            <span class="n">max_size</span><span class="p">,</span>
+            <span class="n">min_size</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">):</span>
+        <span class="k">if</span> <span class="s">&quot;instance_id&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="ow">and</span> <span class="s">&quot;launch_configuration&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">RespawnResourceError</span><span class="p">(</span>
+                <span class="s">&quot;Instance ID (instance_id) or Launch Configuration Name (launch_configuration) required.&quot;</span><span class="p">,</span>
+                <span class="s">&quot;Instance Id/ Launch Configuration&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="s">&quot;availability_zones&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span> <span class="ow">and</span> <span class="s">&quot;vpc_zone_identifier&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="n">RespawnResourceError</span><span class="p">(</span>
+                <span class="s">&quot;Availability Zones (availability_zones) or VPC Zone Identifier (vpc_zone_identifier) &quot;</span>
+                <span class="s">&quot;required.&quot;</span><span class="p">,</span> <span class="s">&quot;AvailabilityZones/VPCZoneIdentifier&quot;</span><span class="p">)</span>
+
+        <span class="n">attributes</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;attributes&quot;</span><span class="p">,</span> <span class="nb">dict</span><span class="p">())</span>
+
+        <span class="n">properties</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s">&#39;MaxSize&#39;</span><span class="p">:</span> <span class="n">max_size</span><span class="p">,</span>
+            <span class="s">&#39;MinSize&#39;</span><span class="p">:</span> <span class="n">min_size</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="s">&quot;metrics_collection&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">metrics_collection</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;metrics_collection&#39;</span><span class="p">)</span>
+            <span class="n">metrics_collections</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">collection</span> <span class="ow">in</span> <span class="n">metrics_collection</span><span class="p">:</span>
+                <span class="n">metrics_collections</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">MetricsCollection</span><span class="p">(</span><span class="o">**</span><span class="n">collection</span><span class="p">))</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;MetricsCollection&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">metrics_collections</span>
+
+        <span class="k">if</span> <span class="s">&quot;notification_configs&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">notification_configs</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;notification_configs&quot;</span><span class="p">)</span>
+            <span class="n">configs</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">config</span> <span class="ow">in</span> <span class="n">notification_configs</span><span class="p">:</span>
+                <span class="n">configs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">NotificationConfigurations</span><span class="p">(</span><span class="o">**</span><span class="n">config</span><span class="p">))</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;NotificationConfigurations&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">configs</span>
+
+        <span class="k">if</span> <span class="s">&#39;tags&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">t</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&#39;tags&#39;</span><span class="p">)</span>
+            <span class="n">tags</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="k">for</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">t</span><span class="p">:</span>
+                <span class="n">tags</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Tag</span><span class="p">(</span><span class="o">**</span><span class="n">tag</span><span class="p">))</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;Tags&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tags</span>
+
+        <span class="k">if</span> <span class="s">&quot;launch_configuration&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;LaunchConfigurationName&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;launch_configuration&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;load_balancer_names&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;LoadBalancerNames&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;load_balancer_names&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;availability_zones&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;AvailabilityZones&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;availability_zones&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;cooldown&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;Cooldown&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;cooldown&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;desired_capacity&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;DesiredCapacity&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;desired_capacity&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;health_check_grace_period&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;HealthCheckGracePeriod&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;health_check_grace_period&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;health_check_type&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;HealthCheckType&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;health_check_type&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;instance_id&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;InstanceId&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;instance_id&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;placement_group&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;PlacementGroup&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;placement_group&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;termination_policies&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;TerminationPolicies&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;termination_policies&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;vpc_zone_identifier&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;VPCZoneIdentifier&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;vpc_zone_identifier&quot;</span><span class="p">)</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">AutoScalingGroup</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s">&#39;AWS::AutoScaling::AutoScalingGroup&#39;</span><span class="p">,</span> <span class="n">properties</span><span class="p">,</span> <span class="n">attributes</span><span class="p">)</span>
+
+</div>
+<div class="viewcode-block" id="ScalingPolicy"><a class="viewcode-back" href="../../source_code.html#respawn.autoscaling.ScalingPolicy">[docs]</a><span class="k">class</span> <span class="nc">ScalingPolicy</span><span class="p">(</span><span class="n">core</span><span class="o">.</span><span class="n">Resource</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates a Scaling Policy</span>
+
+<span class="sd">        :param adjustment_type: String</span>
+<span class="sd">        :param asg_name: String</span>
+<span class="sd">        :param scaling_adjustment: String</span>
+
+<span class="sd">        kwargs</span>
+<span class="sd">         - cooldown: String</span>
+<span class="sd">         - in_adjustment_step: String</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span>
+    <span class="c">#  Scaling Policy</span>
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">name</span><span class="p">,</span>
+            <span class="n">adjustment_type</span><span class="p">,</span>
+            <span class="n">asg_name</span><span class="p">,</span>
+            <span class="n">scaling_adjustment</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">):</span>
+        <span class="n">attributes</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;attributes&quot;</span><span class="p">,</span> <span class="nb">dict</span><span class="p">())</span>
+
+        <span class="n">properties</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s">&#39;AdjustmentType&#39;</span><span class="p">:</span> <span class="n">adjustment_type</span><span class="p">,</span>
+            <span class="s">&#39;AutoScalingGroupName&#39;</span><span class="p">:</span> <span class="n">asg_name</span><span class="p">,</span>
+            <span class="s">&#39;ScalingAdjustment&#39;</span><span class="p">:</span> <span class="n">scaling_adjustment</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="s">&quot;cooldown&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;Cooldown&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;cooldown&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;min_adjustment_step&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;MinAdjustmentStep&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;min_adjustment_step&quot;</span><span class="p">)</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">ScalingPolicy</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s">&#39;AWS::AutoScaling::ScalingPolicy&#39;</span><span class="p">,</span> <span class="n">properties</span><span class="p">,</span> <span class="n">attributes</span><span class="p">)</span>
+
+</div>
+<div class="viewcode-block" id="ScheduledAction"><a class="viewcode-back" href="../../source_code.html#respawn.autoscaling.ScheduledAction">[docs]</a><span class="k">class</span> <span class="nc">ScheduledAction</span><span class="p">(</span><span class="n">core</span><span class="o">.</span><span class="n">Resource</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates a Scheduled Action</span>
+
+<span class="sd">        :param asg_name: String</span>
+
+<span class="sd">        kwargs</span>
+<span class="sd">             - desired_capacity: Integer</span>
+<span class="sd">             - end_time: Time stamp (e.g. 2010-06-01T00:00:00Z)</span>
+<span class="sd">             - max_size: Integer</span>
+<span class="sd">             - min_size: Integer</span>
+<span class="sd">             - recurrence: String (e.g. cron)</span>
+<span class="sd">             - start_time: Time stamp (e.g. 2010-06-01T00:00:00Z)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span>
+    <span class="c">#  Scheduled Action</span>
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">name</span><span class="p">,</span>
+            <span class="n">asg_name</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">):</span>
+        <span class="n">attributes</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;attributes&quot;</span><span class="p">,</span> <span class="nb">dict</span><span class="p">())</span>
+
+        <span class="n">properties</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s">&#39;AutoScalingGroupName&#39;</span><span class="p">:</span> <span class="n">asg_name</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="s">&quot;desired_capacity&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;DesiredCapacity&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;desired_capacity&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;end_time&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;EndTime&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;end_time&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;max_size&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;MaxSize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;max_size&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;min_size&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;MinSize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;min_size&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;recurrence&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;Recurrence&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;recurrence&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;start_time&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;StartTime&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;start_time&quot;</span><span class="p">)</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">ScheduledAction</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s">&#39;AWS::AutoScaling::ScheduledAction&#39;</span><span class="p">,</span> <span class="n">properties</span><span class="p">,</span> <span class="n">attributes</span><span class="p">)</span>
+
+</div>
+<div class="viewcode-block" id="LifecycleHook"><a class="viewcode-back" href="../../source_code.html#respawn.autoscaling.LifecycleHook">[docs]</a><span class="k">class</span> <span class="nc">LifecycleHook</span><span class="p">(</span><span class="n">core</span><span class="o">.</span><span class="n">Resource</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates a Lifecycle Hook</span>
+
+<span class="sd">        :param asg_name: String</span>
+<span class="sd">        :param lifecycle_transition: String</span>
+<span class="sd">        :param notification_target_arn: String</span>
+<span class="sd">        :param role_arn: String</span>
+
+<span class="sd">        kwargs</span>
+<span class="sd">             - default_result: String</span>
+<span class="sd">             - heartbeat_timeout: Integer</span>
+<span class="sd">             - notification_metadata: String</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span>
+    <span class="c">#  LifeCycle Hook</span>
+    <span class="c"># ----------------------------------------------------------------------------------------------------------</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="n">name</span><span class="p">,</span>
+            <span class="n">asg_name</span><span class="p">,</span>
+            <span class="n">lifecycle_transition</span><span class="p">,</span>
+            <span class="n">notification_target_arn</span><span class="p">,</span>
+            <span class="n">role_arn</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">kwargs</span>
+    <span class="p">):</span>
+        <span class="n">attributes</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;attributes&quot;</span><span class="p">,</span> <span class="nb">dict</span><span class="p">())</span>
+
+        <span class="n">properties</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s">&#39;AutoScalingGroupName&#39;</span><span class="p">:</span> <span class="n">asg_name</span><span class="p">,</span>
+            <span class="s">&#39;LifecycleTransition&#39;</span><span class="p">:</span> <span class="n">lifecycle_transition</span><span class="p">,</span>
+            <span class="s">&#39;NotificationTargetARN&#39;</span><span class="p">:</span> <span class="n">notification_target_arn</span><span class="p">,</span>
+            <span class="s">&#39;RoleARN&#39;</span><span class="p">:</span> <span class="n">role_arn</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="s">&quot;default_result&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;DefaultResult&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;default_result&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;heartbeat_timeout&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;HeartbeatTimeout&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;heartbeat_timeout&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="s">&quot;notification_metadata&quot;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+            <span class="n">properties</span><span class="p">[</span><span class="s">&#39;NotificationMetadata&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">&quot;notification_metadata&quot;</span><span class="p">)</span>
+
+        <span class="nb">super</span><span class="p">(</span><span class="n">LifecycleHook</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="n">__init__</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="s">&#39;AWS::AutoScaling::LifecycleHook&#39;</span><span class="p">,</span> <span class="n">properties</span><span class="p">,</span> <span class="n">attributes</span><span class="p">)</span></div>
+</pre></div>
+
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2015, Victor Mena, Kuber Kaul, Vishal Shah.
+      Last updated on Dec 11, 2015.
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'0.0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
