@@ -53,7 +53,7 @@ setup_args = {
     'name': 'respawn',
     'version': get_version(),
     'description': 'AWS CloudFormation Template generator from Yaml specifications.',
-    'url': 'http://radical-cybertools.github.io/saga-python/',
+    'url': 'https://github.com/dowjones/respawn/',
     'license': 'ISC',
     'keywords': 'aws cloudformation yaml',
     'classifiers': [
