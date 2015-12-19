@@ -45,6 +45,10 @@ def get_version():
     except Exception as e:
         raise RuntimeError('Could not extract version: %s' % e)
 
+# Check Python version. Required > 2.7, <3.x
+if  sys.hexversion < 0x02070000 or sys.hexversion >= 0x03000000:
+    raise RuntimeError("respawn requires Python 2.x (2.7 or higher)")
+
 setup_args = {
     'name': 'respawn',
     'version': get_version(),
