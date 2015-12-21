@@ -5,7 +5,14 @@
 </a>
 </div>
 
-respawn: **v1.0.0**
+[![Code Climate](https://codeclimate.com/github/dowjones/respawn/badges/gpa.svg)](https://codeclimate.com/github/dowjones/respawn) [![Documentation Status](https://readthedocs.org/projects/respawn/badge/?version=latest)](http://respawn.readthedocs.org/en/latest/?badge=latest)
+
+Version History
+================
+
+__v1.0.0__
+
+* Initial release
 
 Introduction
 ============
@@ -23,8 +30,7 @@ The logo for respawn has been designed by [Gregor Louden](http://www.gregorloude
 Documentation
 =============
 
-Documentation is written in sphinx and hosted on [readthedocs](https://github.dowjones
-.net/pages/djin-productivity/respawn/index.html).
+Documentation is written in sphinx and hosted on [readthedocs](http://respawn.readthedocs.org/en/latest/).
 
 Services
 ========
