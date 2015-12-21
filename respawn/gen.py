@@ -189,7 +189,7 @@ try:
     if 'parameters' in options:
         for name, parameter_opts in options['parameters'].items():
             cft.add_parameter(name, **parameter_opts)
-except Exception, e:
+except Exception as e:
     raise RuntimeError("Required arguments missing from Parameters")
 
 

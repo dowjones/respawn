@@ -18,7 +18,6 @@ class TestCloudformation(unittest.TestCase):
                          "user_data_script": "sample_user_data_script"}
         cft = cloudformation.Template()
         v = cft.add_launch_config("name", **sample_kwargs)
-        print v
         assert v['Properties'] == {
             "UserData": {
                 "Fn::Base64": "sample_user_data_script"
