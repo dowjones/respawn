@@ -7,10 +7,6 @@
 
 respawn: **v1.0.0**
 
-Released: 21-Dec-2015
-
-![image]
-
 Introduction
 ============
 
