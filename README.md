@@ -5,8 +5,6 @@
 </a>
 </div>
 
-[![Documentation Status](https://readthedocs.org/projects/respawn/badge/?version=latest)](http://respawn.readthedocs.org/en/latest/?badge=latest)
-
 Version History
 ================
 

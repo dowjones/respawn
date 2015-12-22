@@ -36,10 +36,6 @@ this moment. We will keep adding on as we keep building resource support.
             max_value: String
             min_value: String
             constraint_description: "Malformed input-Parameter MyParameter must only contain upper and lower case letters"
-          daw0eip1:
-            default : String
-            type : String
-            description : "Creating test param"
 
 
         # Default Security Groups
@@ -48,7 +44,6 @@ this moment. We will keep adding on as we keep building resource support.
 
         security_groups:
             Web: &web_sgs
-              - *sampleSecurityGroup
 
         load_balancers:
               SampleLoadBalancer:
