@@ -37,8 +37,7 @@ Key Features
 
 The key features of Respawn are:
 
-- Automatic CloudFormation creation: Respawn detects your application type and builds a CloudFormation JSON for your application tailored to your use based on your YAML. It supports multiple resources/parameters/user-data that AWS supports. Please go through usage to see the list of resources
-respawn supports.
+- Automatic CloudFormation creation: Respawn detects your application type and builds a CloudFormation JSON for your application tailored to your use based on your YAML. It supports multiple resources/parameters/user-data that AWS supports. Please go through usage to see the list of resources respawn supports.
 
 - Validates CloudFormation: Respawn validates the JSON created against AWS resources to confirm the correctness of your CloudFormation script. It utilizes boto3 and AWS credentials stored in your environment.
 

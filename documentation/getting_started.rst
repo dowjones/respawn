@@ -4,14 +4,14 @@
 
 This page describes how to download, install and use the basic functionality of respawn.
 
-*************
-Installation
-*************
+**Installation**
+################
+
 
 To install respawn, simply:
 
-Windows/Unix/Mac OS X
-######################
+**Windows/Unix/Mac OS X**
+==========================
 
 - Open command prompt and execute pip command :
 
@@ -20,9 +20,8 @@ Windows/Unix/Mac OS X
     pip install respawn
 
 
-****************************
-Usage - Template Generation
-****************************
+**Usage - Template Generation**
+################################
 
 to use respawn, in your command prompt/terminal :
 
@@ -49,9 +48,8 @@ where:
 For exhaustive documentation and help with specific keywords to be used with resources , got to usage section.
 
 
-***************
-Dependencies
-***************
+**Dependencies**
+#################
 
 - boto==2.32.1
 - nose==1.3.3
@@ -60,9 +58,8 @@ Dependencies
 - enum34
 - pytest==2.7.1
 
-*************
-Next Steps
-*************
+**Next Steps**
+###############
 
 That concludes the getting started guide for respawn. Hopefully you're excited about the possibilities of respawn and
 ready to begin using respawn with your applications.
