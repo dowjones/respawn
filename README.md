@@ -5,7 +5,7 @@
 </a>
 </div>
 
-[![Code Climate](https://codeclimate.com/github/dowjones/respawn/badges/gpa.svg)](https://codeclimate.com/github/dowjones/respawn) [![Documentation Status](https://readthedocs.org/projects/respawn/badge/?version=latest)](http://respawn.readthedocs.org/en/latest/?badge=latest)
+[![Documentation Status](https://readthedocs.org/projects/respawn/badge/?version=latest)](http://respawn.readthedocs.org/en/latest/?badge=latest)
 
 Version History
 ================
