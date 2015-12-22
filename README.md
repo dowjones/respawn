@@ -8,7 +8,7 @@
 Version History
 ================
 
-__v1.0.0__
+__v1.0.3__
 
 * Initial release
 
