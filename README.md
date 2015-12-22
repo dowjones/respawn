@@ -96,7 +96,8 @@ to pipe the output to a file :
 Developing and Contributing
 ============================
   
-We'd love to get contributions from you! Take a look at the [CONTRIBUTING.md](CONTRIBUTING.rst) to see how to get your changes merged in.
+We'd love to get contributions from you! Take a look at the [CONTRIBUTING.rst](CONTRIBUTING.rst) to see how to get
+your changes merged in.
   
 License
 =========

@@ -1,12 +1,13 @@
 .. image:: Logo/PNG/respawn-logo-2.png
    :align: center
 
+****************
+Version History
+****************
 
-respawn: **v0.1.1-beta**
+:Version: v1.0.0
 
-Released: 1-Nov-2015
-
-.. image:: http://djin-jenkins01.dowjones.net:7777/buildStatus/icon?job=respawn
+* Initial release
 
 ************
 Introduction
@@ -16,6 +17,11 @@ generate CloudFormation templates. A pyplate is a class-based python representat
 
 Respawn is a Python package that provides interfaces to Amazon Web Services - Cloudformation. It allows for easier and more user friendly and concise yaml keywords to create resources/parameters/userdata in CloudFormation stacks. This is used in Dow Jones pipeline and with success and has been modified to be as generic and serve all. Currently the library supports Python 2.7.
 
+************
+Authors
+************
+Respawn has been written by the following `authors <https://github.com/dowjones/respawn/graphs/contributors>`_. The
+logo for respawn has been designed by `Gregor Louden <http://www.gregorlouden.com>`_.
 
 *************
 Documentation
@@ -104,3 +110,13 @@ to pipe the output to a file :
 
 
 
+****************************
+Developing and Contribution
+****************************
+We'd love to get contributions from you! Take a look at the `CONTRIBUTING.rst <https://github
+.com/dowjones/respawn/blob/master/CONTRIBUTING.rst>`_ to see how to get your changes merged in.
+
+************
+License
+************
+`ISC <https://github.com/dowjones/respawn/blob/master/LICENSE.md>`_
