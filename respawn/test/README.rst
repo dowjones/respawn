@@ -1,7 +1,7 @@
 respawn tests
 ============
 
-Test scripts are named ``test_xxx.py`` and use the ``py.test`` module.
+Test scripts are named ``test_xxx.py`` and use the `py.test <http://pytest.org/latest/>`_ module.
 
 Dependencies
 -----------
@@ -27,4 +27,3 @@ Run all the tests from the root of the respawn source distribution::
 Or with coverage::
 
     py.test --cov=respawn/ --cov-report term
-
