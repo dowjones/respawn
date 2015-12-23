@@ -52,7 +52,6 @@ coverage.xml
 *.pot
 
 # Sphinx documentation
-!documentation/_build/index.html
 documentation/_build/
 documentation/.DS_Store
 
