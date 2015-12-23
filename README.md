@@ -15,9 +15,9 @@ __v1.0.3__
 Introduction
 ============
 
-Infrastructure templates and utilities for building AWS CloudFormation stacks. Respawn uses [cfn-pyplates] to generate CloudFormation templates. A pyplate is a class-based python representation of a JSON CloudFormation template and resources, with the goal of generating CloudFormation templates based on input python templates (pyplates!) that reflect the CloudFormation template hierarchy.
+Infrastructure templates and utilities for building AWS CloudFormation stacks. Respawn uses [cfn-pyplates](https://cfn-pyplates.readthedocs.org/en/latest/) to generate CloudFormation templates. Respawn digests a custom, easy to read/write YAML representation of a JSON CloudFormation template and resources, with the goal of generating CloudFormation templates based on python templates (pyplates!) that reflect the CloudFormation template hierarchy.
 
-Respawn is a Python package that provides interfaces to Amazon Web Services - Cloudformation. It allows for easier and more user friendly and concise yaml keywords to create resources/parameters/userdata in CloudFormation stacks. This is used in Dow Jones pipeline and with success and has been modified to be as generic and serve all. Currently the library supports Python 2.7.
+Respawn is a Python package that provides interfaces to Amazon Web Services - Cloudformation. It allows for easier and more user friendly and concise YAML keywords to create resources/parameters/userdata in CloudFormation stacks. This is used in Dow Jones [professional information business](http://www.dowjones.com) pipeline and with success and has been modified to be as generic and serve all. Currently the library supports Python 2.7.
 
 Authors
 ========
