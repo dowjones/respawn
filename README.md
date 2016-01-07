@@ -19,11 +19,6 @@ Infrastructure templates and utilities for building AWS CloudFormation stacks. R
 
 Respawn is a Python package that provides interfaces to Amazon Web Services - Cloudformation. It allows for easier and more user friendly and concise YAML keywords to create resources/parameters/userdata in CloudFormation stacks. This is used in Dow Jones [professional information business](http://www.dowjones.com) pipeline and with success and has been modified to be as generic and serve all. Currently the library supports Python 2.7.
 
-<div align="center">
-<a href="https://asciinema.org/a/a7cbby0s4njzkaq5l5ekzuof9?autoplay=1" target="_blank"><img src="https://asciinema.org/a/a7cbby0s4njzkaq5l5ekzuof9.png" 
-alt="respawn-cast" width="500" height="300" border="5" /></a>
-</div>
-
 Authors
 ========
 
@@ -95,6 +90,14 @@ to pipe the output to a file :
   [image]: http://djin-jenkins01.dowjones.net:7777/buildStatus/icon?job=respawn
   [cfn-pyplates]: https://github.com/seandst/cfn-pyplates/tree/master/cfn_pyplates
   [boto]: https://github.com/boto/boto
+  
+  
+<div align="center">
+<a href="https://asciinema.org/a/a7cbby0s4njzkaq5l5ekzuof9?autoplay=1" target="_blank"><img src="https://asciinema.org/a/a7cbby0s4njzkaq5l5ekzuof9.png" 
+alt="respawn-cast" width="400" height="250" border="5" /></a>
+<a href="https://asciinema.org/a/2ul6f9ynkk503mqrl1mxend61?autoplay=1" target="_blank"><img src="https://asciinema.org/a/2ul6f9ynkk503mqrl1mxend61.png" 
+alt="respawn-validation-cast" width="400" height="250" border="5" /></a>
+</div>
 
 Developing and Contributing
 ============================
