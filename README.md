@@ -94,9 +94,9 @@ to pipe the output to a file :
   
 <div align="center">
 <a href="https://asciinema.org/a/a7cbby0s4njzkaq5l5ekzuof9?autoplay=1" target="_blank"><img src="https://asciinema.org/a/a7cbby0s4njzkaq5l5ekzuof9.png" 
-alt="respawn-cast" width="400" height="250" border="5" /></a>
+alt="respawn-cast" width="350" height="200" border="5" /></a>
 <a href="https://asciinema.org/a/2ul6f9ynkk503mqrl1mxend61?autoplay=1" target="_blank"><img src="https://asciinema.org/a/2ul6f9ynkk503mqrl1mxend61.png" 
-alt="respawn-validation-cast" width="400" height="250" border="5" /></a>
+alt="respawn-validation-cast" width="350" height="200" border="5" /></a>
 </div>
 
 Developing and Contributing
