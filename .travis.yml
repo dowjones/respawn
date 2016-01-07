@@ -8,9 +8,9 @@ before_install:
 install:
 - pip install coveralls
 script:
- py.test --cov=respawn/
- coverage run --source=respawn/ setup.py test
- python setup.py install
+- py.test --cov=respawn/
+- coverage run --source=respawn/ setup.py test
+- python setup.py install
 
 after_success:
- coveralls
+- coveralls
