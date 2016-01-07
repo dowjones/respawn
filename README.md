@@ -5,7 +5,10 @@
 </a>
 </div>
 
+[![Join the chat at https://gitter.im/dowjones/respawn](https://badges.gitter.im/dowjones/respawn.svg)](https://gitter.im/dowjones/respawn?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![Documentation Status](https://readthedocs.org/projects/respawn/badge/?version=latest)](http://respawn.readthedocs.org/en/latest/?badge=latest)
+[![Coverage Status](https://coveralls.io/repos/dowjones/respawn/badge.svg?branch=master&service=github)](https://coveralls.io/github/dowjones/respawn?branch=master)
+[![Build Status](https://travis-ci.org/kuberkaul/respawn.svg?branch=master)](https://travis-ci.org/kuberkaul/respawn)
  
 
 Version History
