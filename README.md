@@ -9,7 +9,11 @@
 [![Documentation Status](https://readthedocs.org/projects/respawn/badge/?version=latest)](http://respawn.readthedocs.org/en/latest/?badge=latest)
 [![Coverage Status](https://coveralls.io/repos/dowjones/respawn/badge.svg?branch=master&service=github)](https://coveralls.io/github/dowjones/respawn?branch=master)
 [![Build Status](https://travis-ci.org/kuberkaul/respawn.svg?branch=master)](https://travis-ci.org/kuberkaul/respawn)
- 
+[![Python Versions]](https://img.shields.io/pypi/pyversions/respawn.svg)
+[![PyPi](https://pypi.python.org/pypi/respawn)](https://img.shields.io/pypi/v/respawn.svg)
+[![Release Status]](https://img.shields.io/pypi/status/respawn.svg)
+[![License]](https://img.shields.io/pypi/l/respawn.svg)
+[![Downloads]](https://img.shields.io/pypi/dm/respawn.svg)
 
 Version History
 ================
