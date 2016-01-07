@@ -5,10 +5,10 @@ before_install:
 - pip install cfn-pyplates
 - pip install boto3
 - pip install Jinja2
+- pip install pytest-cov
 install:
 - pip install coveralls
 script:
-- py.test --cov=respawn/
 - coverage run --source=respawn/ setup.py test
 - python setup.py install
 
