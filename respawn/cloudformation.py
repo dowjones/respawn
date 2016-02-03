@@ -176,6 +176,21 @@ class Template(core.CloudFormationTemplate):
         self.resources.add(lh)
         return lh
 
+    # ---------------------------------------------------------------------------------------------------------
+    # Route53 Record
+    # ---------------------------------------------------------------------------------------------------------
+    def add_route53_record_set(
+            self,
+            name,
+            **kwargs
+    ):
+        record_set_arguments = dict()
+        for key, value in kwargs.iteritems():
+            record_set_arguments[key] = value
+        record_set = ec2.Instance(name, **record_set_arguments)
+        self.resources.add(record_set)
+        return record_set
+
     # ----------------------------------------------------------------------------------------------------------
     #  Instance
     # ----------------------------------------------------------------------------------------------------------

@@ -203,3 +203,13 @@ try:
 except Exception as e:
     raise RuntimeError("Required arguments missing from SNS Topic: {0}: Exception: {1}".format(name, e))
 
+
+# ----------------------------------------------------------------------------------------------------------
+# Route53 Record
+# ----------------------------------------------------------------------------------------------------------
+try:
+    if 'record_set' in options:
+        for name, values in options['record_set'].items():
+            resources[name] = cft.add_route53_record_set(name, **values)
+except Exception as e:
+    raise RuntimeError("Required arguments missing from SNS Topic. Exception: ", e)
