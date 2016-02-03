@@ -2,16 +2,6 @@ import pytest
 from respawn import route53
 
 
-def test_tag():
-    # Successful creation of tag
-    tag = ec2.Tag("Key1", "Value1")
-    assert tag == {"Key": "Key1", "Value": "Value1"}
-
-    # Extra arguments
-    with pytest.raises(TypeError):
-        ec2.Tag("Key1", "Value1", True)
-
-
 def test_record_set():
     # Successful instance
     record_set = route53.RecordSet(name="TestRecordSet", domain_name="test.dowjones.net",
