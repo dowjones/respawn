@@ -125,8 +125,8 @@ class DBInstance(core.Resource):
             properties['LicenseModel'] = kwargs.get("license_model")
         if "master_username" in kwargs:
             properties['MasterUsername'] = kwargs.get("master_username")
-        if "master_password" in kwargs:
-            properties['MasterPassword'] = kwargs.get("master_password")
+        if "master_user_password" in kwargs:
+            properties['MasterUserPassword'] = kwargs.get("master_user_password")
         if "multi_az" in kwargs:
             properties['MultiAZ'] = kwargs.get("multi_az")
         if "option_group_name" in kwargs:
