@@ -13,7 +13,6 @@
 [![PyPi](https://img.shields.io/pypi/v/respawn.svg)](https://pypi.python.org/pypi/respawn)
 ![Release Status](https://img.shields.io/pypi/status/respawn.svg)
 ![License](https://img.shields.io/pypi/l/respawn.svg)
-![Downloads](https://img.shields.io/pypi/dm/respawn.svg)
 
 Version History
 ================
