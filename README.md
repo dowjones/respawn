@@ -11,7 +11,6 @@
 [![Build Status](https://travis-ci.org/dowjones/respawn.svg?branch=master)](https://travis-ci.org/dowjones/respawn)
 ![Python Versions](https://img.shields.io/pypi/pyversions/respawn.svg)
 [![PyPi](https://img.shields.io/pypi/v/respawn.svg)](https://pypi.python.org/pypi/respawn)
-![Release Status](https://img.shields.io/pypi/status/respawn.svg)
 ![License](https://img.shields.io/pypi/l/respawn.svg)
 
 Version History
